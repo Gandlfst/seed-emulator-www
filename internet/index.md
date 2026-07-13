@@ -1,8 +1,10 @@
 ---
   layout: default
-  title: Internet Emulator
+  title: 互联网仿真器
+  section: internet
+  intro: "在这里添加互联网仿真器的简要介绍。"
 ---
 
 
 
-- [examples](./examples.html)
+- [示例](./examples.html)

@@ -1,0 +1,125 @@
+main:
+  - title: 首页
+    url: /index.html
+  - title: 互联网
+    url: /internet/
+  - title: 区块链
+    url: /blockchain/
+  - title: 卫星互联网
+    url: /satellite/
+  - title: 用户手册
+    url: /manuals/
+  - title: 更多
+    children:
+      - title: 昨日重现
+        url: /yom/
+      - title: 教学资源
+        url: /education/
+      - title: 研究
+        url: /research/
+      - title: 讲座
+        url: /talks.html
+      - title: 联系我们
+        url: /contact.html
+
+hero_images:
+  internet: /assets/images/hero-internet.png
+  blockchain: /assets/images/hero-blockchain.png
+  satellite: /assets/images/hero-satellite.png
+  yom: /assets/images/hero-yom.png
+  education: /assets/images/hero-education.png
+  research: /assets/images/hero-research.png
+  manuals: /assets/images/hero-manuals.png
+  more: /assets/images/hero-more.png
+
+home_cards:
+  - title: 互联网仿真器
+    eyebrow: 核心模块
+    url: /internet/
+    description: 用于放置互联网仿真器的介绍、示例和案例研究。
+  - title: 区块链仿真器
+    eyebrow: 核心模块
+    url: /blockchain/
+    description: 用于放置区块链仿真器的架构、场景和教程。
+  - title: 卫星互联网
+    eyebrow: 扩展方向
+    url: /satellite/
+    description: 用于放置卫星网络仿真的流程、实验和研究记录。
+  - title: 昨日重现
+    eyebrow: 项目
+    url: /yom/
+    description: 用于放置经典互联网攻击复现实验和场景说明。
+  - title: 教学资源
+    eyebrow: 教学
+    url: /education/
+    description: 用于放置课程资料、实验材料和课堂使用指南。
+  - title: 研究
+    eyebrow: 研究
+    url: /research/
+    description: 用于放置论文、原型系统和研究方向。
+  - title: 用户手册
+    eyebrow: 文档
+    url: /manuals/
+    description: 用于放置环境配置、组件说明和用户手册。
+
+sidebars:
+  internet:
+    title: 互联网仿真器
+    items:
+      - title: 概览
+        url: /internet/
+      - title: 示例
+        url: /internet/examples.html
+  blockchain:
+    title: 区块链仿真器
+    items:
+      - title: 概览
+        url: /blockchain/
+  satellite:
+    title: 卫星互联网
+    items:
+      - title: 概览
+        url: /satellite/
+  yom:
+    title: 昨日重现
+    items:
+      - title: 概览
+        url: /yom/
+  education:
+    title: 教学资源
+    items:
+      - title: 概览
+        url: /education/
+  research:
+    title: 研究
+    items:
+      - title: 概览
+        url: /research/
+  manuals:
+    title: 用户手册
+    items:
+      - title: 手册首页
+        url: /manuals/
+      - title: 环境配置
+        url: /manuals/env.html
+      - title: 整体流程
+        url: /manuals/overall_flow.html
+      - title: IP 地址分配
+        url: /manuals/ip_address.html
+      - title: BGP 对等连接
+        url: /manuals/bgp.html
+      - title: 节点定制
+        url: /manuals/node_customization.html
+      - title: 编译
+        url: /manuals/compiler.html
+      - title: 内部路由
+        url: /manuals/routing.html
+      - title: 组件
+        url: /manuals/component.html
+  more:
+    title: 更多
+    items:
+      - title: 讲座
+        url: /talks.html
+      - title: 联系我们
+        url: /contact.html

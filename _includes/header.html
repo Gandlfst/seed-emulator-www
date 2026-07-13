@@ -1,89 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-82GQR8X1KJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-82GQR8X1KJ');
-</script>
-
-<title>SEED Emulator</title>
+<title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/assets/css/syntax.css" type="text/css" />
-
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "ariel", sans-serif}
-.w3-bar,h1,button {font-family: "ariel", sans-serif}
-
-.booktitle { font-family: 'ariel', sans-serif; }
-
-.country { color:blue; font-weight:bold; }
-.state   { color:blue; font-weight:bold; }
-img {
-       max-width: 100%; /* Image will not exceed its natural width or 100% of its container */
-       height: auto;    /* Maintains the image's aspect ratio */
-    }
-</style>
-
+<meta name="description" content="{{ page.description | default: site.description | strip_newlines }}">
+<link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}" type="text/css">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" type="text/css">
 </head>
 
-<body class="w3-gray">
+<body>
+<a class="skip-link" href="#main">跳转到主要内容</a>
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="site-brand" href="{{ '/index.html' | relative_url }}" aria-label="SEED 仿真器首页">
+      <img src="{{ '/assets/images/seed2.0_logo.png' | relative_url }}" alt="">
+      <span>SEED 仿真器</span>
+    </a>
 
-<!-- Navbar -->
-<div class="w3-top">
-  <!-- Navbar on large screens -->
-  <div class="w3-bar w3-card w3-left-align w3-large w3-text-white w3-blue-gray">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" 
-          href="javascript:void(0);" onclick="myFunction()" 
-          title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a class="w3-bar-item w3-button w3-hide-small w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" 
-          href="javascript:void(0);" onclick="myMediumFunction()" 
-          title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="sr-only">展开或收起导航</span>
+    </button>
 
-    <!-- menu items (some of them will be hidden for medium/small screens -->
-    <a href="{{ site.baseurl }}/index.html" 
-       class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-    <a href="{{ site.baseurl }}/internet/index.html"
-       class="w3-bar-item w3-button w3-padding-large w3-hover-white">Internet</a>
-    <a href="{{ site.baseurl }}/blockchain/index.html" 
-       class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Blockchain</a>
-    <a href="{{ site.baseurl }}/yom/index.html" 
-       class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-padding-large w3-hover-white">Yesterday-Once-More</a>
-    <a href="{{ site.baseurl }}/manuals/index.html" 
-       class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-padding-large w3-hover-white">Manuals</a>
+    <nav id="site-navigation" class="site-nav" aria-label="主导航">
+      {% for item in site.data.navigation.main %}
+        {% assign item_active = false %}
+        {% if item.url %}
+          {% if page.url == item.url %}
+            {% assign item_active = true %}
+          {% elsif item.url == '/index.html' and page.url == '/' %}
+            {% assign item_active = true %}
+          {% elsif item.url != '/index.html' and page.url contains item.url %}
+            {% assign item_active = true %}
+          {% endif %}
+        {% endif %}
 
-    <div class="w3-dropdown-hover w3-hide-medium w3-hide-small">
-       <button class="w3-button w3-padding-large w3-hover-white">More</button>
-       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-         <a href="{{ site.baseurl }}/talks.html" class="w3-bar-item w3-button">Talks</a>
-         <a href="{{ site.baseurl }}/contact.html" class="w3-bar-item w3-button">Contact</a>
-       </div>
-    </div>
+        {% if item.children %}
+          {% assign child_active = false %}
+          {% for child in item.children %}
+            {% if page.url == child.url %}
+              {% assign child_active = true %}
+            {% elsif child.url != '/index.html' and page.url contains child.url %}
+              {% assign child_active = true %}
+            {% endif %}
+          {% endfor %}
+          <details class="nav-dropdown"{% if child_active %} open{% endif %}>
+            <summary class="site-nav__link{% if child_active %} is-active{% endif %}">{{ item.title }}</summary>
+            <div class="nav-dropdown__panel">
+              {% for child in item.children %}
+                <a href="{{ child.url | relative_url }}" class="nav-dropdown__link">{{ child.title }}</a>
+              {% endfor %}
+            </div>
+          </details>
+        {% else %}
+          <a href="{{ item.url | relative_url }}" class="site-nav__link{% if item_active %} is-active{% endif %}">
+            {{ item.title }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </nav>
   </div>
-
-  <!-- Navbar on medium screens -->
-  <div id="navDemoMedium" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-small w3-large">
-    <a href="{{ site.baseurl }}/index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="{{ site.baseurl }}/item1.html" class="w3-bar-item w3-button">Item 1</a>
-    <a href="{{ site.baseurl }}/item2.html" class="w3-bar-item w3-button">Item 2</a>
-    <a href="{{ site.baseurl }}/chinese/index.html" class="w3-bar-item w3-button">Chinese</a>
-    <a href="{{ site.baseurl }}/author.html" class="w3-bar-item w3-button">Contact</a>
-  </div>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="{{ site.baseurl }}/index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="{{ site.baseurl }}/item1.html" class="w3-bar-item w3-button">Item 1</a>
-    <a href="{{ site.baseurl }}/item2.html" class="w3-bar-item w3-button">Item 2</a>
-    <a href="{{ site.baseurl }}/chinese/index.html" class="w3-bar-item w3-button">Chinese</a>
-    <a href="{{ site.baseurl }}/author.html" class="w3-bar-item w3-button">Contact</a>
-  </div>
-</div>
-
+</header>

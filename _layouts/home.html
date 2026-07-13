@@ -1,0 +1,72 @@
+{% include header.html %}
+{% assign hero_image = page.hero_image | default: '/assets/images/seed-emulator-ai-hero.png' %}
+
+<main id="main" class="home-main">
+  <section class="home-hero">
+    <div class="container home-hero__inner">
+      <div class="home-hero__copy">
+        <p class="eyebrow">SEED 仿真器网站框架</p>
+        <h1>SEED 仿真器</h1>
+        <p class="home-hero__lead">
+          一个基于 Jekyll 的网站框架，用于组织互联网、区块链、卫星互联网、教学和研究资料。
+        </p>
+        <div class="home-hero__actions" aria-label="主要栏目">
+          <a class="button button--primary" href="{{ '/internet/' | relative_url }}">互联网仿真器</a>
+          <a class="button button--secondary" href="{{ '/manuals/' | relative_url }}">用户手册</a>
+        </div>
+      </div>
+
+      <figure class="home-hero__media">
+        <img src="{{ hero_image | relative_url }}" alt="SEED 仿真器网络仿真主题图">
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">网站结构</p>
+          <h2>项目栏目</h2>
+        </div>
+        <p class="section-heading__text">
+          每个栏目都预留介绍、主题图和正文区域，后续可以直接补充课程、实验、示例和研究内容。
+        </p>
+      </div>
+
+      <div class="module-grid">
+        {% for card in site.data.navigation.home_cards %}
+          {% assign card_image = nil %}
+          {% if card.url contains '/internet/' %}
+            {% assign card_image = site.data.navigation.hero_images.internet %}
+          {% elsif card.url contains '/blockchain/' %}
+            {% assign card_image = site.data.navigation.hero_images.blockchain %}
+          {% elsif card.url contains '/satellite/' %}
+            {% assign card_image = site.data.navigation.hero_images.satellite %}
+          {% elsif card.url contains '/yom/' %}
+            {% assign card_image = site.data.navigation.hero_images.yom %}
+          {% elsif card.url contains '/education/' %}
+            {% assign card_image = site.data.navigation.hero_images.education %}
+          {% elsif card.url contains '/research/' %}
+            {% assign card_image = site.data.navigation.hero_images.research %}
+          {% elsif card.url contains '/manuals/' %}
+            {% assign card_image = site.data.navigation.hero_images.manuals %}
+          {% endif %}
+          <a class="module-card" href="{{ card.url | relative_url }}">
+            {% if card_image %}
+              <span class="module-card__image">
+                <img src="{{ card_image | relative_url }}" alt="{{ card.title }}栏目图">
+              </span>
+            {% endif %}
+            <span>{{ card.eyebrow }}</span>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+            <span class="module-card__action">进入栏目</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include footer.html %}
