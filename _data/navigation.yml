@@ -22,6 +22,22 @@ main:
       - title: 联系我们
         url: /contact.html
 
+section_paths:
+  - section: internet
+    path: internet/
+  - section: blockchain
+    path: blockchain/
+  - section: satellite
+    path: satellite/
+  - section: yom
+    path: yom/
+  - section: education
+    path: education/
+  - section: research
+    path: research/
+  - section: manuals
+    path: manuals/
+
 hero_images:
   internet: /assets/images/hero-internet.png
   blockchain: /assets/images/hero-blockchain.png

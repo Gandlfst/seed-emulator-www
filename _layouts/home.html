@@ -61,10 +61,11 @@
         {% if section.cards %}
           <div class="module-grid">
             {% for card in section.cards %}
+              {% assign card_image = card.image | default: site.data.navigation.hero_images[card.section] %}
               <a class="module-card" href="{{ card.url | relative_url }}">
-                {% if card.image %}
+                {% if card_image %}
                   <span class="module-card__image">
-                    <img src="{{ card.image | relative_url }}" alt="{{ card.image_alt | default: card.title }}">
+                    <img src="{{ card_image | relative_url }}" alt="{{ card.image_alt | default: card.title }}">
                   </span>
                 {% endif %}
 

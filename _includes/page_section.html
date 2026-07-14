@@ -1,0 +1,10 @@
+{% assign resolved_section = page.section %}
+{% unless resolved_section %}
+  {% for section_path in site.data.navigation.section_paths %}
+    {% if page.path contains section_path.path %}
+      {% assign resolved_section = section_path.section %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endunless %}
+{{ resolved_section }}
