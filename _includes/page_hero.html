@@ -1,0 +1,26 @@
+{% assign hero_title = include.title | default: page.title %}
+{% assign hero_eyebrow = include.eyebrow | default: page.section_label | default: site.title %}
+{% assign hero_intro = include.intro | default: page.intro | default: "在这里添加本页的简要介绍。" %}
+{% assign hero_image = include.image %}
+{% assign hero_image_alt = include.image_alt %}
+{% unless hero_image_alt %}
+  {% assign hero_image_alt = hero_title | append: "主题图" %}
+{% endunless %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__grid">
+      <div class="page-hero__copy">
+        <p class="eyebrow">{{ hero_eyebrow }}</p>
+        <h1>{{ hero_title }}</h1>
+        <p>{{ hero_intro }}</p>
+      </div>
+
+      {% if hero_image %}
+        <figure class="page-hero__media">
+          <img src="{{ hero_image | relative_url }}" alt="{{ hero_image_alt }}">
+        </figure>
+      {% endif %}
+    </div>
+  </div>
+</section>

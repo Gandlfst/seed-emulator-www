@@ -23,48 +23,8 @@
 {% assign hero_image = page.hero_image | default: section_hero_image | default: '/assets/images/seed-emulator-ai-hero.png' %}
 
 <main id="main" class="page-main">
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__grid">
-        <div class="page-hero__copy">
-          <p class="eyebrow">{{ sidebar.title | default: page.section_label | default: site.title }}</p>
-          <h1>{{ page.title }}</h1>
-          <p>{{ page.intro | default: "在这里添加本页的简要介绍。" }}</p>
-        </div>
-
-        <figure class="page-hero__media">
-          <img src="{{ hero_image | relative_url }}" alt="{{ page.title }}主题图">
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-frame">
-    <div class="container">
-      <div class="page-layout">
-        <aside class="page-sidebar" aria-label="栏目导航">
-          <h2>{{ sidebar.title | default: "栏目" }}</h2>
-          <nav>
-            {% if sidebar.items %}
-              {% for item in sidebar.items %}
-                {% assign item_active = false %}
-                {% if page.url == item.url %}
-                  {% assign item_active = true %}
-                {% endif %}
-                <a class="{% if item_active %}is-active{% endif %}" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-              {% endfor %}
-            {% else %}
-              <a class="is-active" href="{{ page.url | relative_url }}">概览</a>
-            {% endif %}
-          </nav>
-        </aside>
-
-        <article class="page-content">
-          {{ content }}
-        </article>
-      </div>
-    </div>
-  </section>
+  {% include page_hero.html eyebrow=sidebar.title image=hero_image %}
+  {% include page_frame.html sidebar=sidebar content=content %}
 </main>
 
 {% include footer.html %}
