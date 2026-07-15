@@ -1,0 +1,113 @@
+main:
+  - title: 首页
+    url: /index.html
+  - title: 互联网
+    url: /internet/
+  - title: 区块链
+    url: /blockchain/
+  - title: 卫星互联网
+    url: /satellite/
+  - title: 用户手册
+    url: /manuals/
+  - title: 更多
+    children:
+      - title: 昨日重现
+        url: /yom/
+      - title: 教学资源
+        url: /education/
+      - title: 研究
+        url: /research/
+      - title: 讲座
+        url: /talks.html
+      - title: 联系我们
+        url: /contact.html
+
+section_paths:
+  - section: internet
+    path: internet/
+  - section: blockchain
+    path: blockchain/
+  - section: satellite
+    path: satellite/
+  - section: yom
+    path: yom/
+  - section: education
+    path: education/
+  - section: research
+    path: research/
+  - section: manuals
+    path: manuals/
+
+hero_images:
+  internet: /assets/images/hero-internet.png
+  blockchain: /assets/images/hero-blockchain.png
+  satellite: /assets/images/hero-satellite.png
+  yom: /assets/images/hero-yom.png
+  education: /assets/images/hero-education.png
+  research: /assets/images/hero-research.png
+  manuals: /assets/images/hero-manuals.png
+  more: /assets/images/hero-more.png
+
+sidebars:
+  internet:
+    title: 互联网仿真器
+    items:
+      - title: 概览
+        url: /internet/
+      - title: 示例
+        url: /internet/examples.html
+      - title: 示例2
+        url: /internet/examples2.html
+  blockchain:
+    title: 区块链仿真器
+    items:
+      - title: 概览
+        url: /blockchain/
+  satellite:
+    title: 卫星互联网
+    items:
+      - title: 概览
+        url: /satellite/
+  yom:
+    title: 昨日重现
+    items:
+      - title: 概览
+        url: /yom/
+  education:
+    title: 教学资源
+    items:
+      - title: 概览
+        url: /education/
+  research:
+    title: 研究
+    items:
+      - title: 概览
+        url: /research/
+  manuals:
+    title: 用户手册
+    items:
+      - title: 手册首页
+        url: /manuals/
+      - title: 环境配置
+        url: /manuals/env.html
+      - title: 整体流程
+        url: /manuals/overall_flow.html
+      - title: IP 地址分配
+        url: /manuals/ip_address.html
+      - title: BGP 对等连接
+        url: /manuals/bgp.html
+      - title: 节点定制
+        url: /manuals/node_customization.html
+      - title: 编译
+        url: /manuals/compiler.html
+      - title: 内部路由
+        url: /manuals/routing.html
+      - title: 组件
+        url: /manuals/component.html
+  more:
+    title: 更多
+    items:
+      - title: 讲座
+        url: /talks.html
+      - title: 联系我们
+        url: /contact.html

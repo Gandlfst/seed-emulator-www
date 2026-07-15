@@ -1,33 +1,20 @@
-
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-light-gray w3-center w3-opacity">  
-Copyright &copy; Wenliang Du, wedu@acm.org
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>版权所有 &copy; Wenliang Du, wedu@acm.org</span>
+  </div>
 </footer>
 
 <script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+var navToggle = document.querySelector(".nav-toggle");
+var siteNav = document.getElementById("site-navigation");
 
-// Used to toggle the menu on medium screens when clicking on the menu button
-function myMediumFunction() {
-  var x = document.getElementById("navDemoMedium");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
+if (navToggle && siteNav) {
+  navToggle.addEventListener("click", function () {
+    var isOpen = siteNav.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
 }
-
 </script>
 
 </body>
 </html>
-

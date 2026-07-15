@@ -1,0 +1,104 @@
+{% include header.html %}
+
+{% assign hero = page.hero %}
+{% assign hero_title = hero.title | default: page.title %}
+{% assign hero_image = hero.image %}
+
+<main id="main" class="home-main">
+  {% if hero %}
+    <section class="home-hero">
+      <div class="container home-hero__inner">
+        <div class="home-hero__copy">
+          {% if hero.eyebrow %}
+            <p class="eyebrow">{{ hero.eyebrow }}</p>
+          {% endif %}
+
+          <h1>{{ hero_title }}</h1>
+
+          {% if hero.lead %}
+            <p class="home-hero__lead">{{ hero.lead }}</p>
+          {% endif %}
+
+          {% if hero.actions %}
+            <div class="home-hero__actions"{% if hero.actions_label %} aria-label="{{ hero.actions_label }}"{% endif %}>
+              {% for action in hero.actions %}
+                {% assign action_style = action.style | default: 'secondary' %}
+                <a class="button button--{{ action_style }}" href="{{ action.url | relative_url }}">{{ action.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if hero_image %}
+          <figure class="home-hero__media">
+            <img src="{{ hero_image | relative_url }}" alt="{{ hero.image_alt | default: hero_title }}">
+          </figure>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% for section in page.home_sections %}
+    <section class="home-section{% if section.class %} {{ section.class }}{% endif %}">
+      <div class="container">
+        {% if section.eyebrow or section.title or section.text %}
+          <div class="section-heading">
+            <div>
+              {% if section.eyebrow %}
+                <p class="eyebrow">{{ section.eyebrow }}</p>
+              {% endif %}
+              {% if section.title %}
+                <h2>{{ section.title }}</h2>
+              {% endif %}
+            </div>
+
+            {% if section.text %}
+              <p class="section-heading__text">{{ section.text }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.cards %}
+          <div class="module-grid">
+            {% for card in section.cards %}
+              {% assign card_image = card.image | default: site.data.navigation.hero_images[card.section] %}
+              <a class="module-card" href="{{ card.url | relative_url }}">
+                {% if card_image %}
+                  <span class="module-card__image">
+                    <img src="{{ card_image | relative_url }}" alt="{{ card.image_alt | default: card.title }}">
+                  </span>
+                {% endif %}
+
+                {% if card.eyebrow %}
+                  <span>{{ card.eyebrow }}</span>
+                {% endif %}
+                {% if card.title %}
+                  <h3>{{ card.title }}</h3>
+                {% endif %}
+                {% if card.description %}
+                  <p>{{ card.description }}</p>
+                {% endif %}
+
+                {% assign card_action_label = card.action_label | default: section.card_action_label %}
+                {% if card_action_label %}
+                  <span class="module-card__action">{{ card_action_label }}</span>
+                {% endif %}
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endfor %}
+
+  {% assign body_content = content | strip %}
+  {% if body_content != '' %}
+    <section class="home-section">
+      <div class="container">
+        {{ content }}
+      </div>
+    </section>
+  {% endif %}
+</main>
+
+{% include footer.html %}

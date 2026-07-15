@@ -1,5 +1,29 @@
 {% include header.html %}
-{% include content_start.html %}
-	{{ content }}
-{% include content_end.html %}
+
+{% comment %}
+  先确定当前页面属于哪个栏目。
+  页面可以在 front matter 里手动设置 `section`；
+  如果没有设置，就交给 page_section.html 按路径映射自动判断。
+{% endcomment %}
+{% capture page_section %}{% include page_section.html %}{% endcapture %}
+{% assign page_section = page_section | strip %}
+
+{% comment %}
+  根据栏目读取对应的侧边栏和默认头图。
+  如果页面单独配置了 `hero_image`，会优先使用页面自己的头图。
+{% endcomment %}
+{% assign sidebar = site.data.navigation.sidebars[page_section] %}
+{% assign section_hero_image = site.data.navigation.hero_images[page_section] %}
+{% assign hero_image = page.hero_image | default: section_hero_image | default: '/assets/images/seed-emulator-ai-hero.png' %}
+
+{% comment %}
+  渲染页面主体结构：
+  - page_hero.html 负责顶部标题、简介和头图。
+  - page_frame.html 负责侧边栏和正文区域。
+{% endcomment %}
+<main id="main" class="page-main">
+  {% include page_hero.html eyebrow=sidebar.title image=hero_image %}
+  {% include page_frame.html sidebar=sidebar content=content %}
+</main>
+
 {% include footer.html %}
