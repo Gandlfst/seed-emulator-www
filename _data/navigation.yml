@@ -56,6 +56,8 @@ sidebars:
         url: /internet/
       - title: 示例
         url: /internet/examples.html
+      - title: 示例2
+        url: /internet/examples2.html
   blockchain:
     title: 区块链仿真器
     items:
