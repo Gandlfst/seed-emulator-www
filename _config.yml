@@ -9,35 +9,16 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: SEED 仿真器
+title: SEED Emulator
 email: wedu@acm.org
-description: >- # this means to ignore newlines until "baseurl:"
-  SEED 互联网仿真器，
-  区块链仿真器
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.seedemulator.org" 
-#twitter_username: jekyllrb
-#github_username:  jekyll
+description: >-
+  SEED Internet Emulator,
+  Blockchain emulator
+baseurl: ""
+url: "https://www.seedemulator.org"
 
 # Build settings
 markdown: kramdown
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
 
 # Additional Site Settings
 example-url: "https://github.com/seed-labs/seed-emulator/tree/master/examples"

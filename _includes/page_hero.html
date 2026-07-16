@@ -1,10 +1,10 @@
 {% assign hero_title = include.title | default: page.title %}
 {% assign hero_eyebrow = include.eyebrow | default: page.section_label | default: site.title %}
-{% assign hero_intro = include.intro | default: page.intro | default: "在这里添加本页的简要介绍。" %}
+{% assign hero_intro = include.intro | default: page.intro | default: "Add a short introduction for this page." %}
 {% assign hero_image = include.image %}
 {% assign hero_image_alt = include.image_alt %}
 {% unless hero_image_alt %}
-  {% assign hero_image_alt = hero_title | append: "主题图" %}
+  {% assign hero_image_alt = hero_title | append: " hero image" %}
 {% endunless %}
 
 <section class="page-hero">

@@ -1,11 +1,8 @@
 ---
-  layout: default
-  title: 互联网仿真器示例
-  section: internet
-  intro: "在这里添加互联网仿真器示例的简要介绍。"
+layout: default
+title: Internet Emulator Examples
+section: internet
+intro: "Examples and starter scenarios for building experiments with the SEED Internet Emulator."
 ---
 
-内容占位测试测试测试内容占位测试测试测试。
-内容占
-内容占位测试测试测试。
-。
+This page is reserved for Internet Emulator examples.

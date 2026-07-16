@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans-CN">
+<html lang="en">
 <head>
 <title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 <meta charset="UTF-8">
@@ -10,22 +10,22 @@
 </head>
 
 <body>
-<a class="skip-link" href="#main">跳转到主要内容</a>
+<a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="site-header__inner container">
-    <a class="site-brand" href="{{ '/index.html' | relative_url }}" aria-label="SEED 仿真器首页">
+    <a class="site-brand" href="{{ '/index.html' | relative_url }}" aria-label="SEED Emulator home">
       <img src="{{ '/assets/images/seed2.0_logo.png' | relative_url }}" alt="">
-      <span>SEED 仿真器</span>
+      <span>SEED Emulator</span>
     </a>
 
     <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
       <span class="nav-toggle__line"></span>
       <span class="nav-toggle__line"></span>
       <span class="nav-toggle__line"></span>
-      <span class="sr-only">展开或收起导航</span>
+      <span class="sr-only">Toggle navigation</span>
     </button>
 
-    <nav id="site-navigation" class="site-nav" aria-label="主导航">
+    <nav id="site-navigation" class="site-nav" aria-label="Main navigation">
       {% for item in site.data.navigation.main %}
         {% assign item_active = false %}
         {% if item.url %}

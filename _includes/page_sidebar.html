@@ -1,7 +1,7 @@
 {% assign sidebar = include.sidebar %}
 
-<aside class="page-sidebar" aria-label="栏目导航">
-  <h2>{{ sidebar.title | default: "栏目" }}</h2>
+<aside class="page-sidebar" aria-label="Section navigation">
+  <h2>{{ sidebar.title | default: "Section" }}</h2>
   <nav>
     {% if sidebar.items %}
       {% for item in sidebar.items %}
@@ -12,7 +12,7 @@
         <a class="{% if item_active %}is-active{% endif %}" href="{{ item.url | relative_url }}">{{ item.title }}</a>
       {% endfor %}
     {% else %}
-      <a class="is-active" href="{{ page.url | relative_url }}">概览</a>
+      <a class="is-active" href="{{ page.url | relative_url }}">Overview</a>
     {% endif %}
   </nav>
 </aside>

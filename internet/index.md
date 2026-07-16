@@ -1,10 +1,9 @@
 ---
-  layout: default
-  title: 互联网仿真器
-  section: internet
-  intro: "在这里添加互联网仿真器的简要介绍。"
+layout: default
+title: SEED Internet Emulator
+section: internet
+intro: "The SEED Internet Emulator lets users build a miniature Internet on a single machine for security education, experimentation, and research."
 ---
 
-
-
-- [示例](./examples.html)
+- [Examples](./examples.html)
+- [Examples 2](./examples2.html)
