@@ -1,25 +1,25 @@
 main:
-  - title: 首页
+  - title: Home
     url: /index.html
-  - title: 互联网
+  - title: Internet
     url: /internet/
-  - title: 区块链
+  - title: Blockchain
     url: /blockchain/
-  - title: 卫星互联网
+  - title: Satellite Internet
     url: /satellite/
-  - title: 用户手册
+  - title: User Manuals
     url: /manuals/
-  - title: 更多
+  - title: More
     children:
-      - title: 昨日重现
+      - title: Yesterday Once More
         url: /yom/
-      - title: 教学资源
+      - title: Education
         url: /education/
-      - title: 研究
+      - title: Research
         url: /research/
-      - title: 讲座
+      - title: Talks
         url: /talks.html
-      - title: 联系我们
+      - title: Contact
         url: /contact.html
 
 section_paths:
@@ -50,64 +50,66 @@ hero_images:
 
 sidebars:
   internet:
-    title: 互联网仿真器
+    title: SEED Internet Emulator
     items:
-      - title: 概览
+      - title: Overview
         url: /internet/
-      - title: 示例
+      - title: Examples
         url: /internet/examples.html
-      - title: 示例2
+      - title: B00 Mini Internet
+        url: /internet/examples/b00-mini-internet.html
+      - title: Examples 2
         url: /internet/examples2.html
   blockchain:
-    title: 区块链仿真器
+    title: SEED Blockchain Emulator
     items:
-      - title: 概览
+      - title: Overview
         url: /blockchain/
   satellite:
-    title: 卫星互联网
+    title: Satellite Internet
     items:
-      - title: 概览
+      - title: Overview
         url: /satellite/
   yom:
-    title: 昨日重现
+    title: Yesterday Once More
     items:
-      - title: 概览
+      - title: Overview
         url: /yom/
   education:
-    title: 教学资源
+    title: Education
     items:
-      - title: 概览
+      - title: Overview
         url: /education/
   research:
-    title: 研究
+    title: Research
     items:
-      - title: 概览
+      - title: Overview
         url: /research/
   manuals:
-    title: 用户手册
+    title: User Manuals
     items:
-      - title: 手册首页
+      - title: Manual Home
         url: /manuals/
-      - title: 环境配置
+      - title: Environment Setup
         url: /manuals/env.html
-      - title: 整体流程
+      - title: Overall Flow
         url: /manuals/overall_flow.html
-      - title: IP 地址分配
+      - title: IP Address Assignment
         url: /manuals/ip_address.html
-      - title: BGP 对等连接
+      - title: BGP Peering
         url: /manuals/bgp.html
-      - title: 节点定制
+      - title: Node Customization
         url: /manuals/node_customization.html
-      - title: 编译
+      - title: Compilation
         url: /manuals/compiler.html
-      - title: 内部路由
+      - title: Internal Routing
         url: /manuals/routing.html
-      - title: 组件
+      - title: Components
         url: /manuals/component.html
   more:
-    title: 更多
+    title: More
     items:
-      - title: 讲座
+      - title: Talks
         url: /talks.html
-      - title: 联系我们
+      - title: Contact
         url: /contact.html
