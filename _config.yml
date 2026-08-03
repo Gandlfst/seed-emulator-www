@@ -20,11 +20,5 @@ url: "https://www.seedemulator.org"
 # Build settings
 markdown: kramdown
 
-exclude:
-  - .openai
-  - dist
-  - sites-worker
-  - zz.sh
-
 # Additional Site Settings
 example-url: "https://github.com/seed-labs/seed-emulator/tree/master/examples"
