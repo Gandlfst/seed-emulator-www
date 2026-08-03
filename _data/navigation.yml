@@ -56,6 +56,8 @@ sidebars:
         url: /internet/
       - title: Examples
         url: /internet/examples.html
+      - title: B00 Mini Internet
+        url: /internet/examples/b00-mini-internet.html
       - title: Examples 2
         url: /internet/examples2.html
   blockchain:

@@ -1,0 +1,15 @@
+- id: b00-mini-internet
+  title: Mini Internet
+  section: internet
+  category: Internet / B00
+  description: A comprehensive mini Internet example with Internet exchanges, transit ASes, stub ASes, routing layers, and runtime validation.
+  url: /internet/examples/b00-mini-internet.html
+  readme_include: example-readmes/b00-mini-internet.md
+  source_path: examples/internet/B00_mini_internet
+  repository_url: https://github.com/seed-labs/seed-emulator
+  branch: master
+  tags:
+    - mini-internet
+    - ebgp
+    - ospf
+    - runtime-tests
