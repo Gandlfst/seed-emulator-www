@@ -1,0 +1,115 @@
+main:
+  - title: Home
+    url: /index.html
+  - title: Internet
+    url: /internet/
+  - title: Blockchain
+    url: /blockchain/
+  - title: Satellite Internet
+    url: /satellite/
+  - title: User Manuals
+    url: /manuals/
+  - title: More
+    children:
+      - title: Yesterday Once More
+        url: /yom/
+      - title: Education
+        url: /education/
+      - title: Research
+        url: /research/
+      - title: Talks
+        url: /talks.html
+      - title: Contact
+        url: /contact.html
+
+section_paths:
+  - section: internet
+    path: internet/
+  - section: blockchain
+    path: blockchain/
+  - section: satellite
+    path: satellite/
+  - section: yom
+    path: yom/
+  - section: education
+    path: education/
+  - section: research
+    path: research/
+  - section: manuals
+    path: manuals/
+
+hero_images:
+  internet: /assets/images/hero-internet.png
+  blockchain: /assets/images/hero-blockchain.png
+  satellite: /assets/images/hero-satellite.png
+  yom: /assets/images/hero-yom.png
+  education: /assets/images/hero-education.png
+  research: /assets/images/hero-research.png
+  manuals: /assets/images/hero-manuals.png
+  more: /assets/images/hero-more.png
+
+sidebars:
+  internet:
+    title: SEED Internet Emulator
+    items:
+      - title: Overview
+        url: /internet/
+      - title: Examples
+        url: /internet/examples.html
+      - title: B00 Mini Internet
+        url: /internet/examples/b00-mini-internet.html
+      - title: Examples 2
+        url: /internet/examples2.html
+  blockchain:
+    title: SEED Blockchain Emulator
+    items:
+      - title: Overview
+        url: /blockchain/
+  satellite:
+    title: Satellite Internet
+    items:
+      - title: Overview
+        url: /satellite/
+  yom:
+    title: Yesterday Once More
+    items:
+      - title: Overview
+        url: /yom/
+  education:
+    title: Education
+    items:
+      - title: Overview
+        url: /education/
+  research:
+    title: Research
+    items:
+      - title: Overview
+        url: /research/
+  manuals:
+    title: User Manuals
+    items:
+      - title: Manual Home
+        url: /manuals/
+      - title: Environment Setup
+        url: /manuals/env.html
+      - title: Overall Flow
+        url: /manuals/overall_flow.html
+      - title: IP Address Assignment
+        url: /manuals/ip_address.html
+      - title: BGP Peering
+        url: /manuals/bgp.html
+      - title: Node Customization
+        url: /manuals/node_customization.html
+      - title: Compilation
+        url: /manuals/compiler.html
+      - title: Internal Routing
+        url: /manuals/routing.html
+      - title: Components
+        url: /manuals/component.html
+  more:
+    title: More
+    items:
+      - title: Talks
+        url: /talks.html
+      - title: Contact
+        url: /contact.html

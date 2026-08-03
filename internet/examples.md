@@ -1,24 +1,29 @@
 ---
-  layout: default
-  title: Internet Emulator Examples
+layout: default
+title: Internet Emulator Examples
+section: internet
+intro: "Examples and starter scenarios for building experiments with the SEED Internet Emulator."
 ---
 
-We have created examples to demonstrate how to build Internet emulators. These examples are placed inside the [examples](https://github.com/seed-labs/seed-emulator/tree/master/examples) folder of the SEED Emulator repository. In this manual, we briefly explan their purposes and provide the links to these examples. 
+{% assign examples = site.data.example_sources | default: empty %}
 
+<div class="example-list">
+  {% for example in examples %}
+    <a class="example-card" href="{{ example.url | relative_url }}">
+      <span class="example-card__eyebrow">{{ example.category }}</span>
+      <h2>{{ example.title }}</h2>
+      <p>{{ example.description }}</p>
+      {% if example.tags %}
+        <div class="example-card__meta" aria-label="Example tags">
+          {% for tag in example.tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <strong class="example-card__action">View README page</strong>
+    </a>
+  {% endfor %}
+</div>
 
-* will be replaced by ToC 
-{:toc}
-
----
-
-## Basic Features 
-
-- [A00_simple_as]({{ site.example-url }}/basic/A00_simple_as/): A simple emulator with 2 stub AS
-- [A01_transit_as]({{ site.example-url }}/basic/A01_transit_as/): A simple emulator with a transit AS
-- [A02_transit_as_mpls]({{ site.example-url }}/basic/A02_transit_as_mpls/): Transit AS using MPLS
-- []({{ site.example-url }}/basic/): 
-
-
-## Components and Advanced Features
-
-- []({{ site.example-url }}/internet/): 
+Run `ruby tools/fetch_example_readmes.rb` before building the site to refresh
+the source README files used by these Jekyll pages.

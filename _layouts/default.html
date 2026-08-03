@@ -1,5 +1,24 @@
 {% include header.html %}
-{% include content_start.html %}
-	{{ content }}
-{% include content_end.html %}
+
+{% comment %}
+  Resolve the current page section.
+  Pages can set `section` in front matter; otherwise page_section.html maps
+  the page path to a section key.
+{% endcomment %}
+{% capture page_section %}{% include page_section.html %}{% endcapture %}
+{% assign page_section = page_section | strip %}
+
+{% comment %}
+  Load the matching sidebar and default hero image for this section.
+  A page-level `hero_image` overrides the section image.
+{% endcomment %}
+{% assign sidebar = site.data.navigation.sidebars[page_section] %}
+{% assign section_hero_image = site.data.navigation.hero_images[page_section] %}
+{% assign hero_image = page.hero_image | default: section_hero_image | default: '/assets/images/seed-emulator-ai-hero.png' %}
+
+<main id="main" class="page-main">
+  {% include page_hero.html eyebrow=sidebar.title image=hero_image %}
+  {% include page_frame.html sidebar=sidebar content=content %}
+</main>
+
 {% include footer.html %}
