@@ -1,66 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>{% if page.title and page.title != site.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ page.description | default: site.description | strip_newlines }}">
-<link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}" type="text/css">
-<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" type="text/css">
-</head>
-
-<body>
-<a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
-  <div class="site-header__inner container">
-    <a class="site-brand" href="{{ '/index.html' | relative_url }}" aria-label="SEED Emulator home">
-      <img src="{{ '/assets/images/seed2.0_logo.png' | relative_url }}" alt="">
-      <span>SEED Emulator</span>
-    </a>
-
-    <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
-      <span class="nav-toggle__line"></span>
-      <span class="nav-toggle__line"></span>
-      <span class="nav-toggle__line"></span>
-      <span class="sr-only">Toggle navigation</span>
-    </button>
-
-    <nav id="site-navigation" class="site-nav" aria-label="Main navigation">
-      {% for item in site.data.navigation.main %}
-        {% assign item_active = false %}
-        {% if item.url %}
-          {% if page.url == item.url %}
-            {% assign item_active = true %}
-          {% elsif item.url == '/index.html' and page.url == '/' %}
-            {% assign item_active = true %}
-          {% elsif item.url != '/index.html' and page.url contains item.url %}
-            {% assign item_active = true %}
-          {% endif %}
-        {% endif %}
-
-        {% if item.children %}
-          {% assign child_active = false %}
-          {% for child in item.children %}
-            {% if page.url == child.url %}
-              {% assign child_active = true %}
-            {% elsif child.url != '/index.html' and page.url contains child.url %}
-              {% assign child_active = true %}
-            {% endif %}
-          {% endfor %}
-          <details class="nav-dropdown"{% if child_active %} open{% endif %}>
-            <summary class="site-nav__link{% if child_active %} is-active{% endif %}">{{ item.title }}</summary>
-            <div class="nav-dropdown__panel">
-              {% for child in item.children %}
-                <a href="{{ child.url | relative_url }}" class="nav-dropdown__link">{{ child.title }}</a>
-              {% endfor %}
-            </div>
-          </details>
-        {% else %}
-          <a href="{{ item.url | relative_url }}" class="site-nav__link{% if item_active %} is-active{% endif %}">
-            {{ item.title }}
-          </a>
-        {% endif %}
+  <div class="container header-inner">
+    {% include components/brand.html logo=true %}
+    <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+      {% for item in site.data.navigation %}
+      <a href="{{ '/' | relative_url }}#{{ item.id }}" data-section="{{ item.id }}"{% if page.nav_key == item.page %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
+      <a class="nav-github" href="https://github.com/seed-labs/seed-emulator">{% include components/icon.html name="github" %} GitHub {% include components/icon.html name="external" %}</a>
     </nav>
+    <div class="header-controls">
+      {% include components/theme-picker.html %}
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        {% include components/icon.html name="menu" %}
+      </button>
+    </div>
   </div>
 </header>
