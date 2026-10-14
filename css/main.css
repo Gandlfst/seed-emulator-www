@@ -25,7 +25,7 @@ layout: null
 .portal-brand-logo img { width: 133.333333%; max-width: none; height: 100%; clip-path: inset(0 80% 0 0); }
 html[data-portal-theme="night"] .portal-brand-logo { color: #edf2fc; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
-.portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 6px; width: auto; }
+.portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
 .portal-header .main-navigation > a:last-child { margin-left: auto; border-right: 0; }
 .portal-header .main-navigation .icon { width: 15px; height: 15px; }
@@ -154,6 +154,24 @@ html[data-portal-theme="night"] .portal-brand-logo { color: #edf2fc; }
 .emulator-video-link:hover h3 { color: var(--accent); text-decoration: underline; }
 .emulator-empty { border-left: 3px solid var(--line); padding: 12px 20px; background: var(--surface); }
 .is-portal:not(.is-home) main > .container { background: var(--card); padding: 0 32px 20px; margin-top: 22px; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 14px; }
+/* Team page: three clearly separated sections, with reusable member cards. */
+.team-intro { padding: 12px 0 32px; }
+.team-intro h1 { margin-block: 10px 16px; }
+.team-intro > p:last-of-type { max-width: 660px; color: var(--muted); font-size: 16px; }
+.team-section { padding: 30px 0; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.team-section-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.team-section-number { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 8px; padding: 5px 10px; font: 12px var(--mono); }
+.team-members { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.team-member { display: flex; align-items: center; gap: 16px; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.team-lead .team-member { border-color: var(--accent-line); background: var(--accent-soft); }
+.team-member-initial { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--accent); font-weight: 700; font-size: 20px; }
+.team-member-name { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; overflow-wrap: anywhere; }
+.team-member-name strong { font-size: 18px; }
+.team-member-name a { color: var(--accent); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.team-member-affiliation, .team-section-note, .team-pending { color: var(--muted); font-size: 14px; }
+.team-section-note { margin-bottom: 16px; }
+.team-pending { padding: 24px; border: 1px dashed var(--line-strong); border-radius: 12px; }
+
 /* 9. Responsive layout: medium desktop screens. */
 @media (min-width: 961px) and (max-width: 1150px) {
   .portal-home-grid { grid-template-columns: minmax(0, 1fr) 185px; gap: 20px; }

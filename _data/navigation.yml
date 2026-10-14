@@ -1,5 +1,5 @@
-# Navigation keys match each page's project value to mark the active link.
-# Main navigation for the homepage and all three emulator project pages.
+# Navigation keys match page.project or page.nav_key to mark the active link.
+# Shared navigation for the homepage, projects, and team page.
 - title: Home
   url: /
   key: home
@@ -12,6 +12,9 @@
 - title: Blockchain
   url: /blockchain/
   key: blockchain
+- title: About us
+  url: /about-us/
+  key: about
 - title: SEED Labs
   url: https://seedsecuritylabs.org/
   external: true

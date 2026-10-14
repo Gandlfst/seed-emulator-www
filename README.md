@@ -30,6 +30,7 @@ index.html                    Homepage: assembles three main sections
 internet-emulator/index.html  Internet project content and resources
 satellite/index.html          Satellite project content and resources
 blockchain/index.html         Blockchain project content and resources
+about-us/index.html           Project lead, core developers, and contributors
 404.html                      Not-found page
 _config.yml                   Metadata, canonical domain, and build settings
 CNAME                         Official domain
@@ -39,6 +40,7 @@ _data/home.yml                Hero, project cards, and contact strip
 _data/navigation.yml          Navigation links and active-page keys
 _data/footer.yml              Shared footer and sidebar information
 _data/themes.yml              Four palettes and their CSS variables
+_data/team.yml                Team members and GitHub usernames
 css/base.css                  Reset, typography, accessibility, and video
 css/main.css                  Page sections and responsive layouts
 css/themes.css                Generated theme variables and theme controls
@@ -63,6 +65,21 @@ players. Other shared includes are `head.html`, `header.html`, `footer.html`,
 `icon.html`, `theme-init.html`, `theme-picker.html`, and `scripts.html`.
 All includes live directly in `_includes/`.
 
+The About us page renders `team.html`, which groups people into Project Lead,
+Core Developers, and Contributors. Each person uses `team-member.html`.
+Edit `_data/team.yml` to maintain the roster. Core Developers starts empty;
+replace `core_developers: []` with a list when the names are ready:
+
+```yaml
+core_developers:
+  - name: Full Name
+    github: github-username
+    affiliation: University or organization
+```
+
+The GitHub username and affiliation are optional. Keep contributors in
+alphabetical order. Navigation uses `nav_key: about` for this standalone page.
+
 Source comments explain each section in English. Liquid comments are removed
 during the build. The website is English-only.
 
@@ -79,6 +96,7 @@ during the build. The website is English-only.
 | Transparent logo artwork | `images/seed-emulator-logo.png` |
 | Navigation links | `_data/navigation.yml` |
 | Team details and resource links | `_data/footer.yml` |
+| About us member lists | `_data/team.yml` |
 | Colors | `_data/themes.yml` |
 | Spacing, typography, and responsive layout | `css/main.css` |
 

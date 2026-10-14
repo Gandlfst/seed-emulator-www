@@ -17,7 +17,7 @@
     <div class="portal-navigation-bar">
       <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
         {% for link in site.data.navigation %}
-          <a href="{{ link.url | relative_url }}"{% if link.key == 'home' and page.home %} aria-current="page"{% elsif link.key and link.key == page.project %} aria-current="page"{% endif %}>
+          <a href="{{ link.url | relative_url }}"{% if link.key == 'home' and page.home %} aria-current="page"{% elsif link.key and link.key == page.project %} aria-current="page"{% elsif link.key and link.key == page.nav_key %} aria-current="page"{% endif %}>
             {{ link.title }}
             {% if link.external %}{% include icon.html name="external" %}{% endif %}
           </a>

@@ -6,12 +6,12 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const output = path.resolve(process.argv[2] || path.join(root, '_site'));
 const baseurl = (process.argv[3] || '').replace(/\/$/, '');
-const pages = ['index.html', 'internet-emulator/index.html', 'satellite/index.html', 'blockchain/index.html', '404.html'];
+const pages = ['index.html', 'internet-emulator/index.html', 'satellite/index.html', 'blockchain/index.html', 'about-us/index.html', '404.html'];
 const read = file => fs.readFileSync(file, 'utf8');
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(item => item.isDirectory() ? walk(path.join(dir, item.name)) : [path.join(dir, item.name)]);
 const clean = html => html.replace(/(<script\b[^>]*>)[\s\S]*?<\/script>/gi, '$1').replace(/<!--[\s\S]*?-->/g, '');
 
-// Expect five pages, each with one shared header, footer, and main element.
+// Expect the configured pages, each with one shared header, footer, and main element.
 assert.deepEqual(walk(output).filter(file => file.endsWith('.html')).map(file => path.relative(output, file).replaceAll('\\', '/')).sort(), [...pages].sort());
 let checkedLinks = 0;
 for (const page of pages) {
