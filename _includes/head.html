@@ -1,4 +1,4 @@
-{% comment %}页面元信息：标题、描述、规范地址和分享卡片。{% endcomment %}
+{% comment %}Page metadata: title, description, canonical URL, and social cards.{% endcomment %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{{ site.data.themes.first.colors.bg }}">
@@ -12,7 +12,7 @@
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <link rel="icon" href="{{ '/images/seed-mark.svg' | relative_url }}" type="image/svg+xml">
 
-{% comment %}样式按职责加载：基础规则 → 页面布局 → 配色覆盖。{% endcomment %}
+{% comment %}Load styles by responsibility: base rules, page layout, then theme overrides.{% endcomment %}
 <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="stylesheet" href="{{ '/css/themes.css' | relative_url }}?v={{ site.time | date: '%s' }}">

@@ -10,7 +10,7 @@ Preview the site through Jekyll from the project root and open the served homepa
 
 The WebM versions use VP9 video (plus Opus audio where the original has audio).
 The original MP4 recordings are retained at their original resolution. The shared
-player lives in `_includes/components/video.html`; it loads video only on demand.
+player lives in `_includes/video.html`; it loads video only on demand.
 
 The network demo poster is extracted from the original footage. The build demo
 uses an English SVG cover. When replacing footage, update both source formats

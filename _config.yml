@@ -1,4 +1,4 @@
-# 站点信息：用于标题、描述、分享卡片和规范地址。
+# Site metadata: titles, descriptions, social cards, and canonical URLs.
 title: SEED Emulators
 description: >-
   Explore Internet, satellite network, and blockchain emulators for hands-on
@@ -7,15 +7,15 @@ url: "https://www.seedemulator.org"
 baseurl: ""
 lang: en
 
-# 构建选项：所有页面使用原生 Jekyll + Liquid，不需要前端打包框架。
+# Build settings: native Jekyll and Liquid, without a frontend bundler.
 markdown: kramdown
 highlighter: rouge
 strict_front_matter: true
 
-# 每个页面显式声明 layout: default；CSS 等生成资源声明 layout: null。
-# 不使用全局 layout 默认值，避免资源文件意外套入 HTML 外壳。
+# Pages explicitly set layout: default; generated assets use layout: null.
+# Avoid global layout defaults so assets are not wrapped in page HTML.
 
-# 不发布的开发文件；_layouts、_includes、_data 等目录由 Jekyll 自动处理。
+# Development files excluded from publishing; Jekyll handles its internal directories.
 exclude:
   - .bundle
   - .github

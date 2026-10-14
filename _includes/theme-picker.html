@@ -1,4 +1,4 @@
-{% comment %}配色选择器：从 _data/themes.yml 生成按钮，js/theme.js 负责切换和保存。{% endcomment %}
+{% comment %}Theme controls from _data/themes.yml; js/theme.js applies and saves selections.{% endcomment %}
 <div class="portal-palette" role="group" aria-label="Color theme" data-portal-palette hidden>
   {% for theme in site.data.themes %}
   <button type="button" data-portal-theme="{{ theme.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"><span class="portal-palette-swatch" style="--swatch: {{ theme.swatch }}" aria-hidden="true"></span><span>{{ theme.name }}</span></button>

@@ -1,13 +1,13 @@
-{% comment %}页尾：站点简介、链接分组、团队信息和语言切换；数据来自 _data/footer.yml。{% endcomment %}
+{% comment %}Footer: site description, resource links, and team details from _data/footer.yml.{% endcomment %}
 <footer class="portal-footer">
   <div class="container portal-footer-main">
-    {% comment %}站点简介和首页入口。{% endcomment %}
+    {% comment %}Site description and homepage link.{% endcomment %}
     <div class="portal-footer-about">
       <a class="portal-footer-brand" href="{{ '/' | relative_url }}">SEED Emulators</a>
       <p>{{ site.data.footer.description }}</p>
       <span class="portal-footer-motto">Open source. Open possibilities.</span>
     </div>
-    {% comment %}链接分组：直接循环，避免为简单列表额外嵌套组件。{% endcomment %}
+    {% comment %}Render link groups directly without additional nested components.{% endcomment %}
     {% for group in site.data.footer.groups %}
       <nav class="portal-footer-links" aria-label="{{ group.title | escape }}">
         <h2>{{ group.title }}</h2>
@@ -24,7 +24,7 @@
       </nav>
     {% endfor %}
 
-    {% comment %}团队信息：联系按钮跳转到此区域。{% endcomment %}
+    {% comment %}Team details: contact links scroll to this section.{% endcomment %}
     <section class="portal-footer-team" id="team-contact" tabindex="-1" aria-labelledby="footer-team-title">
       <h2 id="footer-team-title">People behind SEED</h2>
       <a class="portal-footer-author" href="{{ site.data.footer.author.url }}">{{ site.data.footer.author.name }} {% include icon.html name="external" %}</a>
@@ -34,12 +34,11 @@
       <a class="portal-footer-team-link" href="{{ site.data.footer.author.url }}">Meet the team {% include icon.html name="arrow" %}</a>
     </section>
   </div>
-  {% comment %}底栏：署名、语言切换和返回顶部。{% endcomment %}
+  {% comment %}Bottom bar: attribution and back-to-top link.{% endcomment %}
   <div class="container portal-footer-bottom">
     <span>SEED Emulators &middot; Research &amp; Education</span>
     <span>Wenliang Du &amp; contributors</span>
     <div class="portal-footer-actions">
-      {% include language-toggle.html %}
       <a class="portal-footer-back" href="#main">Back to top {% include icon.html name="arrow" %}</a>
     </div>
   </div>

@@ -3,14 +3,14 @@ layout: default
 title: SEED Emulators
 home: true
 ---
-{% comment %}区块一：首页横幅，文案在 _data/home.yml 的 hero 中修改。{% endcomment %}
+{% comment %}Section 1: homepage hero; edit its content in _data/home.yml.{% endcomment %}
 {% include hero.html %}
 
-{% comment %}区块二：左侧项目卡片、右侧团队与资源；手机上上下排列。{% endcomment %}
+{% comment %}Section 2: project cards and sidebar; stacked on mobile.{% endcomment %}
 <div class="portal-home-grid container">
   {% include projects.html %}
   {% include sidebar.html %}
 </div>
 
-{% comment %}区块三：SEED 项目说明和联系方式入口。页首与页尾由 default layout 添加。{% endcomment %}
+{% comment %}Section 3: SEED project links and contact entry. The default layout adds the header and footer.{% endcomment %}
 {% include contact.html %}

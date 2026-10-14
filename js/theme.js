@@ -1,4 +1,4 @@
-// 配色交互：切换主题、更新按钮状态，并通过 localStorage 保存选择。
+// Apply themes, update button states, and save the selection in localStorage.
 (() => {
   'use strict';
   const picker = document.querySelector('[data-portal-palette]');

@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-/* 1. 默认配色与文字：颜色从 _data/themes.yml 生成。 */
+/* 1. Default theme and typography: colors are generated from _data/themes.yml. */
 .is-portal {
   {% for color in site.data.themes.first.colors %}--{{ color[0] }}: {{ color[1] }};
   {% endfor %}color-scheme: light;
@@ -13,20 +13,24 @@ layout: null
 .is-portal h1 { font-size: 40px; line-height: 1.18; font-weight: 700; }
 .is-portal h2 { font-size: 24px; line-height: 1.3; }
 .is-portal h3 { font-size: 21px; line-height: 1.35; }
-/* 2. 页首：Logo、导航和手机菜单。 */
+/* 2. Header: logo, navigation, and mobile menu. */
 .portal-header { position: relative; height: auto; backdrop-filter: none; border-bottom: 0; }
 .portal-header .header-inner { padding-top: 30px; display: flex; flex-wrap: wrap; gap: 24px; }
 .portal-header-note { margin-left: auto; color: var(--muted); font-size: 12px; }
-.portal-brand { display: inline-flex; align-items: center; gap: 22px; }
-.portal-brand img { width: 175px; height: auto; }
-.portal-brand > span { border-left: 1px solid var(--line); padding-left: 22px; color: var(--muted); font-size: 19px; font-weight: 600; }
+.portal-brand { display: inline-flex; align-items: center; }
+/* Keep the supplied transparent artwork; adapt neutral lettering to the theme.
+   The red SE is overlaid unchanged. Clip unused transparent space on the right. */
+.portal-brand-logo { position: relative; display: block; width: 300px; aspect-ratio: 600 / 143; overflow: hidden; color: #1d1e23; }
+.portal-brand-logo::before { content: ""; position: absolute; inset: 0; background: currentColor; mask: url("{{ '/images/seed-emulator-logo.png' | relative_url }}") left center / 133.333333% 100% no-repeat; }
+.portal-brand-logo img { width: 133.333333%; max-width: none; height: 100%; clip-path: inset(0 80% 0 0); }
+html[data-portal-theme="night"] .portal-brand-logo { color: #edf2fc; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
 .portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
 .portal-header .main-navigation > a:last-child { margin-left: auto; border-right: 0; }
 .portal-header .main-navigation .icon { width: 15px; height: 15px; }
 .portal-header .menu-toggle { margin-left: auto; }
-/* 3. 首页横幅：简介、按钮、装饰插图。 */
+/* 3. Homepage hero: introduction, actions, and decorative illustration. */
 .portal-intro { position: relative; display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; padding: 42px 46px; margin-block: 22px 32px; border-radius: 18px; overflow: hidden; background: linear-gradient(115deg, var(--portal-deep), var(--portal-green-soft)); color: var(--portal-on-dark); }
 .portal-intro-copy { position: relative; z-index: 1; }
 .portal-intro .portal-eyebrow { color: var(--portal-highlight); letter-spacing: .16em; font-size: 10px; margin-bottom: 16px; }
@@ -40,7 +44,7 @@ layout: null
 .portal-hero-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .portal-intro-actions .icon { width: 15px; height: 15px; }
 .portal-network-art { width: 100%; height: auto; }
-/* 4. 首页项目网格和卡片。 */
+/* 4. Homepage project grid and cards. */
 .portal-home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; align-items: start; }
 .portal-eyebrow { color: var(--accent); font-size: 12px; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
 .portal-projects { padding-block: 0 32px; min-width: 0; }
@@ -63,7 +67,7 @@ layout: null
 .portal-project h3 a:hover { color: var(--accent); text-decoration: underline; }
 .portal-project-description { margin-block: 12px 24px; font-size: 13px; line-height: 1.8; color: var(--muted); }
 .portal-project-more { display: inline-flex; align-items: center; align-self: start; gap: 10px; margin-top: auto; color: var(--accent); font-size: 12px; font-weight: 700; padding-block: 4px; }
-/* 5. 首页侧栏：团队与资源。 */
+/* 5. Homepage sidebar: team and resources. */
 .portal-sidebar { border-left: 1px solid var(--line); padding-left: 24px; margin-top: 5px; }
 .portal-sidebar .portal-eyebrow { font-size: 10px; line-height: 1.7; margin-bottom: 13px; }
 .is-portal .portal-sidebar h2 { font-size: 16px; line-height: 1.5; }
@@ -80,14 +84,14 @@ layout: null
 .portal-sidebar-note > span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
 .portal-project-more:hover { text-decoration: underline; }
 .portal-project-more .icon { width: 17px; height: 17px; }
-/* 6. 首页底部联系条。 */
+/* 6. Homepage contact strip. */
 .portal-contact { display: flex; align-items: center; gap: 30px; border-top: 1px solid var(--line); padding-block: 25px 32px; }
 .portal-contact > div { flex: 1; }
 .portal-contact strong { font-size: 14px; }
 .portal-contact p { font-size: 13px; color: var(--muted); margin-top: 3px; }
 .portal-contact > a { display: inline-flex; gap: 8px; align-items: center; color: var(--accent); font-size: 13px; }
 .portal-contact .icon { width: 15px; height: 15px; }
-/* 7. 公共页尾：简介、链接、团队和语言按钮。 */
+/* 7. Shared footer: introduction, links, and team. */
 .portal-footer { width: min(1200px, calc(100% - 64px)); margin: 8px auto 28px; border-radius: 14px; background: var(--portal-deep); color: var(--portal-on-dark); }
 .is-portal .portal-footer .container { width: calc(100% - 64px); }
 .portal-footer-main { display: grid; grid-template-columns: 1.15fr 1fr .85fr 1.35fr; gap: 36px; padding-block: 48px 40px; }
@@ -113,10 +117,7 @@ layout: null
 .portal-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid #ffffff30; color: var(--portal-muted-on-dark); font-size: 11px; }
 .portal-footer-back .icon { transform: rotate(-90deg); }
 .portal-footer-actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-.portal-footer .language-toggle { color: var(--portal-on-dark); border-color: #ffffff70; }
-.portal-footer .language-toggle:hover { color: var(--portal-on-dark); background: #ffffff12; border-color: var(--portal-on-dark); }
-.portal-footer .language-toggle:focus-visible { outline-color: var(--portal-on-dark); }
-/* 8. 项目详情：面包屑、正文、资料列表和视频。 */
+/* 8. Project details: breadcrumbs, overview, resources, and videos. */
 .portal-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; padding-block: 26px 18px; font-size: 13px; color: var(--muted); }
 .portal-breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
 .emulator-intro { padding-block: 10px 0; }
@@ -153,14 +154,14 @@ layout: null
 .emulator-video-link:hover h3 { color: var(--accent); text-decoration: underline; }
 .emulator-empty { border-left: 3px solid var(--line); padding: 12px 20px; background: var(--surface); }
 .is-portal:not(.is-home) main > .container { background: var(--card); padding: 0 32px 20px; margin-top: 22px; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 14px; }
-/* 9. 响应式：中等桌面宽度。 */
+/* 9. Responsive layout: medium desktop screens. */
 @media (min-width: 961px) and (max-width: 1150px) {
   .portal-home-grid { grid-template-columns: minmax(0, 1fr) 185px; gap: 20px; }
   .portal-project-grid { gap: 12px; }
   .portal-project h3 { font-size: 17px; }
   .portal-sidebar { padding-left: 18px; }
 }
-/* 10. 响应式：平板和折叠菜单。 */
+/* 10. Responsive layout: tablets and collapsible navigation. */
 @media (max-width: 960px) {
   .portal-header .header-inner { gap: 18px; padding-block: 18px 0; }
   .portal-header .menu-toggle { display: none; }
@@ -181,12 +182,10 @@ layout: null
   .portal-contact { gap: 20px; }
   .portal-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 }
-/* 11. 响应式：手机单列布局。 */
+/* 11. Responsive layout: single-column mobile pages. */
 @media (max-width: 700px) {
   .is-portal .container { width: calc(100% - 36px); }
-  .portal-brand { gap: 15px; }
-  .portal-brand img { width: 135px; }
-  .portal-brand > span { padding-left: 15px; font-size: 15px; }
+  .portal-brand-logo { width: 240px; }
   .is-portal h1 { font-size: 30px; }
   .is-portal h2 { font-size: 22px; }
   .portal-intro { padding: 28px 24px; margin-top: 16px; grid-template-columns: 1fr; }
@@ -219,15 +218,13 @@ layout: null
   .emulator-resource h3 { font-size: 15px; }
   .emulator-resource p { font-size: 13px; }
 }
-/* 12. 响应式：窄屏 Logo 和按钮。 */
+/* 12. Responsive layout: narrow-screen logo and controls. */
 @media (max-width: 380px) {
-  .portal-brand { gap: 10px; }
-  .portal-brand img { width: 112px; }
-  .portal-brand > span { padding-left: 10px; font-size: 12px; }
+  .portal-brand-logo { width: 210px; }
   .portal-header .menu-toggle { padding: 7px; }
 }
 
-/* 13. 404 页面：返回首页入口。 */
+/* 13. Not-found page: return to the homepage. */
 .portal-not-found { padding: 48px 32px !important; }
 .portal-not-found > p { margin-bottom: 20px; }
 .portal-not-found h1 { margin-bottom: 20px; }

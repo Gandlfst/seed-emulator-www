@@ -1,18 +1,19 @@
-{% comment %}页首：Logo、主导航和配色按钮；导航内容来自 _data/navigation.yml。{% endcomment %}
+{% comment %}Header: logo, navigation, and themes; links come from _data/navigation.yml.{% endcomment %}
 <header class="site-header portal-header">
   <div class="container header-inner">
-    {% comment %}品牌入口：返回首页。{% endcomment %}
+    {% comment %}Brand link to the homepage.{% endcomment %}
     <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
-      <img src="{{ '/images/seed-labs-logo.png' | relative_url }}" alt="SEED Labs" width="150" height="46">
-      <span>Emulators</span>
+      <span class="portal-brand-logo">
+        <img src="{{ '/images/seed-emulator-logo.png' | relative_url }}" alt="SEED Emulator" width="800" height="143">
+      </span>
     </a>
     <span class="portal-header-note">A playground for research &amp; discovery</span>
-    {% comment %}手机菜单：由 js/site.js 控制展开状态。{% endcomment %}
+    {% comment %}Mobile menu: js/site.js controls its expanded state.{% endcomment %}
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
       {% include icon.html name="menu" %}
     </button>
 
-    {% comment %}导航与配色：导航读取 navigation.yml，配色读取 themes.yml。{% endcomment %}
+    {% comment %}Navigation and themes read their respective data files.{% endcomment %}
     <div class="portal-navigation-bar">
       <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
         {% for link in site.data.navigation %}

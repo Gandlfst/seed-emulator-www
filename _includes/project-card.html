@@ -1,6 +1,6 @@
-{% comment %}单张项目卡片：由 projects.html 传入标题、地址、图片和简介。{% endcomment %}
+{% comment %}Reusable project card: projects.html supplies its title, URL, image, and description.{% endcomment %}
 <article class="portal-project">
-  {% comment %}卡片封面：有图时展示图片，无图时使用通用占位内容。{% endcomment %}
+  {% comment %}Show the project image, or a generic placeholder if none is available.{% endcomment %}
   <a class="portal-project-image{% unless include.image %} portal-project-placeholder{% endunless %}" href="{{ include.url | relative_url }}" aria-label="Explore {{ include.title | escape }}">
     {% if include.image %}
       <img src="{{ include.image | relative_url }}" alt="{{ include.image_alt | escape }}" width="480" height="300">
@@ -9,7 +9,7 @@
       <span>{{ include.title }}</span><small>Project preview coming soon</small>
     {% endif %}
   </a>
-  {% comment %}卡片文字：分类、名称、简介和项目详情入口。{% endcomment %}
+  {% comment %}Card content: category, title, summary, and project link.{% endcomment %}
   <p class="portal-project-category">{{ include.category }}</p>
   <h3><a href="{{ include.url | relative_url }}">{{ include.title }}</a></h3>
   <p class="portal-project-description">{{ include.description }}</p>

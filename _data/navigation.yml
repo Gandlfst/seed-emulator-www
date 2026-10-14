@@ -1,4 +1,4 @@
-# 主导航：key 与项目页面的 project 对应，用于高亮当前页面。
+# Navigation keys match each page's project value to mark the active link.
 # Main navigation for the homepage and all three emulator project pages.
 - title: Home
   url: /

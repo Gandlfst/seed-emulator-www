@@ -1,5 +1,5 @@
 # English homepage content. Chinese translations live in _data/zh.json.
-# 首页区块一：横幅文案与源码地址。
+# Section 1: hero copy and source repository link.
 hero:
   eyebrow: Research & Education
   title: SEED Emulators
@@ -7,7 +7,7 @@ hero:
   description: The SEED project develops emulators for hands-on learning and research. Create controlled experimental environments to explore Internet infrastructure, satellite networks, and blockchain systems.
   source_url: https://github.com/seed-labs/seed-emulator
 
-# 首页区块二：项目卡片，顺序就是网页中的排列顺序。
+# Section 2: project cards, listed in display order.
 projects:
   - title: Internet Emulator
     url: /internet-emulator/
@@ -28,7 +28,7 @@ projects:
     category: Blockchain systems
     description: Run blockchain nodes in an emulated network and explore transactions, smart contracts, and security. Connect distributed systems concepts with hands-on SEED lab exercises.
 
-# 首页区块三：底部联系条。
+# Section 3: homepage contact strip.
 contact:
   title: Part of the SEED project
   description: Hands-on environments for security education and network research.

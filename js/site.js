@@ -1,4 +1,4 @@
-// 页面交互：移动端导航展开、关闭，以及本地视频错误提示。
+// Page interactions: mobile navigation and local video error feedback.
 (() => {
   'use strict';
   document.documentElement.classList.add('js-enabled');
@@ -27,7 +27,7 @@
     narrowViewport.addEventListener('change', () => setMenu(false));
   }
 
-  // 视频加载失败时显示备用下载入口。
+  // Show a fallback file link when video loading fails.
   document.querySelectorAll('.video-panel video').forEach(video => {
     const errorMessage = video.closest('.video-panel').querySelector('.video-error');
     video.addEventListener('error', () => { errorMessage.hidden = false; });

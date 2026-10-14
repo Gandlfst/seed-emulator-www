@@ -1,18 +1,18 @@
-{% comment %}首页横幅：标题、简介、操作按钮和网络插图；文案来自 _data/home.yml。{% endcomment %}
+{% comment %}Homepage hero: copy, actions, and network illustration from _data/home.yml.{% endcomment %}
 <section class="portal-intro container" aria-labelledby="portal-title">
   <div class="portal-intro-copy">
-  {% comment %}横幅文案：统一从 home.yml 读取。{% endcomment %}
+  {% comment %}Hero copy comes from home.yml.{% endcomment %}
     <p class="portal-eyebrow">{{ site.data.home.hero.eyebrow | escape }}</p>
     <h1 id="portal-title">{{ site.data.home.hero.title }}</h1>
     <p class="portal-intro-tagline">{{ site.data.home.hero.tagline }}</p>
     <p class="portal-intro-description">{{ site.data.home.hero.description }}</p>
-  {% comment %}操作区：跳转项目列表或打开代码仓库。{% endcomment %}
+  {% comment %}Actions open the project list or source repository.{% endcomment %}
     <div class="portal-intro-actions">
       <a class="portal-hero-button" href="#projects-title">Explore our projects {% include icon.html name="arrow" %}</a>
       <a class="portal-hero-link" href="{{ site.data.home.hero.source_url }}">Source code {% include icon.html name="external" %}</a>
     </div>
   </div>
-  {% comment %}装饰性网络插图：颜色随当前配色变化。{% endcomment %}
+  {% comment %}Decorative network illustration follows the active theme.{% endcomment %}
 <svg class="portal-network-art" viewBox="0 0 440 340" fill="none" aria-hidden="true">
   <defs>
     <radialGradient id="portal-globe-light"><stop stop-color="var(--portal-art)" stop-opacity=".15"/><stop offset="1" stop-color="var(--portal-art)" stop-opacity="0"/></radialGradient>

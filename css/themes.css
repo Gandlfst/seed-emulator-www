@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-/* 配色数据生成：每个主题覆盖同一组 CSS 变量。 */
+/* Each theme overrides the same set of CSS custom properties. */
 {% for theme in site.data.themes %}
 html[data-portal-theme="{{ theme.id }}"] .is-portal {
   {% for color in theme.colors %}--{{ color[0] }}: {{ color[1] }};
@@ -9,7 +9,7 @@ html[data-portal-theme="{{ theme.id }}"] .is-portal {
 }
 {% endfor %}
 
-/* 配色控件：桌面导航内的胶囊按钮。 */
+/* Theme controls: capsule buttons in the desktop navigation bar. */
 .portal-navigation-bar { display: flex; align-items: center; gap: 16px; width: 100%; order: 3; padding: 5px; background: var(--portal-green); border-radius: 10px; }
 .portal-navigation-bar .main-navigation { width: auto; flex: 1; order: 0; padding: 0; background: transparent; }
 .portal-palette { display: flex; align-items: center; gap: 3px; flex-shrink: 0; padding: 4px; margin-right: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
@@ -19,7 +19,7 @@ html[data-portal-theme="{{ theme.id }}"] .is-portal {
 .portal-palette button:focus-visible { outline-offset: 2px; }
 .portal-palette-swatch { width: 12px; height: 12px; border: 1px solid #ffffff80; border-radius: 50%; background: linear-gradient(135deg, var(--swatch) 50%, #e8f1eb 50%); }
 html[data-portal-theme="night"] .portal-brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #ffffffa0); }
-/* 响应式：小屏下保留配色按钮，导航单独折叠。 */
+/* Keep theme controls visible on small screens while navigation collapses separately. */
 @media (max-width: 1150px) and (min-width: 961px) {
   .portal-navigation-bar { gap: 8px; }
   .portal-navigation-bar .main-navigation > a { padding-inline: 14px; }
