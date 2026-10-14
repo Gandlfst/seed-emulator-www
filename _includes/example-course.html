@@ -1,0 +1,39 @@
+{% comment %}Course-style lesson: sticky chapter navigation, Markdown article, and source materials.{% endcomment %}
+{% assign category = site.data.examples.categories | where: 'id', page.category_id | first %}
+{% assign chapters = page.chapters | default: site.data.examples.chapters %}
+<div class="container examples-page example-course">
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.code }}</span></nav>
+  <div class="examples-workspace">
+    <aside class="examples-sidebar lesson-sidebar" aria-label="Lesson navigation">
+      <a class="lesson-back" href="{{ '/examples/' | relative_url }}#{{ page.category_id }}">← {{ category.title }}</a>
+      <p class="portal-eyebrow">In this example</p>
+      <nav>
+        {% for chapter in chapters %}<a href="#{{ chapter.id }}"><span class="lesson-chapter-number">{{ forloop.index | prepend: '0' }}</span><span>{{ chapter.title }}</span></a>{% endfor %}
+        <a href="#source-materials"><span class="lesson-chapter-number">{{ chapters.size | plus: 1 | prepend: '0' }}</span><span>Tasks &amp; resources</span></a>
+        <a href="#feedback"><span class="lesson-chapter-number">{{ chapters.size | plus: 2 | prepend: '0' }}</span><span>Feedback &amp; help</span></a>
+      </nav>
+    </aside>
+    <article class="lesson-content">
+      <div class="lesson-heading"><p class="portal-eyebrow">{{ category.title }} <span aria-hidden="true">/</span> {{ page.code }}</p><h1>{{ page.title }}</h1><p>{{ page.description }}</p></div>
+      {% comment %}Lesson text is maintained in its own flat Markdown file in _examples/.{% endcomment %}
+      <div class="lesson-prose">{{ content }}</div>
+      <section class="lesson-sources" id="source-materials" aria-labelledby="source-materials-title">
+        <h2 id="source-materials-title">Tasks &amp; resources</h2>
+        {% comment %}Use the same resource rows as project pages; build pinned URLs from lesson metadata.{% endcomment %}
+        <ul class="emulator-resource-list">
+          {% for resource in site.data.examples.resources %}
+            {% assign source_url = site.data.examples.repository_url | append: '/' | append: resource.view | append: '/' | append: site.data.examples.revision | append: '/' | append: page.source_path | append: resource.path %}
+            {% include resource.html resource=resource url=source_url %}
+          {% endfor %}
+        </ul>
+        <p class="lesson-source-version">Based on SEED Emulator revision <a href="{{ site.data.examples.repository_url }}/commit/{{ site.data.examples.revision }}">{{ site.data.examples.revision | slice: 0, 7 }}</a>.</p>
+      </section>
+      {% comment %}One feedback section is shared by all lessons, linking to the upstream issue tracker.{% endcomment %}
+      <section class="lesson-feedback" id="feedback" aria-labelledby="feedback-title">
+        <h2 id="feedback-title">Feedback &amp; help</h2>
+        <p>For questions or problems with this example, <a href="{{ site.data.examples.repository_url }}/issues">check the project issues {% include icon.html name="external" %}</a>. Include the example code and your environment when reporting a problem.</p>
+      </section>
+      <a class="lesson-return" href="{{ '/examples/' | relative_url }}#{{ page.category_id }}">Explore more {{ category.title | downcase }} examples {% include icon.html name="arrow" %}</a>
+    </article>
+  </div>
+</div>

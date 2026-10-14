@@ -1,4 +1,4 @@
-# English homepage content. Chinese translations live in _data/zh.json.
+# English homepage content shared by the hero, project cards, and contact strip.
 # Section 1: hero copy and source repository link.
 hero:
   eyebrow: Research & Education

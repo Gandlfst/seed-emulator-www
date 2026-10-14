@@ -1,0 +1,40 @@
+{% comment %}Two-level catalog: category headings contain example rows with links to local lessons.{% endcomment %}
+<div class="container examples-page">
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
+  <section class="examples-intro" aria-labelledby="examples-title">
+    <h1 id="examples-title">Emulator examples</h1>
+    <p>Browse hands-on examples from the <a href="{{ site.data.examples.readme_url }}">SEED Emulator repository {% include icon.html name="external" %}</a>.</p>
+  </section>
+  <div class="examples-workspace">
+    {% comment %}Category navigation remains useful with JavaScript disabled.{% endcomment %}
+    <aside class="examples-sidebar" aria-label="Example categories">
+      <p class="portal-eyebrow">Categories</p>
+      <nav>
+        {% for category in site.data.examples.categories %}
+          {% assign lessons = site.examples | where: 'category_id', category.id %}
+          <a href="#{{ category.id }}"><span>{{ category.title }}</span><span class="examples-count">{{ lessons.size }}</span></a>
+        {% endfor %}
+      </nav>
+    </aside>
+    <div class="examples-content">
+      {% comment %}Progressive enhancement: filtering only appears when its script loads.{% endcomment %}
+      <div class="examples-search" data-example-search hidden>
+        <label for="example-search">Find an example</label>
+        <input id="example-search" type="search" placeholder="Search by topic, name, or code…" autocomplete="off" aria-controls="example-groups">
+        <p class="examples-search-status" role="status" aria-live="polite" data-example-count>{{ site.examples.size }} examples</p>
+      </div>
+      <div id="example-groups">
+        {% for category in site.data.examples.categories %}
+          {% assign lessons = site.examples | where: 'category_id', category.id | sort: 'code' %}
+          <section class="example-group" id="{{ category.id }}" aria-labelledby="{{ category.id }}-title" data-example-group>
+            <div class="example-group-heading"><h2 id="{{ category.id }}-title">{{ category.title }}</h2></div>
+            <ul class="example-list">
+              {% for lesson in lessons %}{% include example-row.html lesson=lesson category=category %}{% endfor %}
+            </ul>
+          </section>
+        {% endfor %}
+      </div>
+      <p class="examples-empty" data-example-empty hidden>No examples match your search. Try a different topic or example code.</p>
+    </div>
+  </div>
+</div>

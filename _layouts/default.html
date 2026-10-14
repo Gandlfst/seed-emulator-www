@@ -11,6 +11,8 @@
     <main id="main">
       {% if page.project %}
         {% include project-page.html %}
+      {% elsif page.example %}
+        {% include example-course.html %}
       {% else %}
         {{ content }}
       {% endif %}

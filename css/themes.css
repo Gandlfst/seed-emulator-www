@@ -18,7 +18,6 @@ html[data-portal-theme="{{ theme.id }}"] .is-portal {
 .portal-palette button[aria-pressed="true"] { background: var(--accent); color: var(--card); }
 .portal-palette button:focus-visible { outline-offset: 2px; }
 .portal-palette-swatch { width: 12px; height: 12px; border: 1px solid #ffffff80; border-radius: 50%; background: linear-gradient(135deg, var(--swatch) 50%, #e8f1eb 50%); }
-html[data-portal-theme="night"] .portal-brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #ffffffa0); }
 /* Keep theme controls visible on small screens while navigation collapses separately. */
 @media (max-width: 1150px) and (min-width: 961px) {
   .portal-navigation-bar { gap: 8px; }

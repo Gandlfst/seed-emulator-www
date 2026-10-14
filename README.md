@@ -31,6 +31,8 @@ internet-emulator/index.html  Internet project content and resources
 satellite/index.html          Satellite project content and resources
 blockchain/index.html         Blockchain project content and resources
 about-us/index.html           Project lead, core developers, and contributors
+examples/index.html           Two-level example catalog with search
+_examples/                    One Markdown file per guided example
 404.html                      Not-found page
 _config.yml                   Metadata, canonical domain, and build settings
 CNAME                         Official domain
@@ -41,11 +43,14 @@ _data/navigation.yml          Navigation links and active-page keys
 _data/footer.yml              Shared footer and sidebar information
 _data/themes.yml              Four palettes and their CSS variables
 _data/team.yml                Team members and GitHub usernames
+_data/examples.yml            Example categories and upstream source revision
 css/base.css                  Reset, typography, accessibility, and video
 css/main.css                  Page sections and responsive layouts
 css/themes.css                Generated theme variables and theme controls
+css/examples.css              Example catalog and course-style lesson layouts
 js/site.js                    Mobile navigation and video errors
 js/theme.js                   Theme switching and saved preferences
+js/examples.js                Progressive catalog filtering
 images/                       Logo, project illustrations, and posters
 video/                        Local demonstration videos
 scripts/check-site.cjs         Generated-page and component validation
@@ -64,6 +69,28 @@ Project details use `resource.html` for resources and `video.html` for local
 players. Other shared includes are `head.html`, `header.html`, `footer.html`,
 `icon.html`, `theme-init.html`, `theme-picker.html`, and `scripts.html`.
 All includes live directly in `_includes/`.
+
+The Internet Emulator resource list links to `/examples/`. This catalog renders
+`examples-catalog.html`, groups the `_examples` collection by category, and uses
+`example-row.html` for each entry. Each row opens a local lesson. The shared
+layout renders pages with `example: true` through `example-course.html`, with
+chapter navigation beside the Markdown content. There are no nested layouts.
+
+To add a lesson, copy a Markdown file in `_examples/`, update its title, code,
+category, `source_path`, and lesson text. Its filename becomes its URL under
+`/examples/`. Category IDs, default chapters, resource labels, and the source
+revision come from `_data/examples.yml`. A lesson may override `chapters` when
+its section headings differ. Keep chapter IDs in sync with Markdown headings.
+The site checker discovers lessons automatically.
+
+`example-setup.html` holds shared prerequisites and reads the lesson's
+`source_path`. Each lesson includes it under Before you start. The course
+component builds pinned source URLs and reuses `resource.html`, the same rows
+used by project pages. Feedback and help are shared in `example-course.html`.
+Only example-specific guidance and metadata belong in individual Markdown files.
+The initial collection contains 20 selected examples across four categories,
+summarized from upstream READMEs at the revision recorded in the catalog data.
+Source links are pinned to that revision so the material remains traceable.
 
 The About us page renders `team.html`, which groups people into Project Lead,
 Core Developers, and Contributors. Each person uses `team-member.html`.
@@ -97,12 +124,15 @@ during the build. The website is English-only.
 | Navigation links | `_data/navigation.yml` |
 | Team details and resource links | `_data/footer.yml` |
 | About us member lists | `_data/team.yml` |
+| Example categories and source revision | `_data/examples.yml` |
+| Example lesson text and chapters | `_examples/*.md` |
+| Catalog and lesson presentation | `css/examples.css` |
 | Colors | `_data/themes.yml` |
 | Spacing, typography, and responsive layout | `css/main.css` |
 
-The supplied logo is preserved as a transparent PNG. CSS adapts neutral
-lettering for light and dark themes, preserves the red SE, and clips unused
-transparent space without modifying the source image.
+The supplied logo is rendered as a transparent PNG with its original colors
+and details intact, without a solid backing, color mask, or extra filter.
+CSS clips unused transparent space without modifying the source image.
 
 ## Add a project
 
@@ -111,7 +141,7 @@ transparent space without modifying the source image.
 2. Add a card to `projects` in `_data/home.yml`.
 3. Add navigation in `_data/navigation.yml`; its `key` must match `project`.
 4. Add footer links in `_data/footer.yml` as needed.
-5. Add the generated page path to `pages` in `scripts/check-site.cjs`.
+5. Add the generated page path to `sourcePages` in `scripts/check-site.cjs`.
 
 Each resource has `type`, `title`, `description`, and `url`.
 Use `url: null` for resources that are not yet available.

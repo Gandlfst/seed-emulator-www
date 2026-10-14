@@ -1,0 +1,47 @@
+# Catalog categories and the upstream revision used for lesson references.
+revision: 61acdf4c9699b25b06843ec4aad747108b05924e
+repository_url: https://github.com/seed-labs/seed-emulator
+readme_url: https://github.com/seed-labs/seed-emulator/blob/61acdf4c9699b25b06843ec4aad747108b05924e/README.md
+# Lessons may override chapters in front matter when their sections differ.
+chapters:
+- id: overview
+  title: Overview
+- id: before-you-start
+  title: Before you start
+- id: walkthrough
+  title: Walkthrough
+- id: check-your-understanding
+  title: Check your understanding
+# Resource URLs are assembled from the repository, revision, and lesson source_path.
+resources:
+- type: GUIDE
+  title: Example README
+  description: Complete instructions, prerequisites, and configuration options.
+  view: blob
+  path: /README.md
+- type: CODE
+  title: Example files
+  description: Source scripts and configuration files for this example.
+  view: tree
+  path: ''
+categories:
+- id: foundations
+  title: Network foundations
+  label: 01 / Start here
+  description: Build, visualize, and reuse the building blocks of an emulation.
+  icon: network
+- id: internet-services
+  title: Internet services
+  label: 02 / Connect services
+  description: Explore routing, naming, addressing, and distributed services.
+  icon: globe
+- id: blockchain
+  title: Blockchain applications
+  label: 03 / Build on a chain
+  description: Create private Ethereum networks and add application services.
+  icon: network
+- id: scion
+  title: SCION networking
+  label: 04 / Explore new architectures
+  description: Work with isolation domains, explicit paths, and bandwidth tests.
+  icon: globe

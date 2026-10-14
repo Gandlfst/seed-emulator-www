@@ -18,12 +18,10 @@ layout: null
 .portal-header .header-inner { padding-top: 30px; display: flex; flex-wrap: wrap; gap: 24px; }
 .portal-header-note { margin-left: auto; color: var(--muted); font-size: 12px; }
 .portal-brand { display: inline-flex; align-items: center; }
-/* Keep the supplied transparent artwork; adapt neutral lettering to the theme.
-   The red SE is overlaid unchanged. Clip unused transparent space on the right. */
-.portal-brand-logo { position: relative; display: block; width: 300px; aspect-ratio: 600 / 143; overflow: hidden; color: #1d1e23; }
-.portal-brand-logo::before { content: ""; position: absolute; inset: 0; background: currentColor; mask: url("{{ '/images/seed-emulator-logo.png' | relative_url }}") left center / 133.333333% 100% no-repeat; }
-.portal-brand-logo img { width: 133.333333%; max-width: none; height: 100%; clip-path: inset(0 80% 0 0); }
-html[data-portal-theme="night"] .portal-brand-logo { color: #edf2fc; }
+/* Render the original PNG with its alpha channel and colors intact.
+   Only unused transparent space on the right is clipped by the wrapper. */
+.portal-brand-logo { display: block; width: 300px; aspect-ratio: 600 / 143; overflow: hidden; background: transparent; }
+.portal-brand-logo img { width: 133.333333%; max-width: none; height: 100%; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
 .portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }

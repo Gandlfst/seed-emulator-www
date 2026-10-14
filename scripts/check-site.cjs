@@ -6,7 +6,10 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const output = path.resolve(process.argv[2] || path.join(root, '_site'));
 const baseurl = (process.argv[3] || '').replace(/\/$/, '');
-const pages = ['index.html', 'internet-emulator/index.html', 'satellite/index.html', 'blockchain/index.html', 'about-us/index.html', '404.html'];
+const sourcePages = ['index.html', 'internet-emulator/index.html', 'satellite/index.html', 'blockchain/index.html', 'about-us/index.html', 'examples/index.html', '404.html'];
+// Collection filenames determine their public lesson URLs; no manual page registry is needed.
+const lessons = fs.readdirSync(path.join(root, '_examples')).filter(name => name.endsWith('.md'));
+const pages = [...sourcePages, ...lessons.map(name => `examples/${name.slice(0, -3)}/index.html`)];
 const read = file => fs.readFileSync(file, 'utf8');
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(item => item.isDirectory() ? walk(path.join(dir, item.name)) : [path.join(dir, item.name)]);
 const clean = html => html.replace(/(<script\b[^>]*>)[\s\S]*?<\/script>/gi, '$1').replace(/<!--[\s\S]*?-->/g, '');
@@ -45,7 +48,7 @@ for (const page of pages) {
 }
 
 // Stylesheets must contain CSS, not page HTML or unresolved Liquid.
-for (const name of ['base', 'main', 'themes']) {
+for (const name of ['base', 'main', 'themes', 'examples']) {
   const css = read(path.join(output, `css/${name}.css`));
   assert(!/<html|<!doctype|{%|{{/i.test(css), `${name}.css: invalid generated CSS`);
 }
@@ -63,7 +66,7 @@ function follow(text, chain = []) {
     follow(read(file), [...chain, name]);
   }
 }
-for (const file of ['_layouts/default.html', ...pages]) follow(read(path.join(root, file)));
+for (const file of ['_layouts/default.html', ...sourcePages, ...lessons.map(name => `_examples/${name}`)]) follow(read(path.join(root, file)));
 assert.deepEqual(fs.readdirSync(path.join(root, '_layouts')), ['default.html']);
 assert.deepEqual(fs.readdirSync(includes).sort(), [...used].sort());
 console.log(`PASS: ${pages.length} pages, ${checkedLinks} local links/assets, ${used.size} flat includes, one layout (${baseurl || '/'}).`);

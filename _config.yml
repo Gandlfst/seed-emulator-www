@@ -12,6 +12,12 @@ markdown: kramdown
 highlighter: rouge
 strict_front_matter: true
 
+# Each example is an editable Markdown lesson rendered by the shared layout.
+collections:
+  examples:
+    output: true
+    permalink: /examples/:name/
+
 # Pages explicitly set layout: default; generated assets use layout: null.
 # Avoid global layout defaults so assets are not wrapped in page HTML.
 
