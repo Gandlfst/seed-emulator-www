@@ -1,12 +1,35 @@
 ---
 layout: null
 ---
-/* Palette values are shared with the theme picker through Jekyll data. */
+/* 配色数据生成：每个主题覆盖同一组 CSS 变量。 */
 {% for theme in site.data.themes %}
-{% if forloop.first %}:root,
-{% endif %}:root[data-theme="{{ theme.id }}"] {
-  color-scheme: {{ theme.scheme }};
-  --brand-logo-filter: {% if theme.scheme == 'dark' %}invert(1) hue-rotate(180deg){% else %}none{% endif %};
-{% for color in theme.colors %}  --{{ color[0] }}: {{ color[1] }};
-{% endfor %}}
+html[data-portal-theme="{{ theme.id }}"] .is-portal {
+  {% for color in theme.colors %}--{{ color[0] }}: {{ color[1] }};
+  {% endfor %}color-scheme: {% if theme.id == 'night' %}dark{% else %}light{% endif %};
+}
 {% endfor %}
+
+/* 配色控件：桌面导航内的胶囊按钮。 */
+.portal-navigation-bar { display: flex; align-items: center; gap: 16px; width: 100%; order: 3; padding: 5px; background: var(--portal-green); border-radius: 10px; }
+.portal-navigation-bar .main-navigation { width: auto; flex: 1; order: 0; padding: 0; background: transparent; }
+.portal-palette { display: flex; align-items: center; gap: 3px; flex-shrink: 0; padding: 4px; margin-right: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
+.portal-palette button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 10px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 600; line-height: 1.4; }
+.portal-palette button:hover { background: var(--surface); color: var(--text); }
+.portal-palette button[aria-pressed="true"] { background: var(--accent); color: var(--card); }
+.portal-palette button:focus-visible { outline-offset: 2px; }
+.portal-palette-swatch { width: 12px; height: 12px; border: 1px solid #ffffff80; border-radius: 50%; background: linear-gradient(135deg, var(--swatch) 50%, #e8f1eb 50%); }
+html[data-portal-theme="night"] .portal-brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #ffffffa0); }
+/* 响应式：小屏下保留配色按钮，导航单独折叠。 */
+@media (max-width: 1150px) and (min-width: 961px) {
+  .portal-navigation-bar { gap: 8px; }
+  .portal-navigation-bar .main-navigation > a { padding-inline: 14px; }
+}
+@media (max-width: 960px) {
+  .portal-navigation-bar { flex-wrap: wrap; background: transparent; padding: 0; gap: 12px; }
+  .portal-navigation-bar .main-navigation { order: 2; flex-basis: 100%; background: var(--portal-green); padding: 5px; }
+  .portal-palette { margin: 0 0 0 auto; }
+}
+@media (max-width: 440px) {
+  .portal-palette { width: 100%; }
+  .portal-palette button { flex: 1; padding-inline: 6px; }
+}

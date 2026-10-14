@@ -1,11 +1,12 @@
-<script id="seed-theme-config" type="application/json">[{% for theme in site.data.themes %}{"id":{{ theme.id | jsonify }},"name":{{ theme.name | jsonify }},"background":{{ theme.colors.bg | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
+{% comment %}首屏配色初始化：在 CSS 加载前恢复浏览器保存的主题，避免闪烁。{% endcomment %}
+<script id="portal-theme-config" type="application/json">[{% for theme in site.data.themes %}{"id":{{ theme.id | jsonify }},"background":{{ theme.colors.bg | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 <script>
   (() => {
-    const themes = JSON.parse(document.getElementById('seed-theme-config').textContent);
+    const themes = JSON.parse(document.getElementById('portal-theme-config').textContent);
     let saved;
-    try { saved = localStorage.getItem('seed-color-theme'); } catch (_) { /* Storage is optional. */ }
+    try { saved = localStorage.getItem('seed-portal-theme'); } catch (_) {}
     const theme = themes.find(item => item.id === saved) || themes[0];
-    document.documentElement.dataset.theme = theme.id;
+    document.documentElement.dataset.portalTheme = theme.id;
     document.querySelector('meta[name="theme-color"]').content = theme.background;
   })();
 </script>

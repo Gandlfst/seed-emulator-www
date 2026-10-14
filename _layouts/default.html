@@ -1,10 +1,22 @@
+{% comment %}唯一公共布局：负责整页外壳，不再继承或嵌套其他 layout。{% endcomment %}
 <!doctype html>
 <html lang="en">
   <head>{% include head.html %}</head>
-  <body class="{% if page.home %}is-home{% else %}is-page{% endif %}">
+  <body class="is-portal{% if page.home %} is-home{% endif %}">
     <a class="skip-link" href="#main">Skip to content</a>
+    {% comment %}公共页首：Logo、导航和配色选择器。{% endcomment %}
     {% include header.html %}
-    <main id="main">{{ content }}</main>
+
+    {% comment %}正文：项目页使用 project-page 组件，首页与 404 直接插入自身内容。{% endcomment %}
+    <main id="main">
+      {% if page.project %}
+        {% include project-page.html %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </main>
+
+    {% comment %}公共页尾和交互脚本：团队信息、语言切换、导航、配色。{% endcomment %}
     {% include footer.html %}
     {% include scripts.html %}
   </body>

@@ -1,0 +1,31 @@
+# 页尾和首页侧栏共用的团队介绍、联系方式、资源链接。
+description: Hands-on environments for exploring networks, distributed systems, and security. Built for classrooms, labs, and curious minds.
+groups:
+  - title: Projects
+    links:
+      - title: Internet Emulator
+        url: /internet-emulator/
+      - title: Satellite Network Emulator
+        url: /satellite/
+      - title: Blockchain Emulator
+        url: /blockchain/
+  - title: Resources
+    links:
+      - title: SEED Labs
+        url: https://seedsecuritylabs.org/
+        external: true
+      - title: Documentation
+        url: https://github.com/seed-labs/seed-emulator/tree/master/docs
+        external: true
+      - title: Source code
+        url: https://github.com/seed-labs/seed-emulator
+        external: true
+      - title: Report an issue
+        url: https://github.com/seed-labs/seed-emulator/issues
+        external: true
+author:
+  name: Prof. Wenliang Du
+  role: SEED Project Lead
+  description: The SEED project brings hands-on learning to computer and information security, with contributions from students and the wider community.
+  url: https://seedsecuritylabs.org/about_us.html
+  email: wedu@acm.org

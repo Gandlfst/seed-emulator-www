@@ -1,3 +1,4 @@
+// 中英文切换：读取 _data/zh.json，记住原文，语言选择保存在当前标签页。
 (() => {
   'use strict';
   const toggle = document.querySelector('[data-language-toggle]');
@@ -42,9 +43,9 @@
       const value = translateValue(node, 'text', node.nodeValue);
       if (value !== node.nodeValue) node.nodeValue = value;
     }
-    document.querySelectorAll('[aria-label], [title], meta[name="description"], meta[property="og:title"], meta[property="og:description"]').forEach(element => {
+    document.querySelectorAll('[aria-label], [title], [alt], meta[name="description"], meta[property="og:title"], meta[property="og:description"]').forEach(element => {
       if (element === toggle) return;
-      for (const attribute of ['aria-label', 'title', 'content']) {
+      for (const attribute of ['aria-label', 'title', 'alt', 'content']) {
         if (!element.hasAttribute(attribute)) continue;
         const current = element.getAttribute(attribute);
         const value = translateValue(element, attribute, current);
@@ -56,14 +57,7 @@
     toggle.lang = language === 'en' ? 'zh-CN' : 'en';
     toggle.setAttribute('aria-label', language === 'en' ? '切换为中文' : 'Switch to English');
     toggle.hidden = false;
-    document.querySelectorAll('[data-theme-posters]').forEach(video => {
-      const posters = JSON.parse(video.dataset.themePosters);
-      const source = posters[document.documentElement.dataset.theme];
-      if (!source) return;
-      const poster = language === 'zh-CN' ? source.replace(/\.svg$/, '-zh.svg') : source;
-      if (video.getAttribute('poster') !== poster) video.setAttribute('poster', poster);
-    });
-    observer.observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['aria-label', 'title'] });
+    observer.observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['aria-label', 'title', 'alt'] });
   };
   toggle.addEventListener('click', () => {
     language = language === 'en' ? 'zh-CN' : 'en';
@@ -71,7 +65,6 @@
     render();
     toggle.scrollIntoView({ block: 'nearest' });
   });
-  window.addEventListener('seed:themechange', render);
   window.addEventListener('pageshow', () => {
     try { language = sessionStorage.getItem(storageKey) === 'zh-CN' ? 'zh-CN' : 'en'; } catch (_) { /* Preserve the in-memory choice. */ }
     render();

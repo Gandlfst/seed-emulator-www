@@ -1,0 +1,58 @@
+{% comment %}项目详情页：公共 layout 直接调用；page 提供项目信息，content 是项目页面正文。{% endcomment %}
+<div class="container">
+  {% comment %}区块一：面包屑，返回首页并显示当前项目名称。{% endcomment %}
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">SEED Emulators</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ page.title }}</span>
+  </nav>
+
+  {% comment %}区块二：标题、简介和页内导航；数据来自项目 index.html 顶部。{% endcomment %}
+  <section class="emulator-intro" aria-labelledby="emulator-title">
+    <p class="portal-eyebrow">{{ page.category }}</p>
+    <h1 id="emulator-title">{{ page.title }}</h1>
+    <p class="emulator-description">{{ page.description }}</p>
+    <nav class="emulator-section-nav" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#resources">Presentations &amp; Documents</a>
+      <a href="#videos">Videos</a>
+      {% if page.repository %}
+        <a href="{{ page.repository }}">Source code {% include icon.html name="external" %}</a>
+      {% endif %}
+    </nav>
+  </section>
+  {% comment %}区块三：项目正文，即项目 index.html 中第二个 --- 后面的内容。{% endcomment %}
+  <section class="emulator-section" id="overview" aria-labelledby="overview-title">
+    <h2 id="overview-title">Overview</h2>
+    <div class="emulator-overview">{{ content }}</div>
+  </section>
+  {% comment %}区块四：逐条渲染 resources，复用 resource.html；缺少地址时显示待更新提示。{% endcomment %}
+  <section class="emulator-section" id="resources" aria-labelledby="resources-title">
+    <h2 id="resources-title">Presentations &amp; Documents</h2>
+    <ul class="emulator-resource-list">
+      {% for resource in page.resources %}
+        {% include resource.html resource=resource %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% comment %}区块五：有 src 的视频使用本地播放器，其余显示外链；空列表显示待更新提示。{% endcomment %}
+  <section class="emulator-section" id="videos" aria-labelledby="videos-title">
+    <h2 id="videos-title">Videos</h2>
+    {% if page.videos.size > 0 %}
+    <div class="emulator-video-grid">
+      {% for video in page.videos %}
+        {% if video.src %}
+          {% include video.html label=video.title src=video.src webm=video.webm poster=video.poster caption=video.description %}
+        {% else %}
+          <a class="emulator-video-link" href="{{ video.url }}">
+            <span class="emulator-video-cover">{% include icon.html name="play" %}<span>Watch video</span></span>
+            <h3>{{ video.title }}</h3><p>{{ video.description }}</p>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="emulator-empty">Videos will be added here when available.</p>
+    {% endif %}
+  </section>
+</div>

@@ -1,0 +1,39 @@
+{% comment %}首页横幅：标题、简介、操作按钮和网络插图；文案来自 _data/home.yml。{% endcomment %}
+<section class="portal-intro container" aria-labelledby="portal-title">
+  <div class="portal-intro-copy">
+  {% comment %}横幅文案：统一从 home.yml 读取。{% endcomment %}
+    <p class="portal-eyebrow">{{ site.data.home.hero.eyebrow | escape }}</p>
+    <h1 id="portal-title">{{ site.data.home.hero.title }}</h1>
+    <p class="portal-intro-tagline">{{ site.data.home.hero.tagline }}</p>
+    <p class="portal-intro-description">{{ site.data.home.hero.description }}</p>
+  {% comment %}操作区：跳转项目列表或打开代码仓库。{% endcomment %}
+    <div class="portal-intro-actions">
+      <a class="portal-hero-button" href="#projects-title">Explore our projects {% include icon.html name="arrow" %}</a>
+      <a class="portal-hero-link" href="{{ site.data.home.hero.source_url }}">Source code {% include icon.html name="external" %}</a>
+    </div>
+  </div>
+  {% comment %}装饰性网络插图：颜色随当前配色变化。{% endcomment %}
+<svg class="portal-network-art" viewBox="0 0 440 340" fill="none" aria-hidden="true">
+  <defs>
+    <radialGradient id="portal-globe-light"><stop stop-color="var(--portal-art)" stop-opacity=".15"/><stop offset="1" stop-color="var(--portal-art)" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="220" cy="170" r="164" fill="url(#portal-globe-light)"/>
+  <g stroke="var(--portal-art)" stroke-opacity=".25">
+    <circle cx="220" cy="170" r="112"/>
+    <ellipse cx="220" cy="170" rx="62" ry="112"/>
+    <ellipse cx="220" cy="170" rx="22" ry="112"/>
+    <ellipse cx="220" cy="170" rx="112" ry="42"/>
+    <path d="M119 121h202M119 219h202M108 170h224"/>
+    <ellipse cx="220" cy="170" rx="183" ry="68" transform="rotate(-28 220 170)"/>
+    <ellipse cx="220" cy="170" rx="171" ry="73" transform="rotate(35 220 170)" stroke-dasharray="3 7"/>
+  </g>
+  <g stroke="var(--portal-art)" stroke-width="1.4" stroke-opacity=".7">
+    <path d="m130 112 74 41 81-57 39 101-74 57-46-101-49 72-25-113m74 41 120 44M155 225l95 29M285 96l-35 158"/>
+    <path d="M68 197l62-85M324 197l54-76M250 254l50 41" stroke-dasharray="3 5"/>
+  </g>
+  <g fill="var(--portal-highlight)"><circle cx="130" cy="112" r="5"/><circle cx="285" cy="96" r="5"/><circle cx="324" cy="197" r="5"/><circle cx="155" cy="225" r="4"/><circle cx="250" cy="254" r="5"/></g>
+  <g fill="var(--portal-highlight)"><circle cx="204" cy="153" r="7"/><circle cx="68" cy="197" r="5"/><circle cx="378" cy="121" r="5"/><circle cx="300" cy="295" r="4"/></g>
+  <g stroke="var(--portal-highlight)" stroke-opacity=".4"><circle cx="204" cy="153" r="15"/><circle cx="68" cy="197" r="12"/><circle cx="378" cy="121" r="12"/></g>
+</svg>
+
+</section>

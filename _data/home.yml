@@ -1,0 +1,35 @@
+# English homepage content. Chinese translations live in _data/zh.json.
+# 首页区块一：横幅文案与源码地址。
+hero:
+  eyebrow: Research & Education
+  title: SEED Emulators
+  tagline: Small worlds. Real possibilities.
+  description: The SEED project develops emulators for hands-on learning and research. Create controlled experimental environments to explore Internet infrastructure, satellite networks, and blockchain systems.
+  source_url: https://github.com/seed-labs/seed-emulator
+
+# 首页区块二：项目卡片，顺序就是网页中的排列顺序。
+projects:
+  - title: Internet Emulator
+    url: /internet-emulator/
+    image: /images/demo-poster.jpg
+    image_alt: Internet Map visualization of an emulated Internet
+    category: Internet infrastructure
+    description: Create a small Internet with autonomous systems, BGP routing, DNS, and real applications. Use a programmable, container-based environment for networking and security experiments.
+  - title: Satellite Network Emulator
+    url: /satellite/
+    image: /images/satellite-preview.png
+    image_alt: Illustration of satellites and ground stations connected across a world map
+    category: Satellite networks
+    description: A SEED project focused on satellite networking for research and education. Project materials and technical details are being prepared.
+  - title: Blockchain Emulator
+    url: /blockchain/
+    image: /images/blockchain-preview.png
+    image_alt: Ethereum logo from the SEED Blockchain Exploration Lab
+    category: Blockchain systems
+    description: Run blockchain nodes in an emulated network and explore transactions, smart contracts, and security. Connect distributed systems concepts with hands-on SEED lab exercises.
+
+# 首页区块三：底部联系条。
+contact:
+  title: Part of the SEED project
+  description: Hands-on environments for security education and network research.
+  labs_url: https://seedsecuritylabs.org/

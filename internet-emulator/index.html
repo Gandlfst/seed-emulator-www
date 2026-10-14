@@ -1,0 +1,45 @@
+---
+layout: default
+project: internet
+title: Internet Emulator
+category: Internet infrastructure
+description: Create a programmable Internet with autonomous systems, routing, DNS, and real applications. Run reproducible networking and security experiments in containers.
+repository: https://github.com/seed-labs/seed-emulator
+# Edit presentation and document titles, descriptions, and URLs below.
+resources:
+  - type: PPT
+    title: SEED Internet Emulator presentation
+    description: Introduction to the emulator, its architecture, and example applications.
+    url: https://seedsecuritylabs.org/emulator/emulator_01_2022.pptx
+  - type: PDF
+    title: SEED Internet Emulator presentation
+    description: The presentation slides in PDF format.
+    url: https://seedsecuritylabs.org/emulator/emulator_01_2022.pdf
+  - type: PDF
+    title: An Internet Emulator for Research and Education
+    description: The SEED Emulator paper presented at HotNets 2022.
+    url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf
+  - type: GUIDE
+    title: User manuals
+    description: Build topologies, configure routing, and deploy services.
+    url: https://github.com/seed-labs/seed-emulator/tree/master/docs/user_manual
+# Add local videos with src/webm/poster, or external videos with url.
+videos:
+  - title: Internet Map demonstration
+    description: Explore the topology of a 3,000-node emulated Internet.
+    src: /video/3000-2.mp4
+    webm: /video/3000-2.webm
+    poster: /images/demo-poster.jpg
+  - title: Build and run an emulation
+    description: Follow a local demonstration of the build and run workflow.
+    src: /video/build-and-run.mp4
+    webm: /video/build-and-run.webm
+    poster: /images/build-poster.svg
+  - title: SEED Internet Emulator overview
+    description: An introductory video from the SEED project.
+    url: https://youtu.be/lfbO-eHt6qg
+---
+{% comment %}项目概览正文：由公共布局放入 Overview 区域；资料和视频在上方 front matter 中编辑。{% endcomment %}
+
+<p>The Internet Emulator provides Python building blocks for autonomous systems, Internet exchanges, BGP routers, DNS infrastructure, and application services. Describe an experiment in code, generate its container configuration, and run a small Internet on your own machine.</p>
+<p>Use it for hands-on networking courses, cybersecurity labs, and distributed systems research. Internet Map makes network topology and activity visible as experiments run.</p>

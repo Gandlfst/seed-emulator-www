@@ -1,15 +1,17 @@
-- title: Overview
-  id: overview
-  page: why
-- title: Features
-  id: features
-  page: capabilities
-- title: How it works
-  id: how-it-works
-  page: how
-- title: Use cases
-  id: use-cases
-  page: cases
-- title: Quick start
-  id: quickstart
-  page: quickstart
+# 主导航：key 与项目页面的 project 对应，用于高亮当前页面。
+# Main navigation for the homepage and all three emulator project pages.
+- title: Home
+  url: /
+  key: home
+- title: Internet Emulator
+  url: /internet-emulator/
+  key: internet
+- title: Satellite
+  url: /satellite/
+  key: satellite
+- title: Blockchain
+  url: /blockchain/
+  key: blockchain
+- title: SEED Labs
+  url: https://seedsecuritylabs.org/
+  external: true

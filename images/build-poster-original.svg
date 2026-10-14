@@ -1,6 +1,0 @@
----
-layout: null
-theme: original
----
-{% assign theme = site.data.themes | where: 'id', page.theme | first %}
-{% include components/build-poster.svg colors=theme.colors %}

@@ -1,6 +1,12 @@
----
-layout: null
-theme: terracotta
----
-{% assign theme = site.data.themes | where: 'id', page.theme | first %}
-{% include components/build-poster.svg colors=theme.colors %}
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+  <rect width="1280" height="720" fill="#080d15"/>
+  <g stroke="#202c39" opacity=".55"><path d="M0 120h1280M0 240h1280M0 360h1280M0 480h1280M0 600h1280M120 0v720M240 0v720M360 0v720M480 0v720M600 0v720M720 0v720M840 0v720M960 0v720M1080 0v720M1200 0v720"/></g>
+  <text x="640" y="182" text-anchor="middle" fill="#68e2cf" font-family="Consolas,monospace" font-size="13" letter-spacing="5">SEED INTERNET EMULATOR</text>
+  <text x="640" y="266" text-anchor="middle" fill="#f0f3f6" font-family="Segoe UI,Arial,sans-serif" font-weight="600" font-size="48">From code to a working Internet.</text>
+  <text x="640" y="310" text-anchor="middle" fill="#98a5b7" font-family="Segoe UI,Arial,sans-serif" font-size="18">A walkthrough of building and running your first network.</text>
+  <g stroke="#25413e" stroke-width="2"><path d="M425 450h80m-8-7 8 7-8 7M775 450h80m-8-7 8 7-8 7"/></g>
+  <g fill="#101925" stroke="#202c39"><rect x="155" y="392" width="270" height="116" rx="12"/><rect x="505" y="392" width="270" height="116" rx="12"/><rect x="855" y="392" width="270" height="116" rx="12"/></g>
+  <g fill="#68e2cf" font-family="Consolas,monospace" font-size="12" text-anchor="middle"><text x="290" y="428">01 / DESCRIBE</text><text x="640" y="428">02 / COMPILE</text><text x="990" y="428">03 / EXPLORE</text></g>
+  <g fill="#f0f3f6" font-family="Segoe UI,Arial,sans-serif" font-size="21" text-anchor="middle"><text x="290" y="471">Python model</text><text x="640" y="471">Container environment</text><text x="990" y="471">Running Internet</text></g>
+  <text x="640" y="608" text-anchor="middle" fill="#7a909f" font-family="Segoe UI,Arial,sans-serif" font-size="15">Build and run your first emulated Internet.</text>
+</svg>
