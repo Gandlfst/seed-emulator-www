@@ -1,0 +1,233 @@
+---
+layout: null
+---
+/* 1. 默认配色与文字：颜色从 _data/themes.yml 生成。 */
+.is-portal {
+  {% for color in site.data.themes.first.colors %}--{{ color[0] }}: {{ color[1] }};
+  {% endfor %}color-scheme: light;
+  font-size: 16px;
+  font-weight: 500;
+}
+.is-portal * { letter-spacing: 0; }
+.is-portal .container { width: min(1200px, calc(100% - 64px)); }
+.is-portal h1 { font-size: 40px; line-height: 1.18; font-weight: 700; }
+.is-portal h2 { font-size: 24px; line-height: 1.3; }
+.is-portal h3 { font-size: 21px; line-height: 1.35; }
+/* 2. 页首：Logo、导航和手机菜单。 */
+.portal-header { position: relative; height: auto; backdrop-filter: none; border-bottom: 0; }
+.portal-header .header-inner { padding-top: 30px; display: flex; flex-wrap: wrap; gap: 24px; }
+.portal-header-note { margin-left: auto; color: var(--muted); font-size: 12px; }
+.portal-brand { display: inline-flex; align-items: center; gap: 22px; }
+.portal-brand img { width: 175px; height: auto; }
+.portal-brand > span { border-left: 1px solid var(--line); padding-left: 22px; color: var(--muted); font-size: 19px; font-weight: 600; }
+.portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
+.portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 6px; width: auto; }
+.portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
+.portal-header .main-navigation > a:last-child { margin-left: auto; border-right: 0; }
+.portal-header .main-navigation .icon { width: 15px; height: 15px; }
+.portal-header .menu-toggle { margin-left: auto; }
+/* 3. 首页横幅：简介、按钮、装饰插图。 */
+.portal-intro { position: relative; display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; padding: 42px 46px; margin-block: 22px 32px; border-radius: 18px; overflow: hidden; background: linear-gradient(115deg, var(--portal-deep), var(--portal-green-soft)); color: var(--portal-on-dark); }
+.portal-intro-copy { position: relative; z-index: 1; }
+.portal-intro .portal-eyebrow { color: var(--portal-highlight); letter-spacing: .16em; font-size: 10px; margin-bottom: 16px; }
+.is-portal .portal-intro h1 { font-size: clamp(32px, 3.7vw, 49px); letter-spacing: -.035em; }
+.portal-intro-tagline { color: var(--portal-highlight); font-size: 22px; font-weight: 500; margin-top: 8px; }
+.portal-intro-description { max-width: 590px; font-size: 14px; line-height: 1.85; color: var(--portal-muted-on-dark); margin-top: 20px; }
+.portal-intro-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 26px; }
+.portal-intro-actions a { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
+.portal-hero-button { padding: 11px 17px; background: var(--portal-highlight); color: var(--portal-deep); border-radius: 7px; }
+.portal-hero-button:hover { background: var(--portal-highlight-hover); }
+.portal-hero-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.portal-intro-actions .icon { width: 15px; height: 15px; }
+.portal-network-art { width: 100%; height: auto; }
+/* 4. 首页项目网格和卡片。 */
+.portal-home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; align-items: start; }
+.portal-eyebrow { color: var(--accent); font-size: 12px; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+.portal-projects { padding-block: 0 32px; min-width: 0; }
+.portal-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.portal-section-heading > span { color: var(--muted); font-size: 13px; }
+.portal-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.portal-project { display: flex; flex-direction: column; min-width: 0; padding: 12px 12px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 4px 14px var(--portal-shadow); transition: border-color .2s, box-shadow .2s; }
+.portal-project:hover { border-color: var(--line-strong); box-shadow: 0 8px 24px var(--portal-shadow-hover); }
+.portal-project > :not(.portal-project-image) { margin-left: 6px; margin-right: 6px; }
+.portal-project h3 { font-size: 19px; line-height: 1.35; letter-spacing: -.02em; }
+.portal-project-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface); border-radius: 6px; }
+.portal-project-image img { width: 100%; height: 100%; object-fit: contain; }
+.portal-project:nth-child(3) .portal-project-image { background: var(--accent-soft); }
+.portal-project:nth-child(3) .portal-project-image img { width: 64%; height: 64%; }
+.portal-project-placeholder { background: var(--surface); color: var(--accent); flex-direction: column; gap: 12px; }
+.portal-project-placeholder .icon { width: 40px; height: 40px; }
+.portal-project-placeholder > span { font-size: 14px; font-weight: 600; text-align: center; padding-inline: 16px; }
+.portal-project-placeholder small { color: var(--muted); font-size: 12px; }
+.portal-project-category { font-size: 10px; color: var(--accent); margin-block: 20px 8px; font-weight: 600; }
+.portal-project h3 a:hover { color: var(--accent); text-decoration: underline; }
+.portal-project-description { margin-block: 12px 24px; font-size: 13px; line-height: 1.8; color: var(--muted); }
+.portal-project-more { display: inline-flex; align-items: center; align-self: start; gap: 10px; margin-top: auto; color: var(--accent); font-size: 12px; font-weight: 700; padding-block: 4px; }
+/* 5. 首页侧栏：团队与资源。 */
+.portal-sidebar { border-left: 1px solid var(--line); padding-left: 24px; margin-top: 5px; }
+.portal-sidebar .portal-eyebrow { font-size: 10px; line-height: 1.7; margin-bottom: 13px; }
+.is-portal .portal-sidebar h2 { font-size: 16px; line-height: 1.5; }
+.portal-sidebar p { color: var(--muted); font-size: 12px; line-height: 1.85; }
+.portal-sidebar .portal-sidebar-role { font-size: 11px; margin-block: 3px 14px; }
+.portal-sidebar a { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 600; color: var(--accent); }
+.portal-sidebar a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.portal-sidebar-team > a { margin-top: 16px; font-weight: 600; }
+.portal-sidebar .icon { width: 14px; height: 14px; }
+.portal-sidebar-resources { margin-top: 25px; padding-top: 22px; border-top: 1px solid var(--line); }
+.portal-sidebar-resources ul { list-style: none; padding: 0; margin: 13px 0 0; }
+.portal-sidebar-resources a { display: flex; justify-content: space-between; padding-block: 7px; }
+.portal-sidebar .portal-sidebar-note { font-size: 10px; margin-top: 24px; }
+.portal-sidebar-note > span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
+.portal-project-more:hover { text-decoration: underline; }
+.portal-project-more .icon { width: 17px; height: 17px; }
+/* 6. 首页底部联系条。 */
+.portal-contact { display: flex; align-items: center; gap: 30px; border-top: 1px solid var(--line); padding-block: 25px 32px; }
+.portal-contact > div { flex: 1; }
+.portal-contact strong { font-size: 14px; }
+.portal-contact p { font-size: 13px; color: var(--muted); margin-top: 3px; }
+.portal-contact > a { display: inline-flex; gap: 8px; align-items: center; color: var(--accent); font-size: 13px; }
+.portal-contact .icon { width: 15px; height: 15px; }
+/* 7. 公共页尾：简介、链接、团队和语言按钮。 */
+.portal-footer { width: min(1200px, calc(100% - 64px)); margin: 8px auto 28px; border-radius: 14px; background: var(--portal-deep); color: var(--portal-on-dark); }
+.is-portal .portal-footer .container { width: calc(100% - 64px); }
+.portal-footer-main { display: grid; grid-template-columns: 1.15fr 1fr .85fr 1.35fr; gap: 36px; padding-block: 48px 40px; }
+.portal-footer-main > * { min-width: 0; }
+.portal-footer a { display: inline-flex; gap: 7px; align-items: center; color: var(--portal-on-dark); }
+.portal-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.portal-footer a:focus-visible { outline-color: var(--portal-on-dark); }
+.portal-footer .icon { width: 14px; height: 14px; }
+.portal-footer .portal-footer-brand { font-size: 21px; font-weight: 700; line-height: 1.3; }
+.portal-footer p { font-size: 13px; line-height: 1.8; color: var(--portal-muted-on-dark); margin-top: 16px; }
+.portal-footer-motto { display: block; margin-top: 22px; font-size: 12px; color: var(--accent-soft); }
+.is-portal .portal-footer h2 { font-size: 13px; font-weight: 700; line-height: 1.5; margin-bottom: 17px; color: var(--portal-on-dark); }
+.portal-footer-links ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.portal-footer-links a { font-size: 13px; line-height: 1.6; }
+.portal-footer .portal-footer-author { font-size: 15px; font-weight: 600; }
+.portal-footer-role { display: block; margin-top: 3px; font-size: 11px; color: var(--portal-muted-on-dark); }
+.portal-footer-team { scroll-margin-top: 24px; border-radius: 4px; }
+.portal-footer-team:target { outline: 2px solid var(--portal-highlight); outline-offset: 12px; }
+.portal-footer-team:target a[href^="mailto:"] { text-decoration: underline; text-underline-offset: 4px; }
+.portal-footer-team p { margin-block: 12px; }
+.portal-footer-team > a { font-size: 12px; overflow-wrap: anywhere; }
+.portal-footer .portal-footer-team-link { display: flex; width: fit-content; margin-top: 12px; }
+.portal-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid #ffffff30; color: var(--portal-muted-on-dark); font-size: 11px; }
+.portal-footer-back .icon { transform: rotate(-90deg); }
+.portal-footer-actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.portal-footer .language-toggle { color: var(--portal-on-dark); border-color: #ffffff70; }
+.portal-footer .language-toggle:hover { color: var(--portal-on-dark); background: #ffffff12; border-color: var(--portal-on-dark); }
+.portal-footer .language-toggle:focus-visible { outline-color: var(--portal-on-dark); }
+/* 8. 项目详情：面包屑、正文、资料列表和视频。 */
+.portal-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; padding-block: 26px 18px; font-size: 13px; color: var(--muted); }
+.portal-breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+.emulator-intro { padding-block: 10px 0; }
+.emulator-description { color: var(--muted); max-width: 850px; font-size: 17px; line-height: 1.75; margin-top: 20px; }
+.emulator-section-nav { display: flex; flex-wrap: wrap; gap: 14px 30px; border-bottom: 1px solid var(--line); padding-block: 28px 18px; }
+.emulator-section-nav a { font-size: 14px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 7px; }
+.emulator-section-nav a:hover { text-decoration: underline; }
+.emulator-section-nav .icon { width: 15px; height: 15px; }
+.emulator-section { padding-block: 32px 34px; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+.emulator-section:last-child { border-bottom: 0; }
+.emulator-section h2 { margin-bottom: 22px; }
+.emulator-overview { max-width: 850px; font-size: 16px; color: var(--muted); }
+.emulator-overview p + p { margin-top: 15px; }
+.emulator-resource-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.emulator-resource { display: grid; grid-template-columns: 64px minmax(0, 1fr) 100px; align-items: center; gap: 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.emulator-resource-type { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+.emulator-resource h3 { font-size: 16px; font-weight: 600; }
+.emulator-resource p { font-size: 14px; color: var(--muted); margin-top: 5px; }
+.emulator-resource > a { justify-self: end; display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--accent); font-weight: 600; padding: 8px 0; }
+.emulator-resource > a:hover { text-decoration: underline; }
+.emulator-resource .icon { width: 16px; height: 16px; }
+.emulator-resource-pending { justify-self: end; color: var(--muted); font-size: 13px; }
+.emulator-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.is-portal .video-panel { margin: 0; border-radius: 6px; }
+.is-portal .video-panel video { aspect-ratio: 16 / 9; object-fit: contain; }
+.is-portal .panel-bar { font-family: inherit; font-size: 12px; padding: 12px 16px; }
+.is-portal .panel-badge { font-size: 9px; }
+.is-portal .video-panel figcaption { font-size: 12px; padding: 13px 16px; text-align: left; }
+.emulator-video-cover { aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--accent); }
+.emulator-video-cover .icon { width: 32px; height: 32px; }
+.emulator-video-cover > span { font-size: 14px; }
+.emulator-video-link h3 { font-size: 16px; margin-top: 16px; }
+.emulator-video-link p, .emulator-empty { font-size: 14px; color: var(--muted); margin-top: 5px; }
+.emulator-video-link:hover h3 { color: var(--accent); text-decoration: underline; }
+.emulator-empty { border-left: 3px solid var(--line); padding: 12px 20px; background: var(--surface); }
+.is-portal:not(.is-home) main > .container { background: var(--card); padding: 0 32px 20px; margin-top: 22px; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 14px; }
+/* 9. 响应式：中等桌面宽度。 */
+@media (min-width: 961px) and (max-width: 1150px) {
+  .portal-home-grid { grid-template-columns: minmax(0, 1fr) 185px; gap: 20px; }
+  .portal-project-grid { gap: 12px; }
+  .portal-project h3 { font-size: 17px; }
+  .portal-sidebar { padding-left: 18px; }
+}
+/* 10. 响应式：平板和折叠菜单。 */
+@media (max-width: 960px) {
+  .portal-header .header-inner { gap: 18px; padding-block: 18px 0; }
+  .portal-header .menu-toggle { display: none; }
+  .portal-header-note { display: none; }
+  .js-enabled .portal-header .menu-toggle { display: block; }
+  .portal-header .main-navigation { flex-wrap: wrap; }
+  .js-enabled .portal-header .main-navigation:not(.is-open) { display: none; }
+  .portal-header .main-navigation > a { flex: 1 0 33%; padding: 12px; }
+  .portal-header .main-navigation > a:last-child { margin: 0; }
+  .portal-header:has(.main-navigation:not(.is-open)) { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .portal-project-grid { gap: 20px; }
+  .portal-home-grid { grid-template-columns: 1fr; gap: 0; }
+  .portal-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-left: 0; border-top: 1px solid var(--line); padding: 24px 0; }
+  .portal-sidebar-resources { border-top: 0; margin: 0; padding: 0; }
+  .portal-sidebar .portal-sidebar-note { grid-column: 1 / -1; margin: 0; }
+  .portal-intro { padding: 32px; grid-template-columns: 1.7fr 1fr; }
+  .portal-project h3 { font-size: 19px; }
+  .portal-contact { gap: 20px; }
+  .portal-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+}
+/* 11. 响应式：手机单列布局。 */
+@media (max-width: 700px) {
+  .is-portal .container { width: calc(100% - 36px); }
+  .portal-brand { gap: 15px; }
+  .portal-brand img { width: 135px; }
+  .portal-brand > span { padding-left: 15px; font-size: 15px; }
+  .is-portal h1 { font-size: 30px; }
+  .is-portal h2 { font-size: 22px; }
+  .portal-intro { padding: 28px 24px; margin-top: 16px; grid-template-columns: 1fr; }
+  .portal-network-art { position: absolute; right: -85px; top: -35px; width: 270px; opacity: .2; }
+  .portal-intro-tagline { font-size: 18px; }
+  .portal-intro-description { font-size: 13px; }
+  .portal-intro-actions { gap: 18px; }
+  .emulator-description { font-size: 16px; }
+  .portal-section-heading > span { display: none; }
+  .portal-project-grid, .emulator-video-grid { grid-template-columns: 1fr; gap: 32px; }
+  .portal-project { padding: 14px 14px 22px; }
+  .portal-project h3 { font-size: 22px; }
+  .portal-project-category { margin-top: 16px; }
+  .portal-project-description { margin-bottom: 14px; }
+  .portal-contact { flex-wrap: wrap; }
+  .portal-contact > div { flex-basis: 100%; }
+  .portal-footer { width: calc(100% - 24px); margin-bottom: 12px; }
+  .is-portal .portal-footer .container { width: calc(100% - 40px); }
+  .is-portal:not(.is-home) main > .container { padding-inline: 20px; }
+  .portal-footer-main { gap: 30px 20px; padding-block: 36px 30px; }
+  .portal-footer-about, .portal-footer-team { grid-column: 1 / -1; }
+  .portal-footer-bottom { flex-wrap: wrap; gap: 12px 20px; }
+  .portal-footer-bottom > span:first-child { flex-basis: 100%; }
+  .portal-breadcrumb { font-size: 12px; }
+  .emulator-section-nav { gap: 14px 22px; }
+  .emulator-section-nav a { font-size: 13px; }
+  .emulator-resource { grid-template-columns: 42px minmax(0, 1fr); gap: 10px 16px; }
+  .emulator-resource > a, .emulator-resource-pending { grid-column: 2; justify-self: start; }
+  .emulator-resource-type { align-self: start; padding-top: 2px; }
+  .emulator-resource h3 { font-size: 15px; }
+  .emulator-resource p { font-size: 13px; }
+}
+/* 12. 响应式：窄屏 Logo 和按钮。 */
+@media (max-width: 380px) {
+  .portal-brand { gap: 10px; }
+  .portal-brand img { width: 112px; }
+  .portal-brand > span { padding-left: 10px; font-size: 12px; }
+  .portal-header .menu-toggle { padding: 7px; }
+}
+
+/* 13. 404 页面：返回首页入口。 */
+.portal-not-found { padding: 48px 32px !important; }
+.portal-not-found > p { margin-bottom: 20px; }
+.portal-not-found h1 { margin-bottom: 20px; }

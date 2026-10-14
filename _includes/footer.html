@@ -1,33 +1,46 @@
+{% comment %}页尾：站点简介、链接分组、团队信息和语言切换；数据来自 _data/footer.yml。{% endcomment %}
+<footer class="portal-footer">
+  <div class="container portal-footer-main">
+    {% comment %}站点简介和首页入口。{% endcomment %}
+    <div class="portal-footer-about">
+      <a class="portal-footer-brand" href="{{ '/' | relative_url }}">SEED Emulators</a>
+      <p>{{ site.data.footer.description }}</p>
+      <span class="portal-footer-motto">Open source. Open possibilities.</span>
+    </div>
+    {% comment %}链接分组：直接循环，避免为简单列表额外嵌套组件。{% endcomment %}
+    {% for group in site.data.footer.groups %}
+      <nav class="portal-footer-links" aria-label="{{ group.title | escape }}">
+        <h2>{{ group.title }}</h2>
+        <ul>
+          {% for link in group.links %}
+            <li>
+              <a href="{{ link.url | relative_url }}">
+                {{ link.title }}
+                {% if link.external %}{% include icon.html name="external" %}{% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endfor %}
 
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-light-gray w3-center w3-opacity">  
-Copyright &copy; Wenliang Du, wedu@acm.org
+    {% comment %}团队信息：联系按钮跳转到此区域。{% endcomment %}
+    <section class="portal-footer-team" id="team-contact" tabindex="-1" aria-labelledby="footer-team-title">
+      <h2 id="footer-team-title">People behind SEED</h2>
+      <a class="portal-footer-author" href="{{ site.data.footer.author.url }}">{{ site.data.footer.author.name }} {% include icon.html name="external" %}</a>
+      <span class="portal-footer-role">{{ site.data.footer.author.role }}</span>
+      <p>{{ site.data.footer.author.description }}</p>
+      <a href="mailto:{{ site.data.footer.author.email }}">{{ site.data.footer.author.email }}</a>
+      <a class="portal-footer-team-link" href="{{ site.data.footer.author.url }}">Meet the team {% include icon.html name="arrow" %}</a>
+    </section>
+  </div>
+  {% comment %}底栏：署名、语言切换和返回顶部。{% endcomment %}
+  <div class="container portal-footer-bottom">
+    <span>SEED Emulators &middot; Research &amp; Education</span>
+    <span>Wenliang Du &amp; contributors</span>
+    <div class="portal-footer-actions">
+      {% include language-toggle.html %}
+      <a class="portal-footer-back" href="#main">Back to top {% include icon.html name="arrow" %}</a>
+    </div>
+  </div>
 </footer>
-
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// Used to toggle the menu on medium screens when clicking on the menu button
-function myMediumFunction() {
-  var x = document.getElementById("navDemoMedium");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-</script>
-
-</body>
-</html>
-

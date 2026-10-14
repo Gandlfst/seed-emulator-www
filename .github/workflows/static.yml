@@ -1,0 +1,63 @@
+name: Build and deploy Jekyll to Pages
+
+on:
+  # 合并到 main 后发布；面向 main 的 PR 只运行构建检查。
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # 所有触发都检查构建和站内链接，不需要部署权限。
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby and install dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build the Jekyll site
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check pages, links and assets
+        run: node scripts/check-site.cjs
+
+      - name: Upload the built site
+        if: github.repository == 'seed-labs/seedemu-website' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  # 仅正式仓库的 main 可以发布；其他分支手动运行也只检查构建。
+  deploy:
+    if: github.repository == 'seed-labs/seedemu-website' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy the built site
+        id: deployment
+        uses: actions/deploy-pages@v4

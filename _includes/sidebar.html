@@ -1,0 +1,29 @@
+{% comment %}首页侧栏：团队简介和资源入口，与页尾共用 _data/footer.yml。{% endcomment %}
+<aside class="portal-sidebar" aria-label="Project information">
+  {% comment %}团队简介与联系方式入口。{% endcomment %}
+  <section class="portal-sidebar-team">
+    <p class="portal-eyebrow">The people behind it</p>
+    <h2>{{ site.data.footer.author.name }}</h2>
+    <p class="portal-sidebar-role">{{ site.data.footer.author.role }}</p>
+    <p>Built by educators, researchers, and an open-source community.</p>
+    <a href="#team-contact">Contact the team {% include icon.html name="arrow" %}</a>
+  </section>
+  {% comment %}资源列表：与页尾共用同一份链接数据。{% endcomment %}
+  <section class="portal-sidebar-resources" aria-labelledby="sidebar-resources-title">
+    <h2 id="sidebar-resources-title">Useful resources</h2>
+    {% for group in site.data.footer.groups %}
+      {% if group.title == 'Resources' %}
+        <ul>
+          {% for link in group.links %}
+            <li>
+              <a href="{{ link.url | relative_url }}">
+                {{ link.title }} {% include icon.html name="external" %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </section>
+  <p class="portal-sidebar-note"><span aria-hidden="true"></span>Open source. Open possibilities.</p>
+</aside>

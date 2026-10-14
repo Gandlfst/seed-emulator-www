@@ -1,89 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-82GQR8X1KJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+{% comment %}页首：Logo、主导航和配色按钮；导航内容来自 _data/navigation.yml。{% endcomment %}
+<header class="site-header portal-header">
+  <div class="container header-inner">
+    {% comment %}品牌入口：返回首页。{% endcomment %}
+    <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
+      <img src="{{ '/images/seed-labs-logo.png' | relative_url }}" alt="SEED Labs" width="150" height="46">
+      <span>Emulators</span>
+    </a>
+    <span class="portal-header-note">A playground for research &amp; discovery</span>
+    {% comment %}手机菜单：由 js/site.js 控制展开状态。{% endcomment %}
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+      {% include icon.html name="menu" %}
+    </button>
 
-  gtag('config', 'G-82GQR8X1KJ');
-</script>
-
-<title>SEED Emulator</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/assets/css/syntax.css" type="text/css" />
-
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "ariel", sans-serif}
-.w3-bar,h1,button {font-family: "ariel", sans-serif}
-
-.booktitle { font-family: 'ariel', sans-serif; }
-
-.country { color:blue; font-weight:bold; }
-.state   { color:blue; font-weight:bold; }
-img {
-       max-width: 100%; /* Image will not exceed its natural width or 100% of its container */
-       height: auto;    /* Maintains the image's aspect ratio */
-    }
-</style>
-
-</head>
-
-<body class="w3-gray">
-
-<!-- Navbar -->
-<div class="w3-top">
-  <!-- Navbar on large screens -->
-  <div class="w3-bar w3-card w3-left-align w3-large w3-text-white w3-blue-gray">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" 
-          href="javascript:void(0);" onclick="myFunction()" 
-          title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a class="w3-bar-item w3-button w3-hide-small w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" 
-          href="javascript:void(0);" onclick="myMediumFunction()" 
-          title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-
-    <!-- menu items (some of them will be hidden for medium/small screens -->
-    <a href="{{ site.baseurl }}/index.html" 
-       class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-    <a href="{{ site.baseurl }}/internet/index.html"
-       class="w3-bar-item w3-button w3-padding-large w3-hover-white">Internet</a>
-    <a href="{{ site.baseurl }}/blockchain/index.html" 
-       class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Blockchain</a>
-    <a href="{{ site.baseurl }}/yom/index.html" 
-       class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-padding-large w3-hover-white">Yesterday-Once-More</a>
-    <a href="{{ site.baseurl }}/manuals/index.html" 
-       class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-padding-large w3-hover-white">Manuals</a>
-
-    <div class="w3-dropdown-hover w3-hide-medium w3-hide-small">
-       <button class="w3-button w3-padding-large w3-hover-white">More</button>
-       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-         <a href="{{ site.baseurl }}/talks.html" class="w3-bar-item w3-button">Talks</a>
-         <a href="{{ site.baseurl }}/contact.html" class="w3-bar-item w3-button">Contact</a>
-       </div>
+    {% comment %}导航与配色：导航读取 navigation.yml，配色读取 themes.yml。{% endcomment %}
+    <div class="portal-navigation-bar">
+      <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+        {% for link in site.data.navigation %}
+          <a href="{{ link.url | relative_url }}"{% if link.key == 'home' and page.home %} aria-current="page"{% elsif link.key and link.key == page.project %} aria-current="page"{% endif %}>
+            {{ link.title }}
+            {% if link.external %}{% include icon.html name="external" %}{% endif %}
+          </a>
+        {% endfor %}
+      </nav>
+      {% include theme-picker.html %}
     </div>
   </div>
-
-  <!-- Navbar on medium screens -->
-  <div id="navDemoMedium" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-small w3-large">
-    <a href="{{ site.baseurl }}/index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="{{ site.baseurl }}/item1.html" class="w3-bar-item w3-button">Item 1</a>
-    <a href="{{ site.baseurl }}/item2.html" class="w3-bar-item w3-button">Item 2</a>
-    <a href="{{ site.baseurl }}/chinese/index.html" class="w3-bar-item w3-button">Chinese</a>
-    <a href="{{ site.baseurl }}/author.html" class="w3-bar-item w3-button">Contact</a>
-  </div>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="{{ site.baseurl }}/index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="{{ site.baseurl }}/item1.html" class="w3-bar-item w3-button">Item 1</a>
-    <a href="{{ site.baseurl }}/item2.html" class="w3-bar-item w3-button">Item 2</a>
-    <a href="{{ site.baseurl }}/chinese/index.html" class="w3-bar-item w3-button">Chinese</a>
-    <a href="{{ site.baseurl }}/author.html" class="w3-bar-item w3-button">Contact</a>
-  </div>
-</div>
-
+</header>

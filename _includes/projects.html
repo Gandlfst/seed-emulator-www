@@ -1,0 +1,16 @@
+{% comment %}首页项目区：循环读取 _data/home.yml 的 projects，每条数据生成一张卡片。{% endcomment %}
+<section class="portal-projects" aria-labelledby="projects-title">
+  <div class="portal-section-heading"><h2 id="projects-title">Our projects</h2><span>Explore an emulator</span></div>
+  <div class="portal-project-grid">
+    {% for project in site.data.home.projects %}
+      {% include project-card.html
+        title=project.title
+        url=project.url
+        image=project.image
+        image_alt=project.image_alt
+        category=project.category
+        description=project.description
+      %}
+    {% endfor %}
+  </div>
+</section>
