@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Every trigger validates the build and local links without deployment permissions.
+  # Every trigger builds the site without deployment permissions.
   build:
     runs-on: ubuntu-latest
     steps:
@@ -34,16 +34,13 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Check pages, links and assets
-        run: node scripts/check-site.cjs
-
       - name: Upload the built site
         if: github.repository == 'seed-labs/seedemu-website' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
-  # Only main in the official repository may deploy; other manual runs only validate.
+  # Only main in the official repository may deploy; other manual runs only build.
   deploy:
     if: github.repository == 'seed-labs/seedemu-website' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build

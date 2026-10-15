@@ -23,6 +23,9 @@
         <ul class="emulator-resource-list">
           {% for resource in site.data.examples.resources %}
             {% assign source_url = site.data.examples.repository_url | append: '/' | append: resource.view | append: '/' | append: site.data.examples.revision | append: '/' | append: page.source_path | append: resource.path %}
+            {% if resource.type == 'GUIDE' %}
+              {% assign source_url = page.url | append: 'readme/' %}
+            {% endif %}
             {% include resource.html resource=resource url=source_url %}
           {% endfor %}
         </ul>
