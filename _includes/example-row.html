@@ -1,0 +1,8 @@
+{% comment %}Reusable catalog row: a diagram tile, title, description, and local lesson link.{% endcomment %}
+<li class="example-list-item" data-example-row data-example-category="{{ include.category.title | escape }}">
+  <a class="example-row" href="{{ include.lesson.url | relative_url }}">
+    <span class="example-tile" aria-hidden="true">{% include icon.html name=include.category.icon %}<span>{{ include.lesson.code }}</span></span>
+    <span class="example-row-copy"><span class="example-row-title">{{ include.lesson.title }}</span><span class="example-row-description">{{ include.lesson.description }}</span></span>
+    <span class="example-row-arrow" aria-hidden="true">{% include icon.html name="arrow" %}</span>
+  </a>
+</li>

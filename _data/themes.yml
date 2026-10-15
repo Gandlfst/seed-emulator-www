@@ -1,4 +1,4 @@
-# 配色的唯一数据来源：名称、色点和 CSS 颜色变量。
+# Single source of truth for theme names, swatches, and CSS variables.
 # Portal palettes. Every color is emitted as a CSS custom property.
 - id: default
   name: Default

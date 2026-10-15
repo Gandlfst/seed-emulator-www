@@ -1,4 +1,4 @@
-{% comment %}首屏配色初始化：在 CSS 加载前恢复浏览器保存的主题，避免闪烁。{% endcomment %}
+{% comment %}Restore the saved theme before loading CSS to prevent a flash of the default palette.{% endcomment %}
 <script id="portal-theme-config" type="application/json">[{% for theme in site.data.themes %}{"id":{{ theme.id | jsonify }},"background":{{ theme.colors.bg | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 <script>
   (() => {

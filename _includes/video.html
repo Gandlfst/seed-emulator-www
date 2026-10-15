@@ -1,13 +1,13 @@
-{% comment %}本地视频播放器：支持 MP4、可选 WebM、封面、说明和播放失败提示。{% endcomment %}
+{% comment %}Local video player with optional WebM, poster, caption, and playback error feedback.{% endcomment %}
 <figure class="video-panel">
   <div class="panel-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>{{ include.label }}</span><span class="panel-badge">DEMO</span></div>
-  {% comment %}浏览器原生播放器：优先 WebM，兼容 MP4。{% endcomment %}
+  {% comment %}Native browser player: prefer WebM with MP4 as the fallback.{% endcomment %}
   <video controls muted playsinline preload="none"{% if include.poster %} poster="{{ include.poster | relative_url }}"{% endif %} aria-label="{{ include.label | escape }}">
     {% if include.webm %}<source src="{{ include.webm | relative_url }}" type="video/webm">{% endif %}
     <source src="{{ include.src | relative_url }}" type="video/mp4">
     Your browser does not support embedded video. <a href="{{ include.src | relative_url }}">Download the demo</a>.
   </video>
-  {% comment %}错误反馈：无法播放时仍可直接打开视频文件。{% endcomment %}
+  {% comment %}Provide a direct file link if embedded playback fails.{% endcomment %}
   <p class="video-error" hidden role="status">Playback is unavailable in this browser. <a href="{{ include.src | relative_url }}">Open the video</a>.</p>
   <figcaption>{{ include.caption }}</figcaption>
 </figure>

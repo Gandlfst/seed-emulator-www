@@ -1,0 +1,13 @@
+{% comment %}Reusable member entry: name, optional GitHub username, and optional affiliation.{% endcomment %}
+<li class="team-member">
+  <span class="team-member-initial" aria-hidden="true">{{ include.member.name | default: include.member.github | slice: 0 | upcase }}</span>
+  <div>
+    <p class="team-member-name">
+      {% if include.member.name %}<strong>{{ include.member.name | escape }}</strong>{% endif %}
+      {% if include.member.github %}
+        <a href="https://github.com/{{ include.member.github | escape }}" aria-label="{{ include.member.name | default: include.member.github | escape }} on GitHub">{% if include.member.name %}({% endif %}{{ include.member.github | escape }}{% if include.member.name %}){% endif %}</a>
+      {% endif %}
+    </p>
+    {% if include.member.affiliation %}<p class="team-member-affiliation">{{ include.member.affiliation | escape }}</p>{% endif %}
+  </div>
+</li>

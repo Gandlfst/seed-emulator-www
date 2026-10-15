@@ -1,4 +1,4 @@
-/* 基础样式：页面重置、共享排版与可访问性。布局样式在 main.css。 */
+/* Base styles: reset, shared typography, and accessibility. Layouts live in main.css. */
 :root { --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
@@ -19,18 +19,14 @@ img, video { max-width: 100%; display: block; }
 .skip-link { position: fixed; z-index: 200; top: 12px; left: 16px; padding: 10px 18px; background: var(--accent); color: var(--bg); transform: translateY(-150%); }
 .skip-link:focus { transform: translateY(0); }
 
-/* 页首基础结构；具体配色、间距与手机断点由 main.css 和 themes.css 控制。 */
+/* Header structure; main.css and themes.css provide colors, spacing, and breakpoints. */
 .site-header { z-index: 50; background: var(--header-bg); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; }
 .main-navigation { display: flex; align-items: center; }
 .main-navigation > a { transition: color .2s; white-space: nowrap; }
 .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 9px; }
 
-/* 页尾语言切换按钮。 */
-.language-toggle { padding: 4px 9px; border: 1px solid var(--line-strong); border-radius: 5px; background: transparent; color: var(--muted); font-size: 11px; line-height: 1.5; }
-.language-toggle:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
-
-/* 本地视频：标题栏、原生播放器、错误提示和说明。 */
+/* Local video: title bar, native player, error feedback, and caption. */
 .video-panel { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); margin-top: 36px; }
 .panel-bar { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 14px 20px; font: 9px var(--mono); color: var(--muted); border-bottom: 1px solid var(--line); }
 .window-dots { display: flex; gap: 5px; }.window-dots i { display: block; width: 6px; height: 6px; background: var(--muted); border-radius: 50%; }.window-dots i:first-child { background: var(--accent); }.window-dots i:nth-child(2) { background: var(--line-strong); }.window-dots i:last-child { background: var(--line-strong); }
@@ -40,7 +36,7 @@ img, video { max-width: 100%; display: block; }
 .video-error { padding: 14px 20px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); }
 .video-error a { color: var(--accent); text-decoration: underline; }
 
-/* 小屏适配和减少动态效果的系统偏好。 */
+/* Small-screen adjustments and reduced-motion preferences. */
 @media (max-width: 960px) { .header-inner { min-height: 65px; } }
 @media (max-width: 680px) { .window-dots { gap: 3px; } .window-dots i { width: 4px; height: 4px; } }
 @media (prefers-reduced-motion: reduce) {

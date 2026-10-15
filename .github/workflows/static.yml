@@ -1,7 +1,7 @@
 name: Build and deploy Jekyll to Pages
 
 on:
-  # 合并到 main 后发布；面向 main 的 PR 只运行构建检查。
+  # Publish after merging to main; pull requests targeting main only run build checks.
   push:
     branches: ["main"]
   pull_request:
@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # 所有触发都检查构建和站内链接，不需要部署权限。
+  # Every trigger validates the build and local links without deployment permissions.
   build:
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +43,7 @@ jobs:
         with:
           path: _site
 
-  # 仅正式仓库的 main 可以发布；其他分支手动运行也只检查构建。
+  # Only main in the official repository may deploy; other manual runs only validate.
   deploy:
     if: github.repository == 'seed-labs/seedemu-website' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
