@@ -1,4 +1,14 @@
 {% comment %}The only shared layout: renders the page shell without nested layouts.{% endcomment %}
+{% assign page_title = page.title %}
+{% assign page_description = page.description %}
+{% if page.example_readme %}
+  {% comment %}Match the copied README to its lesson by filename; reuse lesson metadata.{% endcomment %}
+  {% assign readme_slug = page.path | split: '/' | last | remove: '.md' %}
+  {% assign lesson_url = '/examples/' | append: readme_slug | append: '/' %}
+  {% assign lesson = site.examples | where: 'url', lesson_url | first %}
+  {% assign page_title = lesson.title | append: ' README' %}
+  {% assign page_description = lesson.description %}
+{% endif %}
 <!doctype html>
 <html lang="en">
   <head>{% include head.html %}</head>
@@ -11,6 +21,8 @@
     <main id="main">
       {% if page.project %}
         {% include project-page.html %}
+      {% elsif page.example_readme %}
+        {% include example-readme.html %}
       {% elsif page.example %}
         {% include example-course.html %}
       {% else %}

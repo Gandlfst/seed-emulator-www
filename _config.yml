@@ -17,13 +17,26 @@ collections:
   examples:
     output: true
     permalink: /examples/:name/
+  # Imported upstream documents share one reader and remain separate from authored lessons.
+  example_readmes:
+    output: true
+    permalink: /examples/:name/readme/
 
-# Pages explicitly set layout: default; generated assets use layout: null.
-# Avoid global layout defaults so assets are not wrapped in page HTML.
+# Shared settings for imported READMEs; each file only needs layout: default.
+defaults:
+  - scope:
+      path: ""
+      type: example_readmes
+    values:
+      example_readme: true
+      examples: true
+      nav_key: internet
+      render_with_liquid: false
 
 # Development files excluded from publishing; Jekyll handles its internal directories.
 exclude:
   - .bundle
+  - .cache
   - .github
   - .gitignore
   - AGENTS.md

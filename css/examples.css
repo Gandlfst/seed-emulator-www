@@ -62,6 +62,17 @@
 .lesson-feedback a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .lesson-feedback .icon { width: 14px; height: 14px; }
 .lesson-return { display: inline-block; color: var(--accent); margin-top: 26px; font-size: 13px; font-weight: 650; }
+/* Imported READMEs reuse lesson typography with room for upstream tables and images. */
+.readme-content { max-width: 1000px; margin: 0 auto; }
+.readme-toolbar { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; padding-bottom: 22px; border-bottom: 1px solid var(--line); color: var(--accent); font-size: 13px; }
+.readme-toolbar .icon { width: 14px; height: 14px; }
+.readme-prose h1 { margin: 30px 0 20px; font-size: clamp(26px, 4vw, 38px); line-height: 1.25; }
+.readme-prose h3, .readme-prose h4 { margin-top: 28px; }
+.readme-prose img { display: block; max-width: 100%; height: auto; margin: 24px auto; }
+.readme-prose table { display: block; overflow-x: auto; border-collapse: collapse; margin: 24px 0; }
+.readme-prose th, .readme-prose td { padding: 10px 14px; border: 1px solid var(--line); text-align: left; }
+.readme-prose th { background: var(--surface); }
+.readme-content > .lesson-source-version { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 /* Compact layouts retain all navigation and prevent narrow-screen overflow. */
 @media (max-width: 960px) {
   .examples-workspace { grid-template-columns: 1fr; gap: 26px; }
