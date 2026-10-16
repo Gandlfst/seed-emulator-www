@@ -194,13 +194,12 @@ CSS clips unused transparent space without modifying the source image.
 3. Add navigation in `_data/navigation.yml`; its `key` must match `project`.
 4. Add footer links in `_data/footer.yml` as needed.
 
-Project resources are grouped in `resources.presentation`, `resources.example`,
-and `resources.paper`, in that display order. The shared
-`_includes/project-resources.html` renders three clickable category rows.
-Example opens the existing example catalog. Presentation and Paper open local
-category pages rendered by `_includes/resource-page.html`; these remain empty
-until files are added to the parent project's lists. Add entries with `type`,
-`title`, `description`, and `url` when ready; each entry reuses `resource.html`.
+`_includes/project-resources.html` renders Presentation, Example, and Paper in
+that order. Presentation opens a project-specific page populated from the
+project's `resources.presentation` list. Example opens the existing example
+catalog. All three projects link Paper to the same `/papers/` page; edit its
+publications in `_data/papers.yml`. Add entries with `type`, `title`,
+`description`, and `url`; each entry reuses `resource.html`.
 
 Each video has `title` and `description`, plus either a local `src`
 (with optional `webm` and `poster`) or an external `url`.

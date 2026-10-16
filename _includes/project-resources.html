@@ -5,6 +5,8 @@
     {% assign group_key = group_title | downcase %}
     {% if group_key == 'example' %}
       {% assign group_url = '/examples/' %}
+    {% elsif group_key == 'paper' %}
+      {% assign group_url = '/papers/' %}
     {% else %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
     {% endif %}
