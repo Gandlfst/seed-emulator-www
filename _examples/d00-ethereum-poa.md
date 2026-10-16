@@ -13,22 +13,3 @@ source_path: "examples/blockchain/D00_ethereum_poa"
 ## Overview
 
 Separate blockchain configuration from the physical network by creating virtual Ethereum nodes and binding them to hosts.
-
-## Before you start
-
-{% include example-setup.html %}
-
-## Walkthrough
-
-1. Create the Ethereum service and select the PoA consensus mechanism.
-2. Review account balances in the genesis configuration and node-specific settings.
-3. Follow the bindings and Docker compilation in the source; use the README for the complete launch procedure.
-
-```python
-eth = EthereumService()
-blockchain = eth.createBlockchain(chainName="POA", consensus=ConsensusMechanism.POA)
-```
-
-## Check your understanding
-
-Inspect the configured accounts and node roles. Locate the faucet and utility services that later application examples reuse.

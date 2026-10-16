@@ -11,9 +11,6 @@ groups:
         url: /blockchain/
   - title: Resources
     links:
-      - title: SEED Labs
-        url: https://seedsecuritylabs.org/
-        external: true
       - title: Documentation
         url: https://github.com/seed-labs/seed-emulator/tree/master/docs
         external: true
@@ -27,5 +24,4 @@ author:
   name: Prof. Wenliang Du
   role: SEED Project Lead
   description: The SEED project brings hands-on learning to computer and information security, with contributions from students and the wider community.
-  url: https://seedsecuritylabs.org/about_us.html
   email: wedu@acm.org

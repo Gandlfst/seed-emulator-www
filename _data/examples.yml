@@ -2,16 +2,6 @@
 revision: 61acdf4c9699b25b06843ec4aad747108b05924e
 repository_url: https://github.com/seed-labs/seed-emulator
 readme_url: https://github.com/seed-labs/seed-emulator/blob/61acdf4c9699b25b06843ec4aad747108b05924e/README.md
-# Lessons may override chapters in front matter when their sections differ.
-chapters:
-- id: overview
-  title: Overview
-- id: before-you-start
-  title: Before you start
-- id: walkthrough
-  title: Walkthrough
-- id: check-your-understanding
-  title: Check your understanding
 # Resource URLs are assembled from the repository, revision, and lesson source_path.
 resources:
 - type: GUIDE

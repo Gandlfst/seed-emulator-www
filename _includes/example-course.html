@@ -1,24 +1,14 @@
-{% comment %}Course-style lesson: sticky chapter navigation, Markdown article, and source materials.{% endcomment %}
+{% comment %}Lesson page: full-width Markdown article and shared source materials.{% endcomment %}
 {% assign category = site.data.examples.categories | where: 'id', page.category_id | first %}
-{% assign chapters = page.chapters | default: site.data.examples.chapters %}
 <div class="container examples-page example-course">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.code }}</span></nav>
-  <div class="examples-workspace">
-    <aside class="examples-sidebar lesson-sidebar" aria-label="Lesson navigation">
-      <a class="lesson-back" href="{{ '/examples/' | relative_url }}#{{ page.category_id }}">← {{ category.title }}</a>
-      <p class="portal-eyebrow">In this example</p>
-      <nav>
-        {% for chapter in chapters %}<a href="#{{ chapter.id }}"><span class="lesson-chapter-number">{{ forloop.index | prepend: '0' }}</span><span>{{ chapter.title }}</span></a>{% endfor %}
-        <a href="#source-materials"><span class="lesson-chapter-number">{{ chapters.size | plus: 1 | prepend: '0' }}</span><span>Tasks &amp; resources</span></a>
-        <a href="#feedback"><span class="lesson-chapter-number">{{ chapters.size | plus: 2 | prepend: '0' }}</span><span>Feedback &amp; help</span></a>
-      </nav>
-    </aside>
+  <div class="lesson-workspace">
     <article class="lesson-content">
       <div class="lesson-heading"><p class="portal-eyebrow">{{ category.title }} <span aria-hidden="true">/</span> {{ page.code }}</p><h1>{{ page.title }}</h1><p>{{ page.description }}</p></div>
       {% comment %}Lesson text is maintained in its own flat Markdown file in _examples/.{% endcomment %}
       <div class="lesson-prose">{{ content }}</div>
       <section class="lesson-sources" id="source-materials" aria-labelledby="source-materials-title">
-        <h2 id="source-materials-title">Tasks &amp; resources</h2>
+        <h2 id="source-materials-title">Tasks &amp; codes</h2>
         {% comment %}Use the same resource rows as project pages; build pinned URLs from lesson metadata.{% endcomment %}
         <ul class="emulator-resource-list">
           {% for resource in site.data.examples.resources %}

@@ -25,7 +25,7 @@ layout: null
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
 .portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
-.portal-header .main-navigation > a:last-child { margin-left: auto; border-right: 0; }
+.portal-header .main-navigation > a:last-child { margin-left: 0; border-right: 0; }
 .portal-header .main-navigation .icon { width: 15px; height: 15px; }
 .portal-header .menu-toggle { margin-left: auto; }
 /* 3. Homepage hero: introduction, actions, and decorative illustration. */
@@ -55,8 +55,6 @@ layout: null
 .portal-project h3 { font-size: 19px; line-height: 1.35; letter-spacing: -.02em; }
 .portal-project-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface); border-radius: 6px; }
 .portal-project-image img { width: 100%; height: 100%; object-fit: contain; }
-.portal-project:nth-child(3) .portal-project-image { background: var(--accent-soft); }
-.portal-project:nth-child(3) .portal-project-image img { width: 64%; height: 64%; }
 .portal-project-placeholder { background: var(--surface); color: var(--accent); flex-direction: column; gap: 12px; }
 .portal-project-placeholder .icon { width: 40px; height: 40px; }
 .portal-project-placeholder > span { font-size: 14px; font-weight: 600; text-align: center; padding-inline: 16px; }
@@ -133,6 +131,7 @@ layout: null
 .emulator-resource { display: grid; grid-template-columns: 64px minmax(0, 1fr) 100px; align-items: center; gap: 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
 .emulator-resource-type { font-family: var(--mono); font-size: 12px; color: var(--accent); }
 .emulator-resource h3 { font-size: 16px; font-weight: 600; }
+.emulator-resource h3 a:hover { color: var(--accent); text-decoration: underline; }
 .emulator-resource p { font-size: 14px; color: var(--muted); margin-top: 5px; }
 .emulator-resource > a { justify-self: end; display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--accent); font-weight: 600; padding: 8px 0; }
 .emulator-resource > a:hover { text-decoration: underline; }

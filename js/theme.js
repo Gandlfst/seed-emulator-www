@@ -3,11 +3,12 @@
   'use strict';
   const picker = document.querySelector('[data-portal-palette]');
   if (!picker) return;
-  const themes = JSON.parse(document.getElementById('portal-theme-config').textContent);
+  const config = document.getElementById('portal-theme-config');
+  const themes = JSON.parse(config.textContent);
   const buttons = [...picker.querySelectorAll('[data-portal-theme]')];
   const storageKey = 'seed-portal-theme';
   const apply = id => {
-    const theme = themes.find(item => item.id === id) || themes[0];
+    const theme = themes.find(item => item.id === id) || themes.find(item => item.id === config.dataset.defaultTheme) || themes[0];
     document.documentElement.dataset.portalTheme = theme.id;
     document.querySelector('meta[name="theme-color"]').content = theme.background;
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.portalTheme === theme.id)));

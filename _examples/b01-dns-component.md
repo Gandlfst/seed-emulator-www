@@ -13,22 +13,3 @@ source_path: "examples/internet/B01_dns_component"
 ## Overview
 
 Build virtual DNS services independently of a physical topology. This example produces dns_component.bin; it does not launch a standalone network.
-
-## Before you start
-
-{% include example-setup.html %}
-
-## Walkthrough
-
-1. Review the root, COM, NET, EDU, and domain-specific nameservers.
-2. Follow the zone definitions and the records added to each domain.
-3. Generate the component, then use the upstream B02 deployment example to bind it into a runnable emulation.
-
-```python
-dns.install('a-root-server').addZone('.').setMaster()
-dns.install('b-root-server').addZone('.')
-```
-
-## Check your understanding
-
-Check the zone hierarchy and master-server assignment. DNS queries become meaningful only after the component has been deployed on physical hosts.

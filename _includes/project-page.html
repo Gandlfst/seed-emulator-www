@@ -7,33 +7,21 @@
     <span aria-current="page">{{ page.title }}</span>
   </nav>
 
-  {% comment %}Section 2: title, description, and section navigation from page front matter.{% endcomment %}
+  {% comment %}Section 2: title and description from page front matter.{% endcomment %}
   <section class="emulator-intro" aria-labelledby="emulator-title">
     <p class="portal-eyebrow">{{ page.category }}</p>
     <h1 id="emulator-title">{{ page.title }}</h1>
     <p class="emulator-description">{{ page.description }}</p>
-    <nav class="emulator-section-nav" aria-label="On this page">
-      <a href="#overview">Overview</a>
-      <a href="#resources">Presentations &amp; Documents</a>
-      <a href="#videos">Videos</a>
-      {% if page.repository %}
-        <a href="{{ page.repository }}">Source code {% include icon.html name="external" %}</a>
-      {% endif %}
-    </nav>
   </section>
   {% comment %}Section 3: overview from the content below the page's front matter.{% endcomment %}
   <section class="emulator-section" id="overview" aria-labelledby="overview-title">
     <h2 id="overview-title">Overview</h2>
     <div class="emulator-overview">{{ content }}</div>
   </section>
-  {% comment %}Section 4: resources rendered with resource.html; missing URLs show Coming soon.{% endcomment %}
+  {% comment %}Section 4: shared Presentation, Example, and Paper rows.{% endcomment %}
   <section class="emulator-section" id="resources" aria-labelledby="resources-title">
     <h2 id="resources-title">Presentations &amp; Documents</h2>
-    <ul class="emulator-resource-list">
-      {% for resource in page.resources %}
-        {% include resource.html resource=resource %}
-      {% endfor %}
-    </ul>
+    {% include project-resources.html %}
   </section>
   {% comment %}Section 5: local players or external video links; empty lists show a placeholder.{% endcomment %}
   <section class="emulator-section" id="videos" aria-labelledby="videos-title">
