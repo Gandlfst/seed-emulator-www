@@ -1,0 +1,10 @@
+# Shared publications for all three emulator projects. Keep newer papers first.
+# SIGCSE links to the official conference details page; no PDF is linked there.
+- type: SIGCSE 2027
+  title: "Internet in a Box: Scaling Hands-On Education with the SEED Emulator"
+  description: "Wenliang Du, Chunling Yang, and Qishu Jin. ACM SIGCSE Technical Symposium, February 17–20, 2027, Sacramento, California, USA."
+  url: https://2027.sigcse-ts.acm.org/details/sigcse-ts-2027-Papers-1/52/Internet-in-a-Box-Scaling-Hands-On-Education-with-the-SEED-Emulator
+- type: HotNets 2022
+  title: "SEED Emulator: An Internet Emulator for Research and Education"
+  description: "Wenliang Du, Honghao Zeng, and Kyungrok Won. 21st ACM Workshop on Hot Topics in Networks, November 14–15, 2022, Austin, Texas, USA."
+  url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf

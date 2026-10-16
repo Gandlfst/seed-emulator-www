@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+# Using a Pre-built Component
+
+In Example `A01-transit-as`, we have saved the emulator in
+a file as a component. In this example, we demonstrate how 
+we can load it into another emulation. 
+
+## Standard Arguments
+
+```sh
+python examples/basic/A05_components/components.py amd
+python examples/basic/A05_components/components.py --platform amd --output examples/basic/A05_components/output
+python examples/basic/A05_components/components.py --dumpfile examples/basic/A05_components/components.bin
+```
+
+Supported arguments:
+
+- `amd|arm`: optional legacy platform argument.
+- `--platform amd|arm`: named platform argument.
+- `--output PATH`: output folder for Docker compiler results.
+- `--dumpfile PATH`: save a serialized emulator instead of compiling Docker output.
+- `--component-file PATH`: location for the temporary component loaded from A01.
+- `--override` / `--no-override`: control whether existing output is replaced.
+- `--skip-render`: compile without calling `emu.render()` first.
+
+
+## Loading a Pre-Built Component
+
+We can load a pre-built component. All the layers of the component 
+will be loaded. If the current emulator already has layers, 
+merging will be conducted if needed.
+
+
+```python
+emu = Emulator()
+emu.load('../01-transit-as/base_component.bin')
+```
+
+## Getting the Layer Reference
+
+If we want to make changes to any layer, we first need to get 
+the layer object. In this example, we need to make changes
+to the `base` and `ebgp` layers, so we get their references.
+
+```
+base: Base       = emu.getLayer('Base')
+ebgp: Ebgp       = emu.getLayer('Ebgp')
+```
+
+## Adding Host to an Existing Autonomous System
+
+We can also modify an existing AS from the component. We just need to 
+get the reference of this AS first, and then use the standard API
+to make changes. In this example, we have a new host to `AS-151`.
+
+```python
+as151 = base.getAutonomousSystem(151)
+as151.createHost('web-2').joinNetwork('net0')
+```
+
+## Adding a New Autonomous System
+
+Once we get the `base` layer, we can add new elements to the layer,
+such as a new autonomous system, a new internet exchange, etc. 
+The code to do this is the same as that in building an emulation
+from scratch. In this example, we created a new autonomous system `AS-154`,
+and then peer it with the other two ASes from the component at the
+internet exchanges `ix100` and `ix101, which are also from the component.
+
+```python
+ebgp.addPrivatePeering(100, 151, 153, abRelationship = PeerRelationship.Provider)
+ebgp.addPrivatePeering(101, 152, 153, abRelationship = PeerRelationship.Peer)
+```
+
+## Adding a New Internet Exchange 
+
+In the example, we also show how to create an new internet exchange, and then 
+peer two ASes in this IX. We do need to create a new BGP router for an AS
+and place it inside this IX, if the AS wants to peer with others in this IX.
+
+
+```
+base.createInternetExchange(102)
+```
+
+## TestRunner Lifecycle
+
+```sh
+python seedemu/testing/cli.py all examples/basic/A05_components/example.yaml --artifact-dir ci-artifacts/a05
+```
+
+The runtime test dynamically inspects the generated Compose labels instead of
+hard-coding service names. It verifies that the added AS151 web host, AS154, and
+IX102 are generated, and that the new web services can reach each other.
+
+
