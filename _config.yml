@@ -7,6 +7,10 @@ url: "https://www.seedemulator.org"
 baseurl: ""
 lang: en
 
+# Site palette: default, night, teal, or dawn. Keep visitor controls hidden.
+portal_theme: teal
+show_theme_picker: false
+
 # Build settings: native Jekyll and Liquid, without a frontend bundler.
 markdown: kramdown
 highlighter: rouge

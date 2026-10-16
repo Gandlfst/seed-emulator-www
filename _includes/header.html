@@ -23,7 +23,7 @@
           </a>
         {% endfor %}
       </nav>
-      {% include theme-picker.html %}
+      {% if site.show_theme_picker %}{% include theme-picker.html %}{% endif %}
     </div>
   </div>
 </header>

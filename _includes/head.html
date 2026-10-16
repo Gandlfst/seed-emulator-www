@@ -1,8 +1,8 @@
 {% comment %}Page metadata: title, description, canonical URL, and social cards.{% endcomment %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="{{ site.data.themes.first.colors.bg }}">
-{% include theme-init.html %}
+<meta name="theme-color" content="{{ active_theme.colors.bg }}">
+{% if site.show_theme_picker %}{% include theme-init.html %}{% endif %}
 <title>{% unless page.home %}{{ page_title | escape }} · {% endunless %}{{ site.title | escape }}</title>
 <meta name="description" content="{{ page_description | default: site.description | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">

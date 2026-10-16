@@ -13,23 +13,3 @@ source_path: "examples/blockchain/D21_deploy_contract"
 ## Overview
 
 Follow the separation between registering contract files during compilation and deploying the contract after the blockchain starts.
-
-## Before you start
-
-{% include example-setup.html %}
-
-## Walkthrough
-
-1. Inspect the contract files registered with EthUtilityServer.
-2. Launch the example from its directory with the command below, selecting arm instead of amd when appropriate.
-3. Use the README API examples to retrieve the deployed contract address.
-
-```sh
-python deploy_contract.py poa amd
-cd output
-docker compose up
-```
-
-## Check your understanding
-
-Verify that a contract deployment has completed before using its address. Trace how the utility server connects to the execution node and faucet.

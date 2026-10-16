@@ -13,21 +13,3 @@ source_path: "examples/internet/B26_ipfs_kubo"
 ## Overview
 
 Add a distributed storage service to an existing network component instead of rebuilding the topology.
-
-## Before you start
-
-{% include example-setup.html %}
-
-## Walkthrough
-
-1. Follow the loading of the base component and creation of KuboService.
-2. Inspect how virtual Kubo services are bound to physical hosts in each stub AS.
-3. Identify the boot nodes and follow the upstream runtime instructions to explore peer connectivity.
-
-```python
-ipfs = KuboService()
-```
-
-## Check your understanding
-
-Explain how a new peer discovers other peers through bootstrap nodes. Compare service bindings with the physical topology before experimenting with content exchange.

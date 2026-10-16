@@ -11,8 +11,8 @@ hero:
 projects:
   - title: Internet Emulator
     url: /internet-emulator/
-    image: /images/demo-poster.jpg
-    image_alt: Internet Map visualization of an emulated Internet
+    image: /images/internet-card-dark.png
+    image_alt: Blue network globe connected to distributed server nodes
     category: Internet infrastructure
     description: Create a small Internet with autonomous systems, BGP routing, DNS, and real applications. Use a programmable, container-based environment for networking and security experiments.
   - title: Satellite Network Emulator
@@ -23,8 +23,8 @@ projects:
     description: A SEED project focused on satellite networking for research and education. Project materials and technical details are being prepared.
   - title: Blockchain Emulator
     url: /blockchain/
-    image: /images/blockchain-preview.png
-    image_alt: Ethereum logo from the SEED Blockchain Exploration Lab
+    image: /images/blockchain-card-dark.png
+    image_alt: Blue Ethereum symbol and connected ledger nodes over a world map
     category: Blockchain systems
     description: Run blockchain nodes in an emulated network and explore transactions, smart contracts, and security. Connect distributed systems concepts with hands-on SEED lab exercises.
 
@@ -32,4 +32,3 @@ projects:
 contact:
   title: Part of the SEED project
   description: Hands-on environments for security education and network research.
-  labs_url: https://seedsecuritylabs.org/

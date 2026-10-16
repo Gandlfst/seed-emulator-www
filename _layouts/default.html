@@ -10,7 +10,8 @@
   {% assign page_description = lesson.description %}
 {% endif %}
 <!doctype html>
-<html lang="en">
+{% assign active_theme = site.data.themes | where: 'id', site.portal_theme | first | default: site.data.themes.first %}
+<html lang="en" data-portal-theme="{{ active_theme.id }}">
   <head>{% include head.html %}</head>
   <body class="is-portal{% if page.home %} is-home{% endif %}">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -21,6 +22,8 @@
     <main id="main">
       {% if page.project %}
         {% include project-page.html %}
+      {% elsif page.resource_kind %}
+        {% include resource-page.html %}
       {% elsif page.example_readme %}
         {% include example-readme.html %}
       {% elsif page.example %}

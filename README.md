@@ -1,6 +1,6 @@
 # SEED Emulators website
 
-An English Jekyll website with four selectable color palettes. The structure
+An English Jekyll website using the Teal palette, with visitor theme controls hidden. The structure
 separates page content, one shared layout, flat includes, data, and static assets.
 
 ## Run locally
@@ -79,12 +79,10 @@ chapter navigation beside the Markdown content. There are no nested layouts.
 
 To add a lesson, copy a Markdown file in `_examples/`, update its title, code,
 category, `source_path`, and lesson text. Its filename becomes its URL under
-`/examples/`. Category IDs, default chapters, resource labels, and the source
-revision come from `_data/examples.yml`. A lesson may override `chapters` when
-its section headings differ. Keep chapter IDs in sync with Markdown headings.
+`/examples/`. Category IDs, resource labels, and the source revision come from
+`_data/examples.yml`. Lesson details use a single content column without a sidebar.
 
-`example-setup.html` holds shared prerequisites and reads the lesson's
-`source_path`. Each lesson includes it under Before you start. The course
+Each lesson contains its metadata and a short Overview. The course
 component builds pinned source URLs and reuses `resource.html`, the same rows
 used by project pages. Feedback and help are shared in `example-course.html`.
 Only example-specific guidance and metadata belong in individual Markdown files.
@@ -179,7 +177,7 @@ during the build. The website is English-only.
 | Team details and resource links | `_data/footer.yml` |
 | About us member lists | `_data/team.yml` |
 | Example categories and source revision | `_data/examples.yml` |
-| Example lesson text and chapters | `_examples/*.md` |
+| Example lesson text | `_examples/*.md` |
 | Catalog and lesson presentation | `css/examples.css` |
 | Colors | `_data/themes.yml` |
 | Spacing, typography, and responsive layout | `css/main.css` |
@@ -196,8 +194,13 @@ CSS clips unused transparent space without modifying the source image.
 3. Add navigation in `_data/navigation.yml`; its `key` must match `project`.
 4. Add footer links in `_data/footer.yml` as needed.
 
-Each resource has `type`, `title`, `description`, and `url`.
-Use `url: null` for resources that are not yet available.
+Project resources are grouped in `resources.presentation`, `resources.example`,
+and `resources.paper`, in that display order. The shared
+`_includes/project-resources.html` renders three clickable category rows.
+Example opens the existing example catalog. Presentation and Paper open local
+category pages rendered by `_includes/resource-page.html`; these remain empty
+until files are added to the parent project's lists. Add entries with `type`,
+`title`, `description`, and `url` when ready; each entry reuses `resource.html`.
 
 Each video has `title` and `description`, plus either a local `src`
 (with optional `webm` and `poster`) or an external `url`.
@@ -208,7 +211,8 @@ Coming soon placeholders.
 
 ## Themes and assets
 
-- Themes persist in localStorage under `seed-portal-theme`.
+- Set `portal_theme` in `_config.yml` to `default`, `night`, `teal`, or `dawn` to change the site palette, then restart Jekyll.
+- `show_theme_picker: false` hides visitor controls and ignores previously saved theme preferences. Set it to `true` to restore the picker and localStorage preferences.
 - Local URLs use `relative_url` to support deployment under a base path.
 - Generated CSS explicitly sets `layout: null` to avoid HTML wrappers.
 - The old why, how, capabilities, cases, and birthday pages were removed.
