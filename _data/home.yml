@@ -4,7 +4,7 @@ hero:
   eyebrow: Research & Education
   title: SEED Emulators
   tagline: Small worlds. Real possibilities.
-  description: The SEED project develops emulators for hands-on learning and research. Create controlled experimental environments to explore Internet infrastructure, satellite networks, and blockchain systems.
+  description: The project develops emulators for research and education. Create controlled experimental environments to explore Internet infrastructure, satellite networks, and blockchain systems.
   source_url: https://github.com/seed-labs/seed-emulator
 
 # Section 2: project cards, listed in display order.
@@ -14,21 +14,21 @@ projects:
     image: /images/internet-topology-green.png
     image_alt: Emerald-green network links connecting routers, switches, and servers
     category: Internet infrastructure
-    description: Create a small Internet with autonomous systems, BGP routing, DNS, and real applications. Use a programmable, container-based environment for networking and security experiments.
+    description: Create an emulated Internet with autonomous systems, BGP routing, DNS, and real applications. Use a programmable, container-based environment for networking and security experiments.
   - title: Satellite Network Emulator
     url: /satellite/
     image: /images/satellite-preview.png
     image_alt: Illustration of satellites and ground stations connected across a world map
     category: Satellite networks
-    description: A SEED project focused on satellite networking for research and education. Project materials and technical details are being prepared.
+    description: Emulate satellite networks, such as Starlink. Based on the SEED emulator. Project materials and technical details are being prepared.
   - title: Blockchain Emulator
     url: /blockchain/
     image: /images/blockchain-ledger-gold.png
     image_alt: Amber-gold ledger blocks connected to distributed validator nodes
     category: Blockchain systems
-    description: Run blockchain nodes in an emulated network and explore transactions, smart contracts, and security. Connect distributed systems concepts with hands-on SEED lab exercises.
+    description: Run blockchain nodes in an emulated network and explore transactions, smart contracts, and security. Based on the SEED emulator.
 
 # Section 3: homepage contact strip.
 contact:
-  title: Part of the SEED project
+  title: SEED Emulator
   description: Hands-on environments for security education and network research.

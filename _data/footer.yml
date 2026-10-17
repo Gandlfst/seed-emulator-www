@@ -1,5 +1,5 @@
 # Team details, contact information, and links shared by the footer and homepage sidebar.
-description: Hands-on environments for exploring networks, distributed systems, and security. Built for classrooms, labs, and curious minds.
+description: Built for research and education.
 groups:
   - title: Projects
     links:
@@ -11,17 +11,10 @@ groups:
         url: /blockchain/
   - title: Resources
     links:
-      - title: Documentation
-        url: https://github.com/seed-labs/seed-emulator/tree/master/docs
-        external: true
-      - title: Source code
-        url: https://github.com/seed-labs/seed-emulator
-        external: true
-      - title: Report an issue
-        url: https://github.com/seed-labs/seed-emulator/issues
-        external: true
+      - title: Papers
+        url: /papers/
+
 author:
-  name: Prof. Wenliang Du
-  role: SEED Project Lead
-  description: The SEED project brings hands-on learning to computer and information security, with contributions from students and the wider community.
+  name: Wenliang Du, Professor, ACM/IEEE Fellow
+  role: Zhejiang University
   email: wedu@acm.org
