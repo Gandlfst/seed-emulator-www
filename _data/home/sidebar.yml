@@ -1,0 +1,17 @@
+# Homepage sidebar only. Edit _data/footer.yml separately for footer content.
+eyebrow: The people behind it
+author:
+  name: Wenliang Du, Professor, ACM/IEEE Fellow
+  role: Zhejiang University
+  description: Built by educators, researchers, and an open-source community.
+contact:
+  title: Contact the team
+  url: '#team-contact'
+resources:
+  title: Useful resources
+  links:
+    - title: Papers
+      url: /papers/
+    - title: SEED Emulator in Action
+      url: /in-action/
+note: Open source. Open possibilities.

@@ -1,6 +1,6 @@
-{% comment %}Shared category page. File entries stay in the parent project's front matter.{% endcomment %}
-{% assign parent_project = site.pages | where: 'project', page.parent_project | first %}
-{% assign category_resources = parent_project.resources[page.resource_kind] %}
+{% comment %}Shared resource page; entries come from the selected project resources.yml.{% endcomment %}
+{% assign parent_project = project_data.project %}
+{% assign category_resources = project_data.resources[page.resource_kind] %}
 <div class="container">
   {% comment %}Breadcrumb returns to the project resource list.{% endcomment %}
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">

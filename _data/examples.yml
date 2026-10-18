@@ -6,7 +6,7 @@ readme_url: https://github.com/seed-labs/seed-emulator/blob/61acdf4c9699b25b0684
 resources:
 - type: GUIDE
   title: Example README
-  description: Complete instructions, prerequisites, and configuration options.
+  description: Read the example README as a page on this website.
   view: blob
   path: /README.md
 - type: CODE

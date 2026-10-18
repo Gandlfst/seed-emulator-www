@@ -1,0 +1,239 @@
+# Example content and source paths. URL stubs: pages/examples/_examples/.
+- title: Simple Autonomous System
+  description: Observe how BGP enables hosts in different networks to communicate
+    with one another.
+  code: A00
+  category_id: foundations
+  source_path: examples/basic/A00_simple_as
+  slug: a00-simple-as
+  url: "/examples/a00-simple-as/"
+  overview: |-
+    ## Overview
+
+    This example builds AS150, AS151, and AS152, each with an internal network, a border router, and a web host, and connects them through IX100 to exchange routes. By following a web request across AS boundaries, you can understand how network topology, BGP routing, and web services work together, as well as the roles of the Base, Routing, Ebgp, and WebService layers. You can further extend the scenario by adding autonomous systems, adjusting peering relationships, or modifying route announcements to compare changes in connectivity and access paths, making it a starting point for routing education and network anomaly experiments.
+- title: Visualizing a Network
+  description: Assign customized names to routers, hosts, and Internet exchanges.
+  code: A04
+  category_id: foundations
+  source_path: examples/basic/A04_visualization
+  slug: a04-visualization
+  url: "/examples/a04-visualization/"
+  overview: |-
+    ## Overview
+
+    This example adds visualization metadata to routers, hosts, and Internet exchanges in an existing network by setting display names and descriptions. For example, internal node names can be displayed as core routers, service domain names, or city names, helping users connect entities on the map with their roles in the scenario. These settings affect presentation while preserving the original node identifiers and network connections. You can use them to add meaningful annotations to teaching scenarios, geographically distributed topologies, or complex experiments, helping participants understand the network structure and locate nodes of interest.
+- title: Reusing a Network Component
+  description: Extend a shared base environment to support different experiments.
+  code: A05
+  category_id: foundations
+  source_path: examples/basic/A05_components
+  slug: a05-components
+  url: "/examples/a05-components/"
+  overview: |-
+    ## Overview
+
+    Treat a serialized emulation as a reusable component. Access its existing layers before adding more infrastructure.
+- title: Merging Two Emulations
+  description: Merge previously constructed networks.
+  code: A06
+  category_id: foundations
+  source_path: examples/basic/A06_merge_emulation
+  slug: a06-merge-emulation
+  url: "/examples/a06-merge-emulation/"
+  overview: |-
+    ## Overview
+
+    This example independently builds two emulation scenarios and then uses merge with the default mergers to combine their compatible network and service layers into a unified emulation environment. The merged scenario connects two autonomous systems through a shared Internet exchange, allowing you to verify communication between nodes originally defined in separate scenarios. This approach is useful for combining networks maintained by different people or modules. It can also be extended to combine teaching scenarios, organize experiments involving services across networks, or compare connectivity and service behavior before and after merging.
+- title: Customizing Nodes
+  description: Customize network nodes.
+  code: A09
+  category_id: foundations
+  source_path: examples/basic/A09_node_customization
+  slug: a09-node-customization
+  url: "/examples/a09-node-customization/"
+  overview: |-
+    ## Overview
+
+    This example demonstrates how node customization APIs translate into container build and startup steps. Software installation generates build commands in the Dockerfile, file installation adds configurations or programs to the image, and startup commands are written into the node’s startup script. These interfaces allow nodes to automatically initialize the required environment when they start. You can further install custom clients, traffic generators, monitoring tools, or configuration scripts on network nodes to make experiment deployment and repeated execution more consistent.
+- title: Add Existing Containers
+  description: Connect existing Docker containers to the emulated network.
+  code: A11
+  category_id: foundations
+  source_path: examples/basic/A11_add_containers_new
+  slug: a11-add-containers
+  url: "/examples/a11-add-containers/"
+  overview: |-
+    ## Overview
+
+    This example demonstrates how to connect existing Docker images or containers to a SEED emulation network. You can add custom containers when generating deployment configurations or connect containers to an existing network after the emulation has started. By configuring network connections, IP addresses, and default routes, applications inside these containers can communicate with emulated nodes. You can build on this approach to integrate existing web services, testing tools, or custom programs and further customize your experiments.
+- title: Generating an AS Topology
+  description: Generate random topologies within an AS using mathematically defined
+    graph models.
+  code: A15
+  category_id: foundations
+  source_path: examples/basic/A15_toplogy_generator
+  slug: a15-toplogy-generator
+  url: "/examples/a15-toplogy-generator/"
+  overview: |-
+    ## Overview
+
+    This example uses a NetworkX-based topology generator to construct a transit autonomous system, which connects three stub autonomous systems through three Internet exchanges by default. You can specify the random seed, router count, graph model, and border-router attachment policy, and choose between full-mesh iBGP and route reflector modes. The generated topology is saved to files for inspection and reproduction. It provides a starting point for comparing internal network structures and control-plane designs, and can be extended to investigate link failures, routing reachability, or changes in network scale.
+- title: Route Reflector
+  description: Deploy an emulated network containing both full-mesh iBGP and route
+    reflector configurations.
+  code: A62
+  category_id: foundations
+  source_path: examples/basic/A62_route_reflector
+  slug: a62-route-reflector
+  url: "/examples/a62-route-reflector/"
+  overview: |-
+    ## Overview
+
+    This example demonstrates three iBGP designs in a mini Internet: a full mesh, a single route reflector cluster, and two interconnected route reflector clusters. By inspecting BGP sessions, learned routes, and cross-AS connectivity, you can understand how route reflectors distribute routes to clients and compare the connection structures of different designs. You can further adjust client groupings or simulate route reflector failures to investigate route propagation, redundancy, and recovery behavior.
+- title: Building a Mini Internet
+  description: Build a mini Internet containing multiple IXes, transit ASes, and stub
+    ASes.
+  code: B00
+  category_id: internet-services
+  source_path: examples/internet/B00_mini_internet
+  slug: b00-mini-internet
+  url: "/examples/b00-mini-internet/"
+  overview: |-
+    ## Overview
+
+    This example creates a mini Internet containing 6 Internet exchanges, 5 transit ASes, and 12 stub ASes to demonstrate how application traffic traverses multiple networks. It also demonstrates configurations for accessing the real Internet and connecting external machines through a VPN. The entire network can be saved as a component for other examples to load. You can first examine cross-AS connectivity and transit relationships, then add DNS, PKI, or distributed applications to the same foundation. You can also adjust routing policies and links to compare how network changes affect application access.
+- title: Building a DNS Component
+  description: Build a DNS component containing root, top-level domain, and authoritative
+    name servers.
+  code: B01
+  category_id: internet-services
+  source_path: examples/internet/B01_dns_component
+  slug: b01-dns-component
+  url: "/examples/b01-dns-component/"
+  overview: |-
+    ## Overview
+
+    This example constructs a small DNS hierarchy containing root servers, COM, NET, and EDU top-level domain servers, and authoritative servers for several domains, together with their zones, records, and delegation relationships. DNS services are initially defined as virtual nodes and saved to dns_component.bin. The output is a reusable component that must be loaded into another scenario and bound to physical hosts before DNS resolution experiments can run. You can deploy it across different topologies, observe the query process from root to authoritative servers, and modify records, delegations, or service availability to investigate how DNS resolution affects application access.
+- title: Dynamic Addressing with DHCP
+  description: Deploy DHCP servers that support dynamic address allocation.
+  code: B20
+  category_id: internet-services
+  source_path: examples/internet/B20_dhcp
+  slug: b20-dhcp
+  url: "/examples/b20-dhcp/"
+  overview: |-
+    ## Overview
+
+    This example deploys DHCP servers in AS151 and AS161 of the mini Internet, with two clients in each AS requesting address leases at startup. One network uses a customized address pool, while the other uses the default pool, allowing you to inspect address allocation, default routes, and connectivity between clients and their local routers. You can use this scenario to understand how static and dynamic addressing work together, then adjust address pools, add clients, or change server availability to observe changes in address allocation and network access behavior.
+- title: Routing with IP Anycast
+  description: Serve the same IP address from two sites and observe BGP route selection.
+  code: B24
+  category_id: internet-services
+  source_path: examples/internet/B24_ip_anycast
+  slug: b24-ip-anycast
+  url: "/examples/b24-ip-anycast/"
+  overview: |-
+    ## Overview
+
+    This example adds AS180 to the mini Internet, with two disconnected sites attached to IX100 and IX105. Each site contains a web host using the same address, 10.180.0.100. The two sites return different response markers, making it possible to identify which site BGP selects when clients in different autonomous systems access the same IP address. The example illustrates the basic mechanism of Anycast used by services deployed at multiple sites, such as DNS root services. You can further adjust peering relationships, routing policies, or site availability to observe changes in site selection and failover behavior.
+- title: Public Key Infrastructure
+  description: Issue certificates through a private ACME CA and provide HTTPS services.
+  code: B25
+  category_id: internet-services
+  source_path: examples/internet/B25_pki
+  slug: b25-pki
+  url: "/examples/b25-pki/"
+  overview: |-
+    ## Overview
+
+    This example deploys a private CA with ACME support inside the emulated network, installs its root certificate on nodes, and allows web servers to request certificates and serve HTTPS traffic. It provides two approaches to name resolution: static hosts-file mappings and DNS. You can follow name resolution, certificate requests, issuance, and client verification to understand how digital trust is established. You can further modify trusted root certificates, server domain names, or certificate validity periods to compare successful access with certificate validation failures, supporting teaching activities on HTTPS and certificate management.
+- title: Distributed Storage with IPFS
+  description: Configure IPFS Kubo services in a mini Internet to add and retrieve
+    files across nodes using content identifiers.
+  code: B26
+  category_id: internet-services
+  source_path: examples/internet/B26_ipfs_kubo
+  slug: b26-ipfs-kubo
+  url: "/examples/b26-ipfs-kubo/"
+  overview: |-
+    ## Overview
+
+    This example reuses the mini Internet topology, installs IPFS Kubo on multiple hosts, and designates selected nodes as bootstrap nodes to help other nodes discover peers. After starting the emulation, you can inspect bootstrap configurations and peer connections, add a file to obtain its content identifier (CID), and retrieve the content from another node using that CID. This demonstrates how content addressing and peer discovery work together. You can further change bootstrap configurations, network connections, or node availability to investigate their effects on content retrieval and distributed storage.
+- title: Network Traffic Generation
+  description: Provide components for generating configurable network traffic.
+  code: B28
+  category_id: internet-services
+  source_path: examples/internet/B28_traffic_generator
+  slug: b28-traffic-generator
+  url: "/examples/b28-traffic-generator/"
+  overview: |-
+    ## Overview
+
+    This example deploys traffic generation services in a mini Internet and demonstrates iPerf3, D-ITG, Scapy, and combinations of multiple tools. You can configure destinations, protocols, durations, and rates, then use the logs produced by each tool to examine throughput, delay, jitter, or packet loss. You can further vary traffic volume, communication patterns, or network conditions to create different background workloads and compare how routing changes and link failures affect communication performance.
+- title: CDN Steering and Content Delivery
+  description: Use a CDN to return different DNS responses in a network containing
+    multiple edge sites and a shared origin.
+  code: B30
+  category_id: internet-services
+  source_path: examples/internet/B30_CDN
+  slug: b30-cdn
+  url: "/examples/b30-cdn/"
+  overview: |-
+    ## Overview
+
+    This example deploys one authoritative DNS server, three edge sites, and one shared origin in a mini Internet, configuring region-specific DNS responses for a single service domain. Clients from different regions access different edge sites, which then proxy requests to the shared origin. By comparing DNS results and HTTP response headers, you can identify the edge site serving each request and the source of its content. You can further adjust regional mappings, add edge nodes, or change origin availability to investigate steering policies and service recovery behavior.
+- title: MPLS Backbone Network
+  description: Enable MPLS within a transit autonomous system.
+  code: B31
+  category_id: internet-services
+  source_path: examples/internet/B31_mini_internet_mpls
+  slug: b31-mini-internet-mpls
+  url: "/examples/b31-mini-internet-mpls/"
+  overview: |-
+    ## Overview
+
+    This example preserves the external interconnections of the mini Internet while adding core routers and enabling MPLS within transit AS2. Other autonomous systems retain their original routing behavior. By inspecting MPLS, LDP, and OSPF state on border and core routers and verifying cross-AS communication, you can understand how label distribution and backbone forwarding work together. You can further modify internal links or simulate node failures to compare forwarding paths and recovery processes. Running this example requires the corresponding Linux MPLS kernel support on the host.
+- title: Kubernetes Cluster Deployment
+  description: Provide a Kubernetes-based distributed network emulation environment.
+  code: B61
+  category_id: internet-services
+  source_path: examples/internet/b61_k8s_compile
+  slug: b61-k8s-compile
+  url: "/examples/b61-k8s-compile/"
+  overview: |-
+    ## Overview
+
+    This example introduces a Kubernetes compiler that converts a mini Internet topology into Kubernetes resource manifests and image build configurations, then deploys it to a K3s cluster using the accompanying tools. It provides deployment configurations based on local virtual machines, existing physical nodes, and multiple virtualization hosts, helping you understand the workflow from scenario compilation and infrastructure preparation to workload execution. You can further adjust the topology scale and deployment layout to evaluate resource usage, network connectivity, and runtime behavior across multiple nodes. It is particularly suited to large-scale network emulation on a single machine and distributed emulation across multiple machines.
+- title: Building a SCION Network
+  description: Explore SCION’s path-based communication architecture.
+  code: S01
+  category_id: scion
+  source_path: examples/scion/S01_scion
+  slug: s01-scion
+  url: "/examples/s01-scion/"
+  overview: |-
+    ## Overview
+
+    This example builds a small SCION network containing three core autonomous systems and one non-core autonomous system within a single Isolation Domain (ISD). It configures border routers, control services, certificate issuance relationships, and inter-AS links. The ScionBase, ScionRouting, ScionIsd, and Scion layers describe infrastructure, the runtime environment, trust relationships, and links, demonstrating how a topology becomes a working SCION scenario. You can further modify links or isolation domains to explore how path selection, connection failures, and trust organization affect communication.
+- title: Measuring SCION Bandwidth
+  description: Deploy bandwidth test servers in a SCION network.
+  code: S03
+  category_id: scion
+  source_path: examples/scion/S03_bandwidth_tester
+  slug: s03-bandwidth-tester
+  url: "/examples/s03-bandwidth-tester/"
+  overview: |-
+    ## Overview
+
+    This example binds ScionBwtestService to SCION hosts, allowing clients to connect to test servers using addresses that include an ISD, AS, IP address, and port. Test parameters independently control the duration, packet size, packet count, and target bandwidth in the client-to-server and server-to-client directions, enabling observations of bidirectional throughput and packet loss. You can first establish a baseline with fixed parameters, then adjust the load or network conditions to conduct controlled comparisons in a reproducible environment for studying SCION application communication and measurement results.
+- title: Automating SCION Bandwidth Tests
+  description: Configure automatically started bandwidth tests for a SCION scenario.
+  code: S07
+  category_id: scion
+  source_path: examples/scion/S07-scion-bwtest-client
+  slug: s07-scion-bwtest-client
+  url: "/examples/s07-scion-bwtest-client/"
+  overview: |-
+    ## Overview
+
+    This example deploys bandwidth test servers in multiple SCION autonomous systems and configures ScionBwtestClientService in one AS. After the container starts and waits for a specified period, the client initiates measurements using a predefined target and bidirectional test parameters. A shared directory makes the test output directly accessible from the host machine. By incorporating manual testing steps into the scenario configuration, the example supports repeated execution of the same measurement. You can further organize experiments with different targets, path preferences, or load parameters, then collect logs to compare the results.

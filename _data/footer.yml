@@ -1,4 +1,4 @@
-# Team details, contact information, and links shared by the footer and homepage sidebar.
+# Footer content only. Edit _data/home/sidebar.yml separately for the homepage sidebar.
 description: Built for research and education.
 groups:
   - title: Projects
@@ -13,6 +13,8 @@ groups:
     links:
       - title: Papers
         url: /papers/
+      - title: SEED Emulator in Action
+        url: /in-action/
 
 author:
   name: Wenliang Du, Professor, ACM/IEEE Fellow

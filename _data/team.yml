@@ -1,4 +1,4 @@
-# Team members are rendered by team.html using the shared team-member.html include.
+# Team members are rendered by single-use/about-us/team.html using the shared team-member.html include.
 # GitHub usernames appear in parentheses, matching the AUTHORS.md format.
 project_lead:
   name: Wenliang Du

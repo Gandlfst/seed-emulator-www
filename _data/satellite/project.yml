@@ -1,0 +1,9 @@
+# Project detail copy and repository. The page file only selects this project.
+title: Satellite Network Emulator
+category: Satellite networks
+description: A project for exploring satellite networking in research and education.
+repository:
+url: "/satellite/"
+overview: "<p>The Satellite Network Emulator project focuses on satellite networking.
+  Presentations, documentation, and demonstrations will be collected here as project
+  materials become available.</p>"

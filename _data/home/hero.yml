@@ -1,0 +1,8 @@
+# Homepage hero only. Project cards live in their respective _data project folders.
+eyebrow: Research & Education
+title: SEED Emulators
+tagline: Small worlds. Real possibilities.
+description: The project develops emulators for research and education. Create controlled
+  experimental environments to explore Internet infrastructure, satellite networks,
+  and blockchain systems.
+source_url: https://github.com/seed-labs/seed-emulator

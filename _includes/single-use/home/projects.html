@@ -1,0 +1,9 @@
+{% comment %}Homepage: explicitly render the three project cards in this order.{% endcomment %}
+<section class="portal-projects" aria-labelledby="projects-title">
+  <div class="portal-section-heading"><h2 id="projects-title">Our projects</h2><span>Explore an emulator</span></div>
+  <div class="portal-project-grid">
+    {% include single-use/home/project-card.html card=site.data.internet.card %}
+    {% include single-use/home/project-card.html card=site.data.satellite.card %}
+    {% include single-use/home/project-card.html card=site.data.blockchain.card %}
+  </div>
+</section>

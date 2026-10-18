@@ -81,12 +81,6 @@ layout: null
 .portal-project-more:hover { text-decoration: underline; }
 .portal-project-more .icon { width: 17px; height: 17px; }
 /* 6. Homepage contact strip. */
-.portal-contact { display: flex; align-items: center; gap: 30px; border-top: 1px solid var(--line); padding-block: 25px 32px; }
-.portal-contact > div { flex: 1; }
-.portal-contact strong { font-size: 14px; }
-.portal-contact p { font-size: 13px; color: var(--muted); margin-top: 3px; }
-.portal-contact > a { display: inline-flex; gap: 8px; align-items: center; color: var(--accent); font-size: 13px; }
-.portal-contact .icon { width: 15px; height: 15px; }
 /* 7. Shared footer: introduction, links, and team. */
 .portal-footer { width: min(1200px, calc(100% - 64px)); margin: 8px auto 28px; border-radius: 14px; background: var(--portal-deep); color: var(--portal-on-dark); }
 .is-portal .portal-footer .container { width: calc(100% - 64px); }
@@ -161,7 +155,7 @@ layout: null
 .team-members { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
 .team-member { display: flex; align-items: center; gap: 16px; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
 .team-lead .team-member { border-color: var(--accent-line); background: var(--accent-soft); }
-.team-member-initial { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--accent); font-weight: 700; font-size: 20px; }
+.team-member-initial { position: relative; overflow: hidden; display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--accent); font-weight: 700; font-size: 20px; }
 .team-member-name { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; overflow-wrap: anywhere; }
 .team-member-name strong { font-size: 18px; }
 .team-member-name a { color: var(--accent); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
@@ -194,7 +188,6 @@ layout: null
   .portal-sidebar .portal-sidebar-note { grid-column: 1 / -1; margin: 0; }
   .portal-intro { padding: 32px; grid-template-columns: 1.7fr 1fr; }
   .portal-project h3 { font-size: 19px; }
-  .portal-contact { gap: 20px; }
   .portal-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 }
 /* 11. Responsive layout: single-column mobile pages. */
@@ -215,8 +208,6 @@ layout: null
   .portal-project h3 { font-size: 22px; }
   .portal-project-category { margin-top: 16px; }
   .portal-project-description { margin-bottom: 14px; }
-  .portal-contact { flex-wrap: wrap; }
-  .portal-contact > div { flex-basis: 100%; }
   .portal-footer { width: calc(100% - 24px); margin-bottom: 12px; }
   .is-portal .portal-footer .container { width: calc(100% - 40px); }
   .is-portal:not(.is-home) main > .container { padding-inline: 20px; }
@@ -243,3 +234,15 @@ layout: null
 .portal-not-found { padding: 48px 32px !important; }
 .portal-not-found > p { margin-bottom: 20px; }
 .portal-not-found h1 { margin-bottom: 20px; }
+
+/* 14. Project screenshots: readable captions and uncropped images. */
+.screenshot-gallery { display: grid; gap: 32px; }
+.emulator-screenshot { margin: 0; min-width: 0; }
+.emulator-screenshot > a { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.emulator-screenshot img { display: block; width: 100%; max-height: 560px; object-fit: contain; }
+.emulator-screenshot figcaption { padding-top: 16px; }
+.emulator-screenshot figcaption p { margin-top: 8px; color: var(--muted); }
+
+/* GitHub avatars retain the existing circular card dimensions. */
+.team-member-avatar { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.team-member-avatar[hidden] { display: none; }

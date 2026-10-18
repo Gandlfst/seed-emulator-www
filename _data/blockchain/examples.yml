@@ -1,0 +1,60 @@
+# Example content and source paths. URL stubs: pages/examples/_examples/.
+- title: Ethereum Proof of Authority
+  description: Create a private Ethereum chain with pre-funded accounts and emulated
+    nodes.
+  code: D00
+  category_id: blockchain
+  source_path: examples/blockchain/D00_ethereum_poa
+  slug: d00-ethereum-poa
+  url: "/examples/d00-ethereum-poa/"
+  overview: |-
+    ## Overview
+
+    Separate blockchain configuration from the physical network by creating virtual Ethereum nodes and binding them to hosts.
+- title: Ethereum Proof of Stake
+  description: Connect execution, beacon, and validator nodes in a private Ethereum
+    test network.
+  code: D01
+  category_id: blockchain
+  source_path: examples/blockchain/D01_ethereum_pos
+  slug: d01-ethereum-pos
+  url: "/examples/d01-ethereum-pos/"
+  overview: |-
+    ## Overview
+
+    Explore the split between Geth execution nodes and Lighthouse consensus services, with a separate setup node preparing genesis data.
+- title: Funding Accounts with a Faucet
+  description: Request test funds and compare build-time and runtime account funding.
+  code: D20
+  category_id: blockchain
+  source_path: examples/blockchain/D20_faucet
+  slug: d20-faucet
+  url: "/examples/d20-faucet/"
+  overview: |-
+    ## Overview
+
+    Reuse the faucet from a PoA or PoS component and add a client that requests funds after startup.
+- title: Deploying Smart Contracts
+  description: Use a utility server to deploy contracts and publish their addresses
+    to clients.
+  code: D21
+  category_id: blockchain
+  source_path: examples/blockchain/D21_deploy_contract
+  slug: d21-deploy-contract
+  url: "/examples/d21-deploy-contract/"
+  overview: |-
+    ## Overview
+
+    Follow the separation between registering contract files during compilation and deploying the contract after the blockchain starts.
+- title: Connecting an Oracle
+  description: Follow data from an off-chain oracle node to a smart contract and its
+    user.
+  code: D22
+  category_id: blockchain
+  source_path: examples/blockchain/D22_oracle
+  slug: d22-oracle
+  url: "/examples/d22-oracle/"
+  overview: |-
+    ## Overview
+
+    The sample oracle generates a random price and writes it on chain. It demonstrates the data flow without requiring a live price-feed provider.

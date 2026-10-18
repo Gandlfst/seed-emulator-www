@@ -16,7 +16,8 @@ markdown: kramdown
 highlighter: rouge
 strict_front_matter: true
 
-# Each example is an editable Markdown lesson rendered by the shared layout.
+# Example content lives in each project data folder; collections preserve public URLs.
+collections_dir: pages/examples
 collections:
   examples:
     output: true
@@ -52,4 +53,28 @@ exclude:
   - package-lock.json
   - scripts
   - vendor
-  - video/README.md
+  - _data/internet/video/README.md
+
+# Publish only these static assets from the data folders, not the YAML files.
+include:
+  - _data/blockchain/images/POS-1.png
+  - _data/blockchain/images/blockchain-card-dark.png
+  - _data/blockchain/images/blockchain-ledger-gold-small.webp
+  - _data/blockchain/images/blockchain-ledger-gold.png
+  - _data/blockchain/images/blockchain-ledger.png
+  - _data/blockchain/images/blockchain-preview.png
+  - _data/images/seed-emulator-logo.png
+  - _data/images/seed-mark.svg
+  - _data/internet/images/build-poster.svg
+  - _data/internet/images/demo-poster.jpg
+  - _data/internet/images/internet-card-dark.png
+  - _data/internet/images/internet-topology-green-small.webp
+  - _data/internet/images/internet-topology-green.png
+  - _data/internet/images/internet-topology.png
+  - _data/internet/video/3000-2.mp4
+  - _data/internet/video/3000-2.webm
+  - _data/internet/video/build-and-run.mp4
+  - _data/internet/video/build-and-run.webm
+  - _data/satellite/images/satellite-network-blue-small.webp
+  - _data/satellite/images/satellite-network-blue.png
+  - _data/satellite/images/satellite-preview.png

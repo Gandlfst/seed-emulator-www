@@ -10,7 +10,7 @@
 <meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 <meta property="og:description" content="{{ page_description | default: site.description | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<link rel="icon" href="{{ '/images/seed-mark.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/_data/images/seed-mark.svg' | relative_url }}" type="image/svg+xml">
 
 {% comment %}Load styles by responsibility: base rules, page layout, then theme overrides.{% endcomment %}
 <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}?v={{ site.time | date: '%s' }}">
