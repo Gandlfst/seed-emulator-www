@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{{ active_theme.colors.bg }}">
-{% if site.show_theme_picker %}{% include theme-init.html %}{% endif %}
+{% if site.show_theme_picker %}{% include shared/theme-init.html %}{% endif %}
 <title>{% unless page.home %}{{ page_title | escape }} · {% endunless %}{{ site.title | escape }}</title>
 <meta name="description" content="{{ page_description | default: site.description | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
@@ -10,7 +10,7 @@
 <meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 <meta property="og:description" content="{{ page_description | default: site.description | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<link rel="icon" href="{{ '/_data/images/seed-mark.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/_data/shared/images/seed-mark.svg' | relative_url }}" type="image/svg+xml">
 
 {% comment %}Load styles by responsibility: base rules, page layout, then theme overrides.{% endcomment %}
 <link rel="stylesheet" href="{{ '/css/base.css' | relative_url }}?v={{ site.time | date: '%s' }}">

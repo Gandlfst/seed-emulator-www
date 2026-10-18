@@ -2,8 +2,56 @@
 <section class="portal-projects" aria-labelledby="projects-title">
   <div class="portal-section-heading"><h2 id="projects-title">Our projects</h2><span>Explore an emulator</span></div>
   <div class="portal-project-grid">
-    {% include single-use/home/project-card.html card=site.data.internet.card %}
-    {% include single-use/home/project-card.html card=site.data.satellite.card %}
-    {% include single-use/home/project-card.html card=site.data.blockchain.card %}
+    {% comment %}Internet project card.{% endcomment %}
+    <article class="portal-project">
+      {% comment %}Show the project image, or a generic placeholder if none is available.{% endcomment %}
+      <a class="portal-project-image{% unless site.data.internet.card.image %} portal-project-placeholder{% endunless %}" href="{{ site.data.internet.card.url | relative_url }}" aria-label="Explore {{ site.data.internet.card.title | escape }}">
+        {% if site.data.internet.card.image %}
+          <img src="{{ site.data.internet.card.image | relative_url }}" alt="{{ site.data.internet.card.image_alt | escape }}" width="480" height="300">
+        {% else %}
+          {% include shared/icon.html name="globe" %}
+          <span>{{ site.data.internet.card.title }}</span><small>Project preview coming soon</small>
+        {% endif %}
+      </a>
+      {% comment %}Card content: category, title, summary, and project link.{% endcomment %}
+      <p class="portal-project-category">{{ site.data.internet.card.category }}</p>
+      <h3><a href="{{ site.data.internet.card.url | relative_url }}">{{ site.data.internet.card.title }}</a></h3>
+      <p class="portal-project-description">{{ site.data.internet.card.description }}</p>
+      <a class="portal-project-more" href="{{ site.data.internet.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
+    {% comment %}Satellite project card.{% endcomment %}
+    <article class="portal-project">
+      {% comment %}Show the project image, or a generic placeholder if none is available.{% endcomment %}
+      <a class="portal-project-image{% unless site.data.satellite.card.image %} portal-project-placeholder{% endunless %}" href="{{ site.data.satellite.card.url | relative_url }}" aria-label="Explore {{ site.data.satellite.card.title | escape }}">
+        {% if site.data.satellite.card.image %}
+          <img src="{{ site.data.satellite.card.image | relative_url }}" alt="{{ site.data.satellite.card.image_alt | escape }}" width="480" height="300">
+        {% else %}
+          {% include shared/icon.html name="globe" %}
+          <span>{{ site.data.satellite.card.title }}</span><small>Project preview coming soon</small>
+        {% endif %}
+      </a>
+      {% comment %}Card content: category, title, summary, and project link.{% endcomment %}
+      <p class="portal-project-category">{{ site.data.satellite.card.category }}</p>
+      <h3><a href="{{ site.data.satellite.card.url | relative_url }}">{{ site.data.satellite.card.title }}</a></h3>
+      <p class="portal-project-description">{{ site.data.satellite.card.description }}</p>
+      <a class="portal-project-more" href="{{ site.data.satellite.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
+    {% comment %}Blockchain project card.{% endcomment %}
+    <article class="portal-project">
+      {% comment %}Show the project image, or a generic placeholder if none is available.{% endcomment %}
+      <a class="portal-project-image{% unless site.data.blockchain.card.image %} portal-project-placeholder{% endunless %}" href="{{ site.data.blockchain.card.url | relative_url }}" aria-label="Explore {{ site.data.blockchain.card.title | escape }}">
+        {% if site.data.blockchain.card.image %}
+          <img src="{{ site.data.blockchain.card.image | relative_url }}" alt="{{ site.data.blockchain.card.image_alt | escape }}" width="480" height="300">
+        {% else %}
+          {% include shared/icon.html name="globe" %}
+          <span>{{ site.data.blockchain.card.title }}</span><small>Project preview coming soon</small>
+        {% endif %}
+      </a>
+      {% comment %}Card content: category, title, summary, and project link.{% endcomment %}
+      <p class="portal-project-category">{{ site.data.blockchain.card.category }}</p>
+      <h3><a href="{{ site.data.blockchain.card.url | relative_url }}">{{ site.data.blockchain.card.title }}</a></h3>
+      <p class="portal-project-description">{{ site.data.blockchain.card.description }}</p>
+      <a class="portal-project-more" href="{{ site.data.blockchain.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
   </div>
 </section>

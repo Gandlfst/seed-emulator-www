@@ -1,5 +1,5 @@
 {% comment %}Shared gallery; images and captions come from the selected project screenshots.yml.{% endcomment %}
-{% assign parent_project = project_data.project %}
+{% assign parent_project = project_info %}
 <div class="container">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
     <a href="{{ parent_project.url | relative_url }}#resources">{{ parent_project.title }}</a>

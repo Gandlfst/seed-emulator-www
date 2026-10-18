@@ -14,7 +14,7 @@
     <li class="emulator-resource">
       <span class="emulator-resource-type">{% case group_key %}{% when 'presentation' %}PPT{% when 'example' %}EXAMPLE{% when 'paper' %}PDF{% when 'screenshots' %}IMAGE{% endcase %}</span>
       <div><h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3></div>
-      <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include icon.html name="external" %}</a>
+      <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
     </li>
   {% endfor %}
 </ul>

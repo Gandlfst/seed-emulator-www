@@ -1,4 +1,5 @@
-{% comment %}Team overview: three independent sections backed by _data/team.yml.{% endcomment %}
+{% assign team_data = site.data['about-us'].team %}
+{% comment %}Team overview: three independent sections backed by _data/about-us/team.yml.{% endcomment %}
 <div class="container team-page">
   {% comment %}Introduction and in-page navigation.{% endcomment %}
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
@@ -19,16 +20,16 @@
   <section class="team-section" id="project-lead" aria-labelledby="project-lead-title">
     <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">01</span><h2 id="project-lead-title">Project Lead</h2></div>
     <ul class="team-members team-lead">
-      {% include single-use/about-us/team-member.html member=site.data.team.project_lead %}
+      {% include single-use/about-us/team-member.html member=team_data.project_lead %}
     </ul>
   </section>
 
   {% comment %}Core developers: fill core_developers in team.yml; no placeholder people are listed.{% endcomment %}
   <section class="team-section" id="core-developers" aria-labelledby="core-developers-title">
     <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">02</span><h2 id="core-developers-title">Core Developers</h2></div>
-    {% if site.data.team.core_developers.size > 0 %}
+    {% if team_data.core_developers.size > 0 %}
       <ul class="team-members">
-        {% for member in site.data.team.core_developers %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
+        {% for member in team_data.core_developers %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
       </ul>
     {% else %}
       <p class="team-pending">The core developer list will be added soon.</p>
@@ -40,7 +41,7 @@
     <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">03</span><h2 id="contributors-title">Contributors</h2></div>
     <p class="team-section-note">In alphabetical order. GitHub usernames are shown in parentheses.</p>
     <ul class="team-members">
-      {% for member in site.data.team.contributors %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
+      {% for member in team_data.contributors %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
     </ul>
   </section>
 </div>

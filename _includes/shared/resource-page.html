@@ -1,5 +1,5 @@
 {% comment %}Shared resource page; entries come from the selected project resources.yml.{% endcomment %}
-{% assign parent_project = project_data.project %}
+{% assign parent_project = project_info %}
 {% assign category_resources = project_data.resources[page.resource_kind] %}
 <div class="container">
   {% comment %}Breadcrumb returns to the project resource list.{% endcomment %}
@@ -17,7 +17,7 @@
     {% if category_resources.size > 0 %}
       <ul class="emulator-resource-list">
         {% for resource in category_resources %}
-          {% include resource.html resource=resource %}
+          {% include shared/resource.html resource=resource %}
         {% endfor %}
       </ul>
     {% endif %}

@@ -32,21 +32,18 @@ pages/
   papers/                          Shared publications page
   in-action/                       Shared applications page
 _data/
-  home/                            Homepage hero.yml and independent sidebar.yml
   internet/                        Internet project content, images/, video/
   satellite/                       Satellite project content and images/
   blockchain/                      Blockchain project content and images/
-  images/                          Shared logo and mark
-  examples.yml                     Categories, resource labels, upstream revision
-  navigation.yml                   Navigation links
-  footer.yml                       Footer content, independent from home sidebar
-  team.yml                         Team members and GitHub usernames
-  papers.yml                       Shared publication entries
-  action.yml                       Shared application examples
-  themes.yml                       Palette definitions
+  shared/
+    images/                        Shared logo and mark
+    examples.yml                   Categories, resource labels, upstream revision
+    themes.yml                     Palette definitions
+  about-us/
+    team.yml                       Team members and GitHub usernames
 _layouts/default.html              Single shared layout
 _includes/single-use/              Page-specific includes grouped by page name
-_includes/                         Shared components
+_includes/shared/                  Shared components
 css/                               Styles
 js/                                Navigation and example filtering
 scripts/sync-example-readmes.rb     Minimal README downloader
@@ -56,9 +53,13 @@ Pages declare explicit permalinks, so their public URLs do not include `/pages/`
 `collections_dir: pages/examples` locates both example collections. Their URLs
 remain `/examples/<slug>/` and `/examples/<slug>/readme/`.
 
+Short fixed copy belongs directly in its page or include. Header, footer, hero,
+and sidebar each own their text. Papers and In Action keep their small lists in
+page front matter. Project introductions also live in their project pages; child
+resource pages look up that page for the parent title and link.
+
 Each project data folder contains:
 
-- `project.yml`: project title, description, repository, and overview.
 - `card.yml`: homepage card copy and image, independent from project details.
 - `resources.yml`: presentation entries.
 - `videos.yml`: video entries, or `[]` when empty.
@@ -73,13 +74,13 @@ otherwise excludes files under `_data`. YAML content is not published as assets.
 ## Page composition
 
 The shared `default` layout adds the header, footer, and scripts. Project pages
-select a project data folder and render `project-page.html`. Layouts are not nested.
+keep copy in page front matter, select a media data folder, and render `project-page.html`. Layouts are not nested.
 
-The homepage uses `_includes/single-use/home/` for its hero, projects, cards, and
-sidebar. The three cards are included explicitly, without iterating over projects.
-Other page-specific includes are grouped under `about-us`, `examples`, `papers`,
-and `in-action`. Shared readers, resource rows, videos, and icons remain directly
-under `_includes/`.
+The homepage uses `_includes/single-use/home/` for its hero, projects, and
+sidebar. The three cards are authored explicitly in projects.html, without iterating over projects.
+Other page-specific includes are grouped under `about-us` and `examples`.
+Papers and In Action share `resource-list-page.html`, passing their own page.items lists from page front matter.
+Shared readers, resource rows, videos, and icons live under `_includes/shared/`.
 
 Project resources appear in this order: Presentation, Example, Paper, Screenshots.
 Presentation and Screenshots have project-specific pages. Paper links to the shared
@@ -88,7 +89,7 @@ later. Screenshots should show the running application, not concept illustration
 
 ## Example content
 
-The catalog currently contains 26 examples across four categories. Edit each
+The catalog currently contains 30 examples across four categories. Edit each
 example in its owning project's `examples.yml`. Short `description` text appears
 in the catalog; `overview` appears on the detail page. A matching Markdown stub
 in `pages/examples/_examples/` supplies layout and routing settings.
@@ -102,7 +103,7 @@ To add an example:
 
 Each detail page contains an Overview and Instructions and Code. The README link
 opens a local page; the code link opens the upstream directory at the revision
-recorded in `_data/examples.yml`. The existing `A15_toplogy_generator` spelling
+recorded in `_data/shared/examples.yml`. The existing `A15_toplogy_generator` spelling
 matches the upstream path and is intentional.
 
 ## Import example READMEs
@@ -128,10 +129,12 @@ On Windows it defaults to `http://127.0.0.1:7890` unless `https_proxy` or
 connection. Linux and macOS retain their existing proxy settings.
 
 Collection defaults disable Liquid evaluation in imported README text. The layout
-looks up the matching example by filename. `_includes/example-readme.html` supplies
+looks up the matching example by filename. `_includes/shared/example-readme.html` supplies
 the reader, return link, and View on GitHub link. It maps the D01 image reference to
 `/_data/blockchain/images/POS-1.png` and A11's two relative sub-guide links to GitHub.
-Other relative references remain as supplied upstream; use View on GitHub when needed.
+Additional guide links can be mapped for display with an example's readme_links list
+(from and to); this does not modify imported Markdown. Other relative references
+remain as supplied upstream; use View on GitHub when needed.
 
 Commit imported READMEs along with their example records and stubs. Jekyll builds
 do not fetch from GitHub. Re-running the importer overwrites imported text; edit
@@ -142,16 +145,16 @@ files manually when removing an example; the importer does not delete files.
 
 | Change | File |
 | --- | --- |
-| Homepage heading and introduction | `_data/home/hero.yml` |
-| Homepage sidebar | `_data/home/sidebar.yml` |
+| Homepage heading and introduction | `_includes/single-use/home/hero.html` |
+| Homepage sidebar | `_includes/single-use/home/sidebar.html` |
 | Homepage cards | `_data/<project>/card.yml` |
-| Project descriptions and overviews | `_data/<project>/project.yml` |
+| Project descriptions and overviews | `pages/<project>/index.html` |
 | Example descriptions and overviews | `_data/<project>/examples.yml` |
-| Shared papers and applications | `_data/papers.yml`, `_data/action.yml` |
-| Team member lists and GitHub avatars | `_data/team.yml` |
-| Footer | `_data/footer.yml` |
-| Navigation | `_data/navigation.yml` |
-| Colors | `_data/themes.yml`, `portal_theme` in `_config.yml` |
+| Shared papers and applications | `pages/papers/index.html`, `pages/in-action/index.html` |
+| Team member lists and GitHub avatars | `_data/about-us/team.yml` |
+| Footer | `_includes/shared/footer.html` |
+| Navigation | `_includes/shared/header.html` |
+| Colors | `_data/shared/themes.yml`, `portal_theme` in `_config.yml` |
 | Page layout and typography | `css/main.css`, `css/examples.css` |
 
 Team entries use `name`, optional `github`, and optional `affiliation`. GitHub

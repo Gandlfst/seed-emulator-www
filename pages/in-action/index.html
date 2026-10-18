@@ -4,5 +4,18 @@ layout: default
 title: SEED Emulator in Action
 description: Applications of SEED Emulators in research, education, and reproducible
   experiments.
+items:
+- type: LAB
+  title: Visualizing worm propagation
+  description: The HotNets 2022 paper describes a classroom experiment with 275 containers.
+    Students study how a simplified Morris worm spreads through an emulated Internet,
+    using the Map tool to observe propagation.
+  url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf#page=6
+- type: ETH
+  title: Building a controlled Ethereum testbed
+  description: The HotNets 2022 paper demonstrates a 100-node Ethereum environment
+    with bootnodes and Proof-of-Authority sealers. This illustrates how the emulator
+    builds blockchain infrastructure on a configurable network.
+  url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf#page=6
 ---
-{% include single-use/in-action/content.html %}
+{% include shared/resource-list-page.html items=page.items heading_id="action-title" label="Applications" %}

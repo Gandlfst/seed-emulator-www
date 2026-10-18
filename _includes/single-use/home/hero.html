@@ -1,15 +1,15 @@
-{% comment %}Homepage hero: copy, actions, and network illustration from _data/home/hero.yml.{% endcomment %}
+{% comment %}Homepage hero: short copy, actions, and inline network illustration are edited here.{% endcomment %}
 <section class="portal-intro container" aria-labelledby="portal-title">
   <div class="portal-intro-copy">
-  {% comment %}Hero copy comes from _data/home/hero.yml.{% endcomment %}
-    <p class="portal-eyebrow">{{ site.data.home.hero.eyebrow | escape }}</p>
-    <h1 id="portal-title">{{ site.data.home.hero.title }}</h1>
-    <p class="portal-intro-tagline">{{ site.data.home.hero.tagline }}</p>
-    <p class="portal-intro-description">{{ site.data.home.hero.description }}</p>
+  {% comment %}Edit the hero copy directly below.{% endcomment %}
+    <p class="portal-eyebrow">Research &amp; Education</p>
+    <h1 id="portal-title">SEED Emulators</h1>
+    <p class="portal-intro-tagline">Small worlds. Real possibilities.</p>
+    <p class="portal-intro-description">The project develops emulators for research and education. Create controlled experimental environments to explore Internet infrastructure, satellite networks, and blockchain systems.</p>
   {% comment %}Actions open the project list or source repository.{% endcomment %}
     <div class="portal-intro-actions">
-      <a class="portal-hero-button" href="#projects-title">Explore our projects {% include icon.html name="arrow" %}</a>
-      <a class="portal-hero-link" href="{{ site.data.home.hero.source_url }}">Source code {% include icon.html name="external" %}</a>
+      <a class="portal-hero-button" href="#projects-title">Explore our projects {% include shared/icon.html name="arrow" %}</a>
+      <a class="portal-hero-link" href="https://github.com/seed-labs/seed-emulator">Source code {% include shared/icon.html name="external" %}</a>
     </div>
   </div>
   {% comment %}Decorative network illustration follows the active theme.{% endcomment %}

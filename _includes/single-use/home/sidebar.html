@@ -1,25 +1,20 @@
-{% comment %}Homepage sidebar: independent content from _data/home/sidebar.yml.{% endcomment %}
+{% comment %}Homepage sidebar: short content is edited here, independently of footer.html.{% endcomment %}
 <aside class="portal-sidebar" aria-label="Project information">
   {% comment %}Team introduction and contact link.{% endcomment %}
   <section class="portal-sidebar-team">
-    <p class="portal-eyebrow">{{ site.data.home.sidebar.eyebrow }}</p>
-    <h2>{{ site.data.home.sidebar.author.name }}</h2>
-    <p class="portal-sidebar-role">{{ site.data.home.sidebar.author.role }}</p>
-    <p>{{ site.data.home.sidebar.author.description }}</p>
-    <a href="{{ site.data.home.sidebar.contact.url }}">{{ site.data.home.sidebar.contact.title }} {% include icon.html name="arrow" %}</a>
+    <p class="portal-eyebrow">The people behind it</p>
+    <h2>Wenliang Du, Professor, ACM/IEEE Fellow</h2>
+    <p class="portal-sidebar-role">Zhejiang University</p>
+    <p>Built by educators, researchers, and an open-source community.</p>
+    <a href="#team-contact">Contact the team {% include shared/icon.html name="arrow" %}</a>
   </section>
   {% comment %}Sidebar resource links are maintained separately from footer links.{% endcomment %}
   <section class="portal-sidebar-resources" aria-labelledby="sidebar-resources-title">
-    <h2 id="sidebar-resources-title">{{ site.data.home.sidebar.resources.title }}</h2>
+    <h2 id="sidebar-resources-title">Useful resources</h2>
     <ul>
-      {% for link in site.data.home.sidebar.resources.links %}
-        <li>
-          <a href="{{ link.url | relative_url }}">
-            {{ link.title }} {% include icon.html name="external" %}
-          </a>
-        </li>
-      {% endfor %}
+      <li><a href="{{ '/papers/' | relative_url }}">Papers {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/in-action/' | relative_url }}">SEED Emulator in Action {% include shared/icon.html name="external" %}</a></li>
     </ul>
   </section>
-  <p class="portal-sidebar-note"><span aria-hidden="true"></span>{{ site.data.home.sidebar.note }}</p>
+  <p class="portal-sidebar-note"><span aria-hidden="true"></span>Open source. Open possibilities.</p>
 </aside>

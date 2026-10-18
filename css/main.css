@@ -1,9 +1,9 @@
 ---
 layout: null
 ---
-/* 1. Default theme and typography: colors are generated from _data/themes.yml. */
+/* 1. Default theme and typography: colors are generated from _data/shared/themes.yml. */
 .is-portal {
-  {% for color in site.data.themes.first.colors %}--{{ color[0] }}: {{ color[1] }};
+  {% for color in site.data.shared.themes.first.colors %}--{{ color[0] }}: {{ color[1] }};
   {% endfor %}color-scheme: light;
   font-size: 16px;
   font-weight: 500;

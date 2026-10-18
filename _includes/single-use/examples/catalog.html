@@ -4,14 +4,14 @@
   <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
   <section class="examples-intro" aria-labelledby="examples-title">
     <h1 id="examples-title">Emulator examples</h1>
-    <p>Browse hands-on examples from the <a href="{{ site.data.examples.readme_url }}">SEED Emulator repository {% include icon.html name="external" %}</a>.</p>
+    <p>Browse hands-on examples from the <a href="{{ site.data.shared.examples.readme_url }}">SEED Emulator repository {% include shared/icon.html name="external" %}</a>.</p>
   </section>
   <div class="examples-workspace">
     {% comment %}Category navigation remains useful with JavaScript disabled.{% endcomment %}
     <aside class="examples-sidebar" aria-label="Example categories">
       <p class="portal-eyebrow">Categories</p>
       <nav>
-        {% for category in site.data.examples.categories %}
+        {% for category in site.data.shared.examples.categories %}
           {% assign lessons = example_records | where: 'category_id', category.id %}
           <a href="#{{ category.id }}"><span>{{ category.title }}</span><span class="examples-count">{{ lessons.size }}</span></a>
         {% endfor %}
@@ -25,7 +25,7 @@
         <p class="examples-search-status" role="status" aria-live="polite" data-example-count>{{ example_records.size }} examples</p>
       </div>
       <div id="example-groups">
-        {% for category in site.data.examples.categories %}
+        {% for category in site.data.shared.examples.categories %}
           {% assign lessons = example_records | where: 'category_id', category.id | sort: 'code' %}
           <section class="example-group" id="{{ category.id }}" aria-labelledby="{{ category.id }}-title" data-example-group>
             <div class="example-group-heading"><h2 id="{{ category.id }}-title">{{ category.title }}</h2></div>
