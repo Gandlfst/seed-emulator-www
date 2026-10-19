@@ -32,7 +32,7 @@
   overview: |-
     ## Overview
 
-    Treat a serialized emulation as a reusable component. Access its existing layers before adding more infrastructure.
+    This example loads pre-saved network components, retrieves the Base and Ebgp layers within them, and then extends the existing network: adding hosts to the current autonomous system, introducing new autonomous systems and exchange points, and configuring corresponding peering connections. It demonstrates how to build scenarios further from a reusable base network to reduce redundant topology coding work. You can save networks commonly used in courses or research as components, add different services, adjust interconnection relationships or set control conditions on the same foundation, facilitating reuse and experimental comparison.
 - title: Merging Two Emulations
   description: Merge previously constructed networks.
   code: A06

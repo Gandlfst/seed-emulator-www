@@ -32,15 +32,19 @@ pages/
   papers/                          Shared publications page
   in-action/                       Shared applications page
 _data/
-  internet/                        Internet project content, images/, video/
-  satellite/                       Satellite project content and images/
-  blockchain/                      Blockchain project content and images/
+  internet/                        Internet project content
+  satellite/                       Satellite project content
+  blockchain/                      Blockchain project content
   shared/
-    images/                        Shared logo and mark
     examples.yml                   Categories, resource labels, upstream revision
     themes.yml                     Palette definitions
   about-us/
     team.yml                       Team members and GitHub usernames
+assets/images/
+  shared/                          Shared logo and mark
+  internet/                        Internet project images
+  satellite/                       Satellite project images
+  blockchain/                      Blockchain project images
 _layouts/default.html              Single shared layout
 _includes/single-use/              Page-specific includes grouped by page name
 _includes/shared/                  Shared components
@@ -62,14 +66,13 @@ Each project data folder contains:
 
 - `card.yml`: homepage card copy and image, independent from project details.
 - `resources.yml`: presentation entries.
-- `videos.yml`: video entries, or `[]` when empty.
+- `videos.yml`: external video entries, or `[]` when empty.
 - `screenshots.yml`: actual screenshots and captions.
 - `examples.yml`: example metadata, descriptions, source paths, and overview text.
 
-Local video files live in `video/` (singular) to avoid colliding with `videos.yml`
-in Jekyll's data namespace. Project images live in their respective `images/`
-folders. Add each new static asset to `_config.yml`'s `include` list; Jekyll
-otherwise excludes files under `_data`. YAML content is not published as assets.
+Public images live under `assets/images/<project>/`; shared branding lives under
+`assets/images/shared/`. Keep `_data` for YAML content only. The repository does
+not bundle video files; project video entries link to external hosts.
 
 ## Page composition
 
@@ -132,7 +135,7 @@ connection. Linux and macOS retain their existing proxy settings.
 Collection defaults disable Liquid evaluation in imported README text. The layout
 looks up the matching example by filename. `_includes/shared/example-readme.html` supplies
 the reader, return link, and View on GitHub link. It maps the D01 image reference to
-`/_data/blockchain/images/POS-1.png` and A11's two relative sub-guide links to GitHub.
+`/assets/images/blockchain/POS-1.png` and A11's two relative sub-guide links to GitHub.
 Additional guide links can be mapped for display with an example's readme_links list
 (from and to); this does not modify imported Markdown. Other relative references
 remain as supplied upstream; use View on GitHub when needed.
@@ -149,6 +152,7 @@ files manually when removing an example; the importer does not delete files.
 | Homepage heading and introduction | `_includes/single-use/home/hero.html` |
 | Homepage sidebar | `_includes/single-use/home/sidebar.html` |
 | Homepage cards | `_data/<project>/card.yml` |
+| Public images | `assets/images/<project>/` |
 | Project descriptions and overviews | `pages/<project>/index.html` |
 | Example descriptions and overviews | `_data/<project>/examples.yml` |
 | Shared papers and applications | `pages/papers/index.html`, `pages/in-action/index.html` |
@@ -164,7 +168,7 @@ sidebar maintain separate copy because their available space differs.
 
 `show_theme_picker: false` hides visitor theme controls. Local links use
 `relative_url` to support a base path. Small WebP project illustrations are used
-on the homepage; full-size originals remain available in the project data folders.
+on the homepage; full-size originals remain available under `assets/images/`.
 
 
 ## Build and publish

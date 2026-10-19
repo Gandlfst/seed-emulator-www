@@ -1,7 +1,7 @@
 # Homepage card only; independent from the project detail description.
 title: Blockchain Emulator
 url: "/blockchain/"
-image: "/_data/blockchain/images/blockchain-ledger-gold-small.webp"
+image: "/assets/images/blockchain/blockchain-ledger-gold-small.webp"
 image_alt: Amber-gold ledger blocks connected to distributed validator nodes
 category: Blockchain systems
 description: Run blockchain nodes in an emulated network and explore transactions,

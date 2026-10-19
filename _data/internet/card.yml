@@ -1,7 +1,7 @@
 # Homepage card only; independent from the project detail description.
 title: Internet Emulator
 url: "/internet-emulator/"
-image: "/_data/internet/images/internet-topology-green-small.webp"
+image: "/assets/images/internet/internet-topology-green-small.webp"
 image_alt: Emerald-green network links connecting routers, switches, and servers
 category: Internet infrastructure
 description: Create an emulated Internet with autonomous systems, BGP routing, DNS,

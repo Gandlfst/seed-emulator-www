@@ -1,6 +1,6 @@
 {% assign readme_content = content %}
 {% if lesson.slug == 'd01-ethereum-pos' %}
-  {% assign pos_image_url = '/_data/blockchain/images/POS-1.png' | relative_url %}
+  {% assign pos_image_url = '/assets/images/blockchain/POS-1.png' | relative_url %}
   {% assign pos_image_src = 'src="' | append: pos_image_url | append: '"' %}
   {% assign readme_content = content | replace: 'src="pics/POS-1.png"', pos_image_src %}
 {% endif %}

@@ -1,14 +1,4 @@
-# Project videos: title, description, src/webm/poster or an external url.
-- title: Internet Map demonstration
-  description: Explore the topology of a 3,000-node emulated Internet.
-  src: "/_data/internet/video/3000-2.mp4"
-  webm: "/_data/internet/video/3000-2.webm"
-  poster: "/_data/internet/images/demo-poster.jpg"
-- title: Build and run an emulation
-  description: Follow a local demonstration of the build and run workflow.
-  src: "/_data/internet/video/build-and-run.mp4"
-  webm: "/_data/internet/video/build-and-run.webm"
-  poster: "/_data/internet/images/build-poster.svg"
+# Project videos: external video links.
 - title: SEED Internet Emulator overview
   description: An introductory video from the SEED project.
   url: https://youtu.be/lfbO-eHt6qg
