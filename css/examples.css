@@ -54,10 +54,6 @@
 .lesson-sources p:not(.portal-eyebrow) { color: var(--muted); font-size: 13px; }
 .lesson-source-version { margin-top: 16px; }
 .lesson-source-version a { text-decoration: underline; }
-.lesson-feedback { margin-top: 32px; scroll-margin-top: 24px; }
-.lesson-feedback p { margin-top: 12px; color: var(--muted); font-size: 14px; }
-.lesson-feedback a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.lesson-feedback .icon { width: 14px; height: 14px; }
 .lesson-return { display: inline-block; color: var(--accent); margin-top: 26px; font-size: 13px; font-weight: 650; }
 /* Imported READMEs reuse lesson typography with room for upstream tables and images. */
 .readme-content { max-width: 1000px; margin: 0 auto; }

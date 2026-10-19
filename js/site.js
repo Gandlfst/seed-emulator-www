@@ -34,4 +34,10 @@
     video.addEventListener('loadeddata', () => { errorMessage.hidden = true; });
   });
 
+  // Keep the member initial visible when a GitHub avatar cannot be loaded.
+  document.querySelectorAll('.team-member-avatar').forEach(avatar => {
+    const showInitial = () => { avatar.hidden = true; };
+    avatar.addEventListener('error', showInitial);
+    if (avatar.complete && avatar.naturalWidth === 0) showInitial();
+  });
 })();

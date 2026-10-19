@@ -1,0 +1,8 @@
+# Actual project screenshots. Each item has image, alt, title, and description.
+description: Screenshots and short explanations of the Internet Emulator.
+items:
+- image: "/_data/internet/images/demo-poster.jpg"
+  alt: Dense network topology displayed in the Internet Map demonstration
+  title: Internet Map topology
+  description: A frame from the Internet Map demonstration showing the nodes and links
+    of an emulated Internet.

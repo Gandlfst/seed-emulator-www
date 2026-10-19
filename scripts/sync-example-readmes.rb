@@ -15,12 +15,15 @@ end
 root = File.expand_path('..', __dir__)
 remote = 'https://raw.githubusercontent.com/seed-labs/seed-emulator/master'
 
-# Each lesson already records the path of its upstream example directory.
-output = File.join(root, '_example_readmes')
+# Each project examples.yml records its upstream directories and local page slugs.
+output = File.join(root, 'pages', 'examples', '_example_readmes')
 FileUtils.mkdir_p(output)
-Dir.glob(File.join(root, '_examples', '*.md')).sort.each do |file|
-  lesson = YAML.safe_load(File.read(file, encoding: 'UTF-8').split(/^---\s*$/, 3)[1])
+lessons = %w[internet satellite blockchain].flat_map do |project|
+  YAML.safe_load_file(File.join(root, '_data', project, 'examples.yml'))
+end
+lessons.each do |lesson|
+  filename = lesson.fetch('slug') + '.md'
   readme = URI.open("#{remote}/#{lesson.fetch('source_path')}/README.md", open_timeout: 15, read_timeout: 30, &:read)
-  File.binwrite(File.join(output, File.basename(file)), "---\nlayout: default\n---\n\n" + readme)
-  puts "Copied #{File.basename(file)}"
+  File.binwrite(File.join(output, filename), "---\nlayout: default\n---\n\n" + readme)
+  puts "Copied #{filename}"
 end

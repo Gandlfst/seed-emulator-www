@@ -3,14 +3,11 @@ layout: default
 title: SEED Emulators
 home: true
 ---
-{% comment %}Section 1: homepage hero; edit its content in _data/home.yml.{% endcomment %}
-{% include hero.html %}
+{% comment %}Section 1: homepage hero; edit its content in single-use/home/hero.html.{% endcomment %}
+{% include single-use/home/hero.html %}
 
 {% comment %}Section 2: project cards and sidebar; stacked on mobile.{% endcomment %}
 <div class="portal-home-grid container">
-  {% include projects.html %}
-  {% include sidebar.html %}
+  {% include single-use/home/projects.html %}
+  {% include single-use/home/sidebar.html %}
 </div>
-
-{% comment %}Section 3: SEED project links and contact entry. The default layout adds the header and footer.{% endcomment %}
-{% include contact.html %}

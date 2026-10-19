@@ -2,7 +2,7 @@
 layout: null
 ---
 /* Each theme overrides the same set of CSS custom properties. */
-{% for theme in site.data.themes %}
+{% for theme in site.data.shared.themes %}
 html[data-portal-theme="{{ theme.id }}"] .is-portal {
   {% for color in theme.colors %}--{{ color[0] }}: {{ color[1] }};
   {% endfor %}color-scheme: {% if theme.id == 'night' %}dark{% else %}light{% endif %};

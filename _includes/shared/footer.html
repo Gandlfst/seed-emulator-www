@@ -1,0 +1,45 @@
+{% comment %}Footer: short copy is edited here, independently of the homepage sidebar.{% endcomment %}
+<footer class="portal-footer">
+  <div class="container portal-footer-main">
+    {% comment %}Site description and homepage link.{% endcomment %}
+    <div class="portal-footer-about">
+      <a class="portal-footer-brand" href="{{ '/' | relative_url }}">SEED Emulators</a>
+      <p>Built for research and education.</p>
+      <span class="portal-footer-motto">Open source. Open possibilities.</span>
+    </div>
+    {% comment %}Render link groups directly without additional nested components.{% endcomment %}
+    <nav class="portal-footer-links" aria-label="Projects">
+      <h2>Projects</h2>
+      <ul>
+          <li><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a></li>
+          <li><a href="{{ '/satellite/' | relative_url }}">Satellite Network Emulator</a></li>
+          <li><a href="{{ '/blockchain/' | relative_url }}">Blockchain Emulator</a></li>
+      </ul>
+    </nav>
+    <nav class="portal-footer-links" aria-label="Resources">
+      <h2>Resources</h2>
+      <ul>
+          <li><a href="{{ '/papers/' | relative_url }}">Papers</a></li>
+          <li><a href="{{ '/in-action/' | relative_url }}">SEED Emulator in Action</a></li>
+      </ul>
+    </nav>
+
+    {% comment %}Team details: contact links scroll to this section.{% endcomment %}
+    <section class="portal-footer-team" id="team-contact" tabindex="-1" aria-labelledby="footer-team-title">
+      <h2 id="footer-team-title">People behind SEED</h2>
+      <span class="portal-footer-author">Wenliang Du, Professor, ACM/IEEE Fellow</span>
+      <span class="portal-footer-role">Zhejiang University</span>
+      <p></p>
+      <a href="mailto:wedu@acm.org">wedu@acm.org</a>
+      <a class="portal-footer-team-link" href="{{ '/about-us/' | relative_url }}">Meet the team {% include shared/icon.html name="arrow" %}</a>
+    </section>
+  </div>
+  {% comment %}Bottom bar: attribution and back-to-top link.{% endcomment %}
+  <div class="container portal-footer-bottom">
+    <span>SEED Emulators &middot; Research &amp; Education</span>
+    <span>Wenliang Du &amp; contributors</span>
+    <div class="portal-footer-actions">
+      <a class="portal-footer-back" href="#main">Back to top {% include shared/icon.html name="arrow" %}</a>
+    </div>
+  </div>
+</footer>

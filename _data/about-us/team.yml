@@ -1,0 +1,39 @@
+# Team members are rendered by single-use/about-us/team.html using the shared team-member.html include.
+# GitHub usernames appear in parentheses, matching the AUTHORS.md format.
+project_lead:
+  name: Wenliang Du
+  github: kevin-w-du
+
+# Add core developers here in the desired display order.
+# Replace [] with entries in this format; github is optional:
+# core_developers:
+#   - name: Full Name
+#     github: github-username
+#     affiliation: University or organization
+core_developers: 
+  - name: Wenliang Du
+    github: kevin-w-du
+  - name: Qishu Jin
+    github: BruceJin
+  - name: Xingliang lv 
+    github: lxl706423651
+  - name: Zhitao Min 
+    github: EMLionHeart
+  - name: Honghao Zeng 
+    github: magicnat
+
+# Contributor names follow the upstream AUTHORS.md list, in alphabetical order.
+# Source: https://github.com/seed-labs/seed-emulator/blob/master/AUTHORS.md
+contributors:
+  - name: Chenyang Huang
+    github: cy-gitlab
+  - name: Keyi Li
+    github: kevin1993s
+  - name: Rawi Sader
+    github: RawinSader
+  - name: Kyungrok Won
+    github: wonkr
+  - name: Shuhuai Zhang
+    github: Zephyriiiii
+  - name: Ziwei Zhou
+    github: zzw4257

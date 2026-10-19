@@ -1,0 +1,16 @@
+{% comment %}Resource entry: show an open link when a URL exists, otherwise Coming soon.{% endcomment %}
+{% assign resource_url = include.url | default: include.resource.url %}
+<li class="emulator-resource">
+  <span class="emulator-resource-type">{{ include.resource.type }}</span>
+  <div>
+    <h3>{% if resource_url %}<a href="{{ resource_url | relative_url }}">{{ include.resource.title }}</a>{% else %}{{ include.resource.title }}{% endif %}</h3>
+    <p>{{ include.resource.description }}</p>
+  </div>
+  {% if resource_url %}
+    <a href="{{ resource_url | relative_url }}" aria-label="Open {{ include.resource.title | escape }} ({{ include.resource.type }})">
+      {% if include.resource.type == 'EXAMPLES' %}Explore {% include shared/icon.html name="arrow" %}{% else %}Open {% include shared/icon.html name="external" %}{% endif %}
+    </a>
+  {% else %}
+    <span class="emulator-resource-pending">Coming soon</span>
+  {% endif %}
+</li>

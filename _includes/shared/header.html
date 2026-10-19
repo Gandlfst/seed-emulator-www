@@ -1,0 +1,28 @@
+{% comment %}Header: logo, navigation, and themes; short navigation labels and links are edited here.{% endcomment %}
+<header class="site-header portal-header">
+  <div class="container header-inner">
+    {% comment %}Brand link to the homepage.{% endcomment %}
+    <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
+      <span class="portal-brand-logo">
+        <img src="{{ '/_data/shared/images/seed-emulator-logo.png' | relative_url }}" alt="SEED Emulator" width="800" height="143">
+      </span>
+    </a>
+    <span class="portal-header-note">A playground for research &amp; discovery</span>
+    {% comment %}Mobile menu: js/site.js controls its expanded state.{% endcomment %}
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+      {% include shared/icon.html name="menu" %}
+    </button>
+
+    {% comment %}Navigation is authored here; optional themes use theme data.{% endcomment %}
+    <div class="portal-navigation-bar">
+      <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+        <a href="{{ '/' | relative_url }}"{% if page.home %} aria-current="page"{% endif %}>Home</a>
+        <a href="{{ '/internet-emulator/' | relative_url }}"{% if page.project == 'internet' or page.nav_key == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
+        <a href="{{ '/satellite/' | relative_url }}"{% if page.project == 'satellite' or page.nav_key == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
+        <a href="{{ '/blockchain/' | relative_url }}"{% if page.project == 'blockchain' or page.nav_key == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
+        <a href="{{ '/about-us/' | relative_url }}"{% if page.project == 'about' or page.nav_key == 'about' %} aria-current="page"{% endif %}>About us</a>
+      </nav>
+      {% if site.show_theme_picker %}{% include shared/theme-picker.html %}{% endif %}
+    </div>
+  </div>
+</header>

@@ -1,0 +1,118 @@
+# Example content and source paths. URL stubs: pages/examples/_examples/.
+- title: Ethereum Proof of Authority (PoA)
+  description: Build a private Ethereum Proof of Authority (PoA) blockchain with real
+    Geth clients on a configurable Internet.
+  code: D00
+  category_id: blockchain
+  source_path: examples/blockchain/D00_ethereum_poa
+  slug: d00-ethereum-poa
+  url: "/examples/d00-ethereum-poa/"
+  overview: |-
+    ## Overview
+
+    This example creates a private Ethereum PoA blockchain and deploys its nodes across an emulated Internet. Users can configure blockchain nodes, create pre-funded accounts, and customize client settings. By running real Ethereum software, the example allows users to explore how blockchain nodes communicate, process transactions, and maintain a shared ledger. You can further extend the scenario by adding nodes, changing their placement across different networks, or using customized Geth clients to investigate how network conditions and client configurations affect blockchain behavior. It also provides a reusable foundation for more advanced experiments involving account funding, smart contracts, and blockchain applications.
+- title: Ethereum Proof of Stake (PoS)
+  description: Build a private Ethereum Proof of Stake (PoS) blockchain with real
+    execution, consensus, and validator clients across an emulated Internet.
+  code: D01
+  category_id: blockchain
+  source_path: examples/blockchain/D01_ethereum_pos
+  slug: d01-ethereum-pos
+  url: "/examples/d01-ethereum-pos/"
+  overview: |-
+    ## Overview
+
+    This example builds an Ethereum PoS blockchain using Geth execution clients and Lighthouse consensus and validator clients, deployed across multiple autonomous systems. It configures the initial blockchain state, validator population, and peer connections to establish a functioning PoS network. Users can observe how the different clients work together to process transactions, propose blocks, submit attestations, and maintain blockchain consensus. You can further extend the scenario by adding nodes, adjusting validator configurations, or changing network topologies and peer connections to investigate how network conditions affect block propagation, chain synchronization, and consensus performance. This example provides a foundation for studying Ethereum PoS and conducting more advanced blockchain experiments.
+- title: Ethereum Blockchain Explorer
+  description: Visualize Ethereum PoS blockchain activity, including blocks, transactions,
+    validators, and consensus progress.
+  overview: |-
+    ## Overview
+
+    This example deploys an Ethereum PoS blockchain with Eth Explorer, a web-based tool for monitoring blockchain activity. Users can explore blocks, transactions, slots, epochs, and validator information through an interactive interface. Together with Internet Map, which visualizes the underlying network topology, users can observe blockchain operations alongside the network infrastructure hosting the blockchain nodes. You can further extend the scenario by adding nodes, adjusting validator configurations, or modifying network conditions to investigate how these changes affect block production, transaction processing, and consensus progress. This example provides a convenient way to monitor blockchain behavior and analyze experimental results.
+  code: D10
+  category_id: blockchain
+  source_path: examples/blockchain/D10_eth_explorer
+  slug: d10-eth-explorer
+  url: "/examples/d10-eth-explorer/"
+  readme_links:
+  - from: "../../../docker_images/seedemu-ethexplorer"
+    to: https://github.com/seed-labs/seed-emulator/tree/master/docker_images/seedemu-ethexplorer
+- title: Ethereum Faucet
+  description: Fund Ethereum accounts with test Ether through a faucet service in
+    an emulated blockchain network.
+  code: D20
+  category_id: blockchain
+  source_path: examples/blockchain/D20_faucet
+  slug: d20-faucet
+  url: "/examples/d20-faucet/"
+  overview: |-
+    ## Overview
+
+    This example deploys a faucet service in an Ethereum PoA or PoS blockchain, allowing users to request test Ether for their accounts. Users can configure funding requests during emulator construction or request funds after the blockchain starts through HTTP APIs and client programs. The faucet transfers Ether by submitting real transactions through an Ethereum node, allowing users to observe the funding process through transaction records and account balances. You can further extend the scenario by integrating the faucet with wallets, smart contracts, or custom applications that require funded accounts. This example provides a convenient way to manage test funds and support blockchain application development and testing.
+- title: Smart Contract Deployment
+  description: Deploy Ethereum smart contracts and make their addresses available
+    to applications running in the emulated network.
+  code: D21
+  category_id: blockchain
+  source_path: examples/blockchain/D21_deploy_contract
+  slug: d21-deploy-contract
+  url: "/examples/d21-deploy-contract/"
+  overview: |-
+    ## Overview
+
+    This example demonstrates how to deploy smart contracts on an Ethereum PoA or PoS blockchain using a utility server. Users can provide compiled smart contracts, automatically deploy them after the blockchain starts, and retrieve their addresses through the utility server's APIs. By inspecting deployment transactions, contract addresses, and blockchain records, users can understand how smart contracts are deployed and accessed by different applications. You can further extend the scenario by deploying additional contracts, integrating them with other services, or using development tools such as Remix and Hardhat to test contract interactions. This example provides a foundation for developing and experimenting with decentralized applications in a controllable blockchain environment.
+- title: Blockchain Oracle
+  description: Connect off-chain applications with Ethereum smart contracts through
+    an oracle service.
+  code: D22
+  category_id: blockchain
+  source_path: examples/blockchain/D22_oracle
+  slug: d22-oracle
+  url: "/examples/d22-oracle/"
+  overview: |-
+    ## Overview
+
+    This example demonstrates how an Ethereum smart contract can obtain information from an off-chain oracle service. It deploys an oracle node and a user application alongside an emulated Ethereum blockchain. When the user requests a price update, the smart contract emits an event that is detected by the oracle node. The oracle generates a sample price and submits a transaction to update the value stored in the contract, which the user can then retrieve. By following these interactions, users can understand how smart contracts communicate with external services through blockchain events and transactions. You can further extend the scenario by connecting the oracle to real data sources, modifying update mechanisms, or changing network conditions to investigate how external dependencies affect blockchain applications.
+- title: Dynamic Validator Participation
+  description: Add new validators to a running Ethereum PoS blockchain and observe
+    their activation and participation in consensus.
+  overview: |-
+    ## Overview
+
+    This example demonstrates how to introduce new validators into an Ethereum PoS blockchain after the network has already started. Unlike validators initialized at genesis, new validators must create their credentials, submit a deposit transaction, and complete the activation process before participating in consensus. Users can observe validator status changes through beacon node APIs and client logs, following the process from registration to activation and attestation. You can further extend the scenario by adding more validators, adjusting their network placement, or changing network conditions to investigate how validator participation affects consensus operation. This example provides a practical environment for studying validator management and dynamic participation in Ethereum PoS.
+  code: D23
+  category_id: blockchain
+  source_path: examples/blockchain/D23_validator
+  slug: d23-validator
+  url: "/examples/d23-validator/"
+  readme_links:
+  - from: "../D01_ethereum_pos/"
+    to: "/examples/d01-ethereum-pos/readme/"
+- title: Monero Blockchain
+  description: Build a private Monero blockchain with configurable peer connections,
+    mining activity, and client software.
+  overview: |-
+    ## Overview
+
+    This example deploys a Monero blockchain across an emulated Internet using real Monero client software. Users can configure different types of nodes, including seed nodes, full nodes, pruned nodes, and light wallets, as well as customize mining behavior and peer connections. The example supports both simplified deployment and detailed configuration, allowing users to construct Monero networks for different experimental needs. By inspecting peer connections, block production, and wallet transactions, users can explore how Monero nodes communicate and maintain the blockchain. You can further extend the scenario by changing mining difficulty, adjusting node connectivity, or deploying modified Monero clients to study blockchain performance, peer-to-peer networking, and security vulnerabilities.
+  code: D60
+  category_id: blockchain
+  source_path: examples/blockchain/D60_monero
+  slug: d60-monero
+  url: "/examples/d60-monero/"
+- title: Solana Blockchain
+  description: Deploy a private Solana blockchain using real Agave validators across
+    a configurable Internet.
+  overview: |-
+    ## Overview
+
+    This example creates a private Solana blockchain using real Agave validator software deployed across multiple autonomous systems. It establishes a bootstrap validator and additional validators that communicate through the emulated Internet to maintain the blockchain. Users can inspect validator participation, peer discovery, slot progression, and transaction processing through standard Solana tools. The example also supports transferring SOL between accounts and deploying Solana programs, allowing users to experiment with blockchain applications. You can further extend the scenario by adding validators, changing their placement, or modifying network connections and transaction workloads to investigate how network conditions affect validator communication, transaction processing, and consensus performance.
+  code: D70
+  category_id: blockchain
+  source_path: examples/blockchain/D70_solana
+  slug: d70-solana
+  url: "/examples/d70-solana/"
+  readme_links:
+  - from: "../D60_monero"
+    to: "/examples/d60-monero/readme/"
