@@ -30,7 +30,7 @@
           <section class="example-group" id="{{ category.id }}" aria-labelledby="{{ category.id }}-title" data-example-group>
             <div class="example-group-heading"><h2 id="{{ category.id }}-title">{{ category.title }}</h2></div>
             <ul class="example-list">
-              {% for lesson in lessons %}{% include single-use/examples/example-row.html lesson=lesson category=category %}{% endfor %}
+              {% for lesson in lessons %}{% include shared/example-row.html lesson=lesson category=category %}{% endfor %}
             </ul>
           </section>
         {% endfor %}

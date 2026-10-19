@@ -1,7 +1,7 @@
 # Homepage card only; independent from the project detail description.
 title: Satellite Network Emulator
 url: "/satellite/"
-image: "/_data/satellite/images/satellite-network-blue-small.webp"
+image: "/assets/images/satellite/satellite-network-blue-small.webp"
 image_alt: Illustration of three prominent satellites linked to one another and to
   ground stations on Earth
 category: Satellite networks
