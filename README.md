@@ -78,7 +78,8 @@ keep copy in page front matter, select a media data folder, and render `project-
 
 The homepage uses `_includes/single-use/home/` for its hero, projects, and
 sidebar. The three cards are authored explicitly in projects.html, without iterating over projects.
-Other page-specific includes are grouped under `about-us` and `examples`.
+Other page-specific includes are grouped under `about-us`.
+The three projects share `shared/example-catalog.html` and `shared/example-row.html` for the example catalog and its entries.
 Papers and In Action share `resource-list-page.html`, passing their own page.items lists from page front matter.
 Shared readers, resource rows, videos, and icons live under `_includes/shared/`.
 
