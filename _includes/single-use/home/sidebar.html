@@ -1,12 +1,12 @@
 {% comment %}Homepage sidebar: short content is edited here, independently of footer.html.{% endcomment %}
+{% assign project_lead = site.data['about-us'].team.project_lead %}
 <aside class="portal-sidebar" aria-label="Project information">
-  {% comment %}Team introduction and contact link.{% endcomment %}
+  {% comment %}Project lead contact details come from the shared team data.{% endcomment %}
   <section class="portal-sidebar-team">
     <p class="portal-eyebrow">The people behind it</p>
-    <h2>Wenliang Du, Professor, ACM/IEEE Fellow</h2>
-    <p class="portal-sidebar-role">Zhejiang University</p>
-    <p>Built by educators, researchers, and an open-source community.</p>
-    <a href="#team-contact">Contact the team {% include shared/icon.html name="arrow" %}</a>
+    <h2 class="portal-sidebar-person">Prof. <a href="https://github.com/{{ project_lead.github | escape }}" aria-label="{{ project_lead.name | escape }} on GitHub">{{ project_lead.name | escape }}</a></h2>
+    <p class="portal-sidebar-email-label">Email:</p>
+    <a class="portal-sidebar-email" href="mailto:{{ project_lead.email | escape }}">{{ project_lead.email | escape }}</a>
   </section>
   {% comment %}Sidebar resource links are maintained separately from footer links.{% endcomment %}
   <section class="portal-sidebar-resources" aria-labelledby="sidebar-resources-title">

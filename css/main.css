@@ -68,10 +68,12 @@ layout: null
 .portal-sidebar .portal-eyebrow { font-size: 10px; line-height: 1.7; margin-bottom: 13px; }
 .is-portal .portal-sidebar h2 { font-size: 16px; line-height: 1.5; }
 .portal-sidebar p { color: var(--muted); font-size: 12px; line-height: 1.85; }
-.portal-sidebar .portal-sidebar-role { font-size: 11px; margin-block: 3px 14px; }
+.portal-sidebar .portal-sidebar-person { margin-bottom: 14px; }
+.portal-sidebar .portal-sidebar-person a { display: inline; font: inherit; color: var(--accent); }
+.portal-sidebar .portal-sidebar-email-label { margin: 0 0 2px; color: var(--text); font-weight: 600; }
+.portal-sidebar .portal-sidebar-email { margin: 0; }
 .portal-sidebar a { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 600; color: var(--accent); }
 .portal-sidebar a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.portal-sidebar-team > a { margin-top: 16px; font-weight: 600; }
 .portal-sidebar .icon { width: 14px; height: 14px; }
 .portal-sidebar-resources { margin-top: 25px; padding-top: 22px; border-top: 1px solid var(--line); }
 .portal-sidebar-resources ul { list-style: none; padding: 0; margin: 13px 0 0; }
