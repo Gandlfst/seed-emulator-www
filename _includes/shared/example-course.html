@@ -6,13 +6,20 @@
   <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ lesson.code }}</span></nav>
   <div class="lesson-workspace">
     <article class="lesson-content">
-      <div class="lesson-heading"><p class="portal-eyebrow">{{ category.title }} <span aria-hidden="true">/</span> {{ lesson.code }}</p><h1>{{ lesson.title }}</h1></div>
+      <div class="lesson-heading">
+        <div class="lesson-heading-top">
+          <p class="portal-eyebrow">{{ category.title }} <span aria-hidden="true">/</span> {{ lesson.code }}</p>
+          {% if readme_document %}
+            <a class="lesson-github-link" href="{{ readme_source_url }}">View on GitHub {% include shared/icon.html name="external" %}</a>
+          {% endif %}
+        </div>
+        <h1>{{ lesson.title }}</h1>
+      </div>
       {% comment %}Lesson text is maintained in the owning project examples.yml.{% endcomment %}
       <div class="lesson-prose">{{ lesson.overview | markdownify }}</div>
       {% if readme_document %}
         {% capture embedded_readme %}{{ readme_document.content | markdownify }}{% endcapture %}
         <section class="lesson-readme embedded-readme" id="instructions" aria-label="Instructions">
-          <div class="readme-toolbar"><a href="{{ readme_source_url }}">View on GitHub {% include shared/icon.html name="external" %}</a></div>
           {% include shared/example-readme-body.html content=embedded_readme lesson=lesson %}
           <p class="lesson-source-version">Source: SEED Emulator · <a href="{{ readme_source_url }}">{{ lesson.code }} README</a></p>
         </section>

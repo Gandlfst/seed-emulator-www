@@ -3,6 +3,7 @@
 <ul class="emulator-resource-list">
   {% for group_key in resource_groups %}
     {% if group_key == 'how-to-use' %}
+      {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'How to use' %}
     {% elsif group_key == 'example' %}
       {% assign group_url = '/examples/' %}
@@ -20,15 +21,9 @@
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Screenshots' %}
     {% endif %}
-    {% comment %}Available categories have links; How to use waits for its content.{% endcomment %}
     <li class="emulator-resource emulator-project-resource">
-      {% if group_key == 'how-to-use' %}
-        <h3>{{ group_title }}</h3>
-        <span class="emulator-resource-pending">Coming soon</span>
-      {% else %}
-        <h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3>
-        <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
-      {% endif %}
+      <h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3>
+      <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
     </li>
   {% endfor %}
 </ul>

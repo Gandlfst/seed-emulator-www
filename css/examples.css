@@ -37,6 +37,10 @@
 /* Lesson articles keep reading width comfortable and code horizontally scrollable. */
 .lesson-content { min-width: 0; border: 1px solid var(--line); border-radius: 14px; padding: 36px 40px; background: var(--card); }
 .lesson-heading { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.lesson-heading-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
+.lesson-heading-top .portal-eyebrow { margin: 0; }
+.lesson-github-link { margin-left: auto; flex-shrink: 0; color: var(--accent); font-size: 13px; }
+.lesson-github-link .icon { width: 14px; height: 14px; }
 .lesson-heading h1 { margin: 12px 0 18px; }
 .lesson-heading > p:not(.portal-eyebrow) { color: var(--muted); font-size: 15px; }
 .lesson-prose { font-size: 15px; line-height: 1.85; overflow-wrap: anywhere; }

@@ -1,0 +1,11 @@
+---
+permalink: /satellite/how-to-use/
+layout: default
+title: How to use
+parent_project: satellite
+nav_key: satellite
+items: []
+---
+{% comment %}Add usage guides to items above: type, title, description, and url.{% endcomment %}
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/resource-page.html %}
