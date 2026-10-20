@@ -1,0 +1,17 @@
+{% comment %}Shared shell for the Internet, Satellite, and Blockchain project entries.{% endcomment %}
+{% assign project_data = site.data[page.project] %}
+{% assign project_info = page %}
+{% assign page_title = page.title %}
+{% assign page_description = page.description %}
+{% assign active_theme = site.data.shared.themes | where: 'id', site.portal_theme | first | default: site.data.shared.themes.first %}
+<!doctype html>
+<html lang="en" data-portal-theme="{{ active_theme.id }}">
+  <head>{% include shared/head.html %}</head>
+  <body class="is-portal">
+    <a class="skip-link" href="#main">Skip to content</a>
+    {% include shared/header.html %}
+    <main id="main">{% include shared/project-page.html %}</main>
+    {% include shared/footer.html %}
+    {% include shared/scripts.html %}
+  </body>
+</html>

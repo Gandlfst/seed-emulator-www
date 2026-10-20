@@ -1,0 +1,17 @@
+{% assign readme_content = include.content %}
+{% assign readme_lesson = include.lesson %}
+{% if readme_lesson.slug == 'd01-ethereum-pos' %}
+  {% assign pos_image_url = '/assets/images/blockchain/POS-1.png' | relative_url %}
+  {% assign pos_image_src = 'src="' | append: pos_image_url | append: '"' %}
+  {% assign readme_content = readme_content | replace: 'src="pics/POS-1.png"', pos_image_src %}
+{% endif %}
+{% if readme_lesson.slug == 'a11-add-containers' %}
+  {% assign readme_content = readme_content | replace: 'href="./method_1/"', 'href="https://github.com/seed-labs/seed-emulator/tree/master/examples/basic/A11_add_containers_new/method_1/"' | replace: 'href="../A10_add_containers/"', 'href="https://github.com/seed-labs/seed-emulator/tree/master/examples/basic/A10_add_containers/"' %}
+{% endif %}
+{% for link in readme_lesson.readme_links %}
+  {% assign original_href = 'href="' | append: link.from | append: '"' %}
+  {% assign resolved_url = link.to | relative_url %}
+  {% assign resolved_href = 'href="' | append: resolved_url | append: '"' %}
+  {% assign readme_content = readme_content | replace: original_href, resolved_href %}
+{% endfor %}
+<div class="lesson-prose readme-prose">{{ readme_content }}</div>

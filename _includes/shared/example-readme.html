@@ -1,25 +1,10 @@
-{% assign readme_content = content %}
-{% if lesson.slug == 'd01-ethereum-pos' %}
-  {% assign pos_image_url = '/assets/images/blockchain/POS-1.png' | relative_url %}
-  {% assign pos_image_src = 'src="' | append: pos_image_url | append: '"' %}
-  {% assign readme_content = content | replace: 'src="pics/POS-1.png"', pos_image_src %}
-{% endif %}
-{% if lesson.slug == 'a11-add-containers' %}
-  {% assign readme_content = readme_content | replace: 'href="./method_1/"', 'href="https://github.com/seed-labs/seed-emulator/tree/master/examples/basic/A11_add_containers_new/method_1/"' | replace: 'href="../A10_add_containers/"', 'href="https://github.com/seed-labs/seed-emulator/tree/master/examples/basic/A10_add_containers/"' %}
-{% endif %}
-{% for link in lesson.readme_links %}
-  {% assign original_href = 'href="' | append: link.from | append: '"' %}
-  {% assign resolved_url = link.to | relative_url %}
-  {% assign resolved_href = 'href="' | append: resolved_url | append: '"' %}
-  {% assign readme_content = readme_content | replace: original_href, resolved_href %}
-{% endfor %}
 {% comment %}Shared reader: lesson metadata comes from the layout; README text stays unchanged.{% endcomment %}
 {% assign source_url = site.data.shared.examples.repository_url | append: '/blob/master/' | append: lesson.source_path | append: '/README.md' %}
 <div class="container examples-page example-readme-page">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><a href="{{ lesson_url | relative_url }}">{{ lesson.code }}</a><span aria-hidden="true">/</span><span aria-current="page">README</span></nav>
   <article class="lesson-content readme-content">
     <div class="readme-toolbar"><a href="{{ lesson_url | relative_url }}">← Back to example</a><a href="{{ source_url }}">View on GitHub {% include shared/icon.html name="external" %}</a></div>
-    <div class="lesson-prose readme-prose">{{ readme_content }}</div>
+    {% include shared/example-readme-body.html content=content lesson=lesson %}
     <p class="lesson-source-version">Source: SEED Emulator · <a href="{{ source_url }}">{{ lesson.code }} README</a></p>
   </article>
 </div>

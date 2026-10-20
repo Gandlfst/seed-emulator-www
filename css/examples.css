@@ -49,12 +49,13 @@
 .lesson-prose pre { padding: 20px; overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; line-height: 1.75; }
 .lesson-prose blockquote { margin: 20px 0; padding: 12px 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); color: var(--muted); }
 .lesson-prose blockquote p { margin: 0; }
-.lesson-sources { margin-top: 36px; scroll-margin-top: 24px; }
-.lesson-sources h2 { margin: 6px 0 12px; }
-.lesson-sources p:not(.portal-eyebrow) { color: var(--muted); font-size: 13px; }
 .lesson-source-version { margin-top: 16px; }
 .lesson-source-version a { text-decoration: underline; }
 .lesson-return { display: inline-block; color: var(--accent); margin-top: 26px; font-size: 13px; font-weight: 650; }
+/* Example pages embed their imported README directly below the authored overview. */
+.embedded-readme { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
+.embedded-readme .readme-prose > h1:first-child { display: none; }
+.embedded-readme > .lesson-source-version { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 /* Imported READMEs reuse lesson typography with room for upstream tables and images. */
 .readme-content { max-width: 1000px; margin: 0 auto; }
 .readme-toolbar { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; padding-bottom: 22px; border-bottom: 1px solid var(--line); color: var(--accent); font-size: 13px; }

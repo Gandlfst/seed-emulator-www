@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # D70_solana: Solana Blockchain Service Example

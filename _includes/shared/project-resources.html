@@ -1,20 +1,34 @@
-{% comment %}Keep the original resource list style and fixed Presentation, Example, Paper, Screenshots order.{% endcomment %}
-{% assign resource_groups = 'Presentation,Example,Paper,Screenshots' | split: ',' %}
+{% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Screenshots, In Action order.{% endcomment %}
+{% assign resource_groups = 'presentation,how-to-use,example,paper,screenshots,in-action' | split: ',' %}
 <ul class="emulator-resource-list">
-  {% for group_title in resource_groups %}
-    {% assign group_key = group_title | downcase %}
-    {% if group_key == 'example' %}
+  {% for group_key in resource_groups %}
+    {% if group_key == 'how-to-use' %}
+      {% assign group_title = 'How to use' %}
+    {% elsif group_key == 'example' %}
       {% assign group_url = '/examples/' %}
+      {% assign group_title = 'Examples' %}
     {% elsif group_key == 'paper' %}
       {% assign group_url = '/papers/' %}
+      {% assign group_title = 'Papers' %}
+    {% elsif group_key == 'presentation' %}
+      {% assign group_url = page.url | append: group_key | append: '/' %}
+      {% assign group_title = 'Presentations' %}
+    {% elsif group_key == 'in-action' %}
+      {% assign group_url = '/in-action/' %}
+      {% assign group_title = 'In Action' %}
     {% else %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
+      {% assign group_title = 'Screenshots' %}
     {% endif %}
-    {% comment %}Both the title and action open the category, even before files are added.{% endcomment %}
-    <li class="emulator-resource">
-      <span class="emulator-resource-type">{% case group_key %}{% when 'presentation' %}PPT{% when 'example' %}EXAMPLE{% when 'paper' %}PDF{% when 'screenshots' %}IMAGE{% endcase %}</span>
-      <div><h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3></div>
-      <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
+    {% comment %}Available categories have links; How to use waits for its content.{% endcomment %}
+    <li class="emulator-resource emulator-project-resource">
+      {% if group_key == 'how-to-use' %}
+        <h3>{{ group_title }}</h3>
+        <span class="emulator-resource-pending">Coming soon</span>
+      {% else %}
+        <h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3>
+        <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
+      {% endif %}
     </li>
   {% endfor %}
 </ul>

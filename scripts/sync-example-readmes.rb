@@ -24,6 +24,6 @@ end
 lessons.each do |lesson|
   filename = lesson.fetch('slug') + '.md'
   readme = URI.open("#{remote}/#{lesson.fetch('source_path')}/README.md", open_timeout: 15, read_timeout: 30, &:read)
-  File.binwrite(File.join(output, filename), "---\nlayout: default\n---\n\n" + readme)
+  File.binwrite(File.join(output, filename), "---\nlayout: example-readme\n---\n\n" + readme)
   puts "Copied #{filename}"
 end

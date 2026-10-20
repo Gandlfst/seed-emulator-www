@@ -16,7 +16,7 @@
     {% comment %}Navigation is authored here; optional themes use theme data.{% endcomment %}
     <div class="portal-navigation-bar">
       <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
-        <a href="{{ '/' | relative_url }}"{% if page.home %} aria-current="page"{% endif %}>Home</a>
+        <a href="{{ '/' | relative_url }}"{% if include.home %} aria-current="page"{% endif %}>Home</a>
         <a href="{{ '/internet-emulator/' | relative_url }}"{% if page.project == 'internet' or page.nav_key == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
         <a href="{{ '/satellite/' | relative_url }}"{% if page.project == 'satellite' or page.nav_key == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
         <a href="{{ '/blockchain/' | relative_url }}"{% if page.project == 'blockchain' or page.nav_key == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>

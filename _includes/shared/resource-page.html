@@ -1,6 +1,5 @@
-{% comment %}Shared resource page; entries come from the selected project resources.yml.{% endcomment %}
+{% comment %}Shared project resource renderer; entries live in the calling page's front matter.{% endcomment %}
 {% assign parent_project = project_info %}
-{% assign category_resources = project_data.resources[page.resource_kind] %}
 <div class="container">
   {% comment %}Breadcrumb returns to the project resource list.{% endcomment %}
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
@@ -14,13 +13,12 @@
   </section>
   {% comment %}Keep the content area empty until real files are provided.{% endcomment %}
   <div class="emulator-section">
-    {% if category_resources.size > 0 %}
+    {% if page.items.size > 0 %}
       <ul class="emulator-resource-list">
-        {% for resource in category_resources %}
+        {% for resource in page.items %}
           {% include shared/resource.html resource=resource %}
         {% endfor %}
       </ul>
     {% endif %}
-    {{ content }}
   </div>
 </div>

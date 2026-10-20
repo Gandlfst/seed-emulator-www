@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # B61 Native Kubernetes Example

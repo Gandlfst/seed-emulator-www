@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # Public Key Infrastructure

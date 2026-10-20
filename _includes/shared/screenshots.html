@@ -1,4 +1,4 @@
-{% comment %}Shared gallery; images and captions come from the selected project screenshots.yml.{% endcomment %}
+{% comment %}Shared gallery; description, images, and captions live in the calling page's front matter.{% endcomment %}
 {% assign parent_project = project_info %}
 <div class="container">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
@@ -8,11 +8,11 @@
   <section class="emulator-intro" aria-labelledby="screenshots-title">
     <p class="portal-eyebrow">{{ parent_project.title }}</p>
     <h1 id="screenshots-title">{{ page.title }}</h1>
-    <p class="emulator-description">{{ project_data.screenshots.description }}</p>
+    <p class="emulator-description">{{ page.description }}</p>
   </section>
   {% comment %}Each image opens at its original size. Preserve its aspect ratio.{% endcomment %}
   <section class="emulator-section screenshot-gallery" aria-label="{{ page.title | escape }}">
-    {% for screenshot in project_data.screenshots.items %}
+    {% for screenshot in page.items %}
       <figure class="emulator-screenshot">
         <a href="{{ screenshot.image | relative_url }}" aria-label="{{ screenshot.title | escape }}">
           <img src="{{ screenshot.image | relative_url }}" alt="{{ screenshot.alt | escape }}" loading="lazy">

@@ -1,5 +1,7 @@
-{% comment %}Example page: one overview paragraph, Instructions and Code, local README, and repository files.{% endcomment %}
+{% comment %}Example page: overview first, followed by the imported README.{% endcomment %}
 {% assign category = site.data.shared.examples.categories | where: 'id', lesson.category_id | first %}
+{% assign readme_document = site.example_readmes | where: 'slug', lesson.slug | first %}
+{% assign readme_source_url = site.data.shared.examples.repository_url | append: '/blob/master/' | append: lesson.source_path | append: '/README.md' %}
 <div class="container examples-page example-course">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ lesson.code }}</span></nav>
   <div class="lesson-workspace">
@@ -7,19 +9,14 @@
       <div class="lesson-heading"><p class="portal-eyebrow">{{ category.title }} <span aria-hidden="true">/</span> {{ lesson.code }}</p><h1>{{ lesson.title }}</h1></div>
       {% comment %}Lesson text is maintained in the owning project examples.yml.{% endcomment %}
       <div class="lesson-prose">{{ lesson.overview | markdownify }}</div>
-      <section class="lesson-sources" id="source-materials" aria-labelledby="source-materials-title">
-        <h2 id="source-materials-title">Instructions and Code</h2>
-        {% comment %}Use the same resource rows as project pages; build pinned URLs from lesson metadata.{% endcomment %}
-        <ul class="emulator-resource-list">
-          {% for resource in site.data.shared.examples.resources %}
-            {% assign source_url = site.data.shared.examples.repository_url | append: '/' | append: resource.view | append: '/' | append: site.data.shared.examples.revision | append: '/' | append: lesson.source_path | append: resource.path %}
-            {% if resource.type == 'GUIDE' %}
-              {% assign source_url = page.url | append: 'readme/' %}
-            {% endif %}
-            {% include shared/resource.html resource=resource url=source_url %}
-          {% endfor %}
-        </ul>
-      </section>
+      {% if readme_document %}
+        {% capture embedded_readme %}{{ readme_document.content | markdownify }}{% endcapture %}
+        <section class="lesson-readme embedded-readme" id="instructions" aria-label="Instructions">
+          <div class="readme-toolbar"><a href="{{ readme_source_url }}">View on GitHub {% include shared/icon.html name="external" %}</a></div>
+          {% include shared/example-readme-body.html content=embedded_readme lesson=lesson %}
+          <p class="lesson-source-version">Source: SEED Emulator · <a href="{{ readme_source_url }}">{{ lesson.code }} README</a></p>
+        </section>
+      {% endif %}
       <a class="lesson-return" href="{{ '/examples/' | relative_url }}#{{ lesson.category_id }}">Explore more {{ category.title | downcase }} examples {% include shared/icon.html name="arrow" %}</a>
     </article>
   </div>

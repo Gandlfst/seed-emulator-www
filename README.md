@@ -36,7 +36,7 @@ _data/
   satellite/                       Satellite project content
   blockchain/                      Blockchain project content
   shared/
-    examples.yml                   Categories, resource labels, upstream revision
+    examples.yml                   Categories and upstream repository links
     themes.yml                     Palette definitions
   about-us/
     team.yml                       Team members and GitHub usernames
@@ -45,7 +45,7 @@ assets/images/
   internet/                        Internet project images
   satellite/                       Satellite project images
   blockchain/                      Blockchain project images
-_layouts/default.html              Single shared layout
+_layouts/                          Page-type layouts; no layout nesting
 _includes/single-use/              Page-specific includes grouped by page name
 _includes/shared/                  Shared components
 css/                               Styles
@@ -59,34 +59,39 @@ remain `/examples/<slug>/` and `/examples/<slug>/readme/`.
 
 Short fixed copy belongs directly in its page or include. Header, footer, hero,
 and sidebar each own their text. Papers and In Action keep their small lists in
-page front matter. Project introductions also live in their project pages; child
-resource pages look up that page for the parent title and link.
+page front matter. Project introductions also live in their project pages.
+Presentation lists and screenshot galleries live in their own page front matter;
+these child pages look up the project page only for the parent title and link.
 
 Each project data folder contains:
 
 - `card.yml`: homepage card copy and image, independent from project details.
-- `resources.yml`: presentation entries.
-- `videos.yml`: external video entries, or `[]` when empty.
-- `screenshots.yml`: actual screenshots and captions.
 - `examples.yml`: example metadata, descriptions, source paths, and overview text.
 
 Public images live under `assets/images/<project>/`; shared branding lives under
-`assets/images/shared/`. Keep `_data` for YAML content only. The repository does
-not bundle video files; project video entries link to external hosts.
+`assets/images/shared/`. Keep `_data` for YAML content only.
 
 ## Page composition
 
-The shared `default` layout adds the header, footer, and scripts. Project pages
-keep copy in page front matter, select a media data folder, and render `project-page.html`. Layouts are not nested.
+Layouts are split by page responsibility and are not nested. `home` renders the
+homepage, `project` serves the three project entries, `examples` serves the catalog,
+and `example` serves individual examples. Legacy `/readme/` URLs use
+`example-readme`. Simple authored pages—including project presentation and
+screenshot pages—continue to use `default` and select their content directly in
+their own `index.html`.
+
+Project pages keep copy in page front matter, select a project data folder, and
+render `project-page.html`.
 
 The homepage uses `_includes/single-use/home/` for its hero, projects, and
 sidebar. The three cards are authored explicitly in projects.html, without iterating over projects.
 Other page-specific includes are grouped under `about-us`.
 The three projects share `shared/example-catalog.html` and `shared/example-row.html` for the example catalog and its entries.
 Papers and In Action share `resource-list-page.html`, passing their own page.items lists from page front matter.
-Shared readers, resource rows, videos, and icons live under `_includes/shared/`.
+Shared readers, resource rows, and icons live under `_includes/shared/`.
 
-Project resources appear in this order: Presentation, Example, Paper, Screenshots.
+Project resources appear in this order: Presentations, How to use, Examples,
+Papers, Screenshots, In Action.
 Presentation and Screenshots have project-specific pages. Paper links to the shared
 `/papers/` page; `/in-action/` is also shared. Empty resource lists can be populated
 later. Screenshots should show the running application, not concept illustrations.
@@ -105,9 +110,9 @@ To add an example:
 2. Add `pages/examples/_examples/<slug>.md` using an existing stub as a template.
 3. Run the README importer and build the site.
 
-Each detail page contains an Overview and Instructions and Code. The README link
-opens a local page; the code link opens the upstream directory at the revision
-recorded in `_data/shared/examples.yml`. The existing `A15_toplogy_generator` spelling
+Each detail page keeps its authored Overview at the top and embeds the imported
+README below it, with a View on GitHub link to the upstream source. The existing
+`A15_toplogy_generator` spelling
 matches the upstream path and is intentional.
 
 ## Import example READMEs
@@ -123,7 +128,7 @@ unchanged Markdown to `pages/examples/_example_readmes/<slug>.md`, preceded by:
 
 ```yaml
 ---
-layout: default
+layout: example-readme
 ---
 ```
 
@@ -133,8 +138,8 @@ On Windows it defaults to `http://127.0.0.1:7890` unless `https_proxy` or
 connection. Linux and macOS retain their existing proxy settings.
 
 Collection defaults disable Liquid evaluation in imported README text. The layout
-looks up the matching example by filename. `_includes/shared/example-readme.html` supplies
-the reader, return link, and View on GitHub link. It maps the D01 image reference to
+looks up the matching example by filename. `shared/example-readme-body.html` renders
+the README body for both the example page and legacy reader. It maps the D01 image reference to
 `/assets/images/blockchain/POS-1.png` and A11's two relative sub-guide links to GitHub.
 Additional guide links can be mapped for display with an example's readme_links list
 (from and to); this does not modify imported Markdown. Other relative references
@@ -154,6 +159,8 @@ files manually when removing an example; the importer does not delete files.
 | Homepage cards | `_data/<project>/card.yml` |
 | Public images | `assets/images/<project>/` |
 | Project descriptions and overviews | `pages/<project>/index.html` |
+| Presentations | `pages/<project>/presentation/index.html` (`items`) |
+| Screenshot descriptions and images | `pages/<project>/screenshots/index.html` (`description`, `items`) |
 | Example descriptions and overviews | `_data/<project>/examples.yml` |
 | Shared papers and applications | `pages/papers/index.html`, `pages/in-action/index.html` |
 | Team member lists and GitHub avatars | `_data/about-us/team.yml` |

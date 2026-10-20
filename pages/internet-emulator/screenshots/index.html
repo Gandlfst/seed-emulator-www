@@ -4,6 +4,14 @@ layout: default
 title: Screenshots
 parent_project: internet
 nav_key: internet
-resource_kind: screenshots
+description: Screenshots and short explanations of the Internet Emulator.
+items:
+- image: "/assets/images/internet/demo-poster.jpg"
+  alt: Dense network topology displayed in the Internet Map demonstration
+  title: Internet Map topology
+  description: A frame from the Internet Map demonstration showing the nodes and links
+    of an emulated Internet.
 ---
-{% comment %}Gallery content: _data/internet/screenshots.yml.{% endcomment %}
+{% comment %}Edit the gallery description and screenshot items above.{% endcomment %}
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/screenshots.html %}
