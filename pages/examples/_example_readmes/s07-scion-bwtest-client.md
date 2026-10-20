@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # SCION Bandwidth Test Client

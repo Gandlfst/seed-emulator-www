@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # Faucet Server

@@ -1,19 +1,6 @@
-# Catalog categories and the upstream revision used for lesson references.
-revision: 61acdf4c9699b25b06843ec4aad747108b05924e
+# Catalog categories and upstream repository links.
 repository_url: https://github.com/seed-labs/seed-emulator
 readme_url: https://github.com/seed-labs/seed-emulator/blob/61acdf4c9699b25b06843ec4aad747108b05924e/README.md
-# Resource URLs are assembled from the repository, revision, and lesson source_path.
-resources:
-- type: GUIDE
-  title: Example README
-  description: Read the example README as a page on this website.
-  view: blob
-  path: /README.md
-- type: CODE
-  title: Example files
-  description: Source scripts and configuration files for this example.
-  view: tree
-  path: ''
 categories:
 - id: foundations
   title: Network foundations

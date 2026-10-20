@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # Mini Internet With MPLS Transit AS

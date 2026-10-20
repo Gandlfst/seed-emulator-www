@@ -4,6 +4,8 @@ layout: default
 title: Presentation
 parent_project: blockchain
 nav_key: blockchain
-resource_kind: presentation
+items: []
 ---
-{% comment %}Files: _data/blockchain/resources.yml, presentation list.{% endcomment %}
+{% comment %}Add presentation entries to items above: type, title, description, and url.{% endcomment %}
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/resource-page.html %}

@@ -27,14 +27,19 @@ collections:
     output: true
     permalink: /examples/:name/readme/
 
-# Shared settings for imported READMEs; each file only needs layout: default.
+# Collection defaults keep new example pages on their dedicated layouts.
 defaults:
+  - scope:
+      path: ""
+      type: examples
+    values:
+      layout: example
+      nav_key: internet
   - scope:
       path: ""
       type: example_readmes
     values:
-      example_readme: true
-      examples: true
+      layout: example-readme
       nav_key: internet
       render_with_liquid: false
 

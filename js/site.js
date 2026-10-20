@@ -1,4 +1,4 @@
-// Page interactions: mobile navigation and local video error feedback.
+// Page interactions: mobile navigation and team avatar fallbacks.
 (() => {
   'use strict';
   document.documentElement.classList.add('js-enabled');
@@ -26,13 +26,6 @@
     });
     narrowViewport.addEventListener('change', () => setMenu(false));
   }
-
-  // Show a fallback file link when video loading fails.
-  document.querySelectorAll('.video-panel video').forEach(video => {
-    const errorMessage = video.closest('.video-panel').querySelector('.video-error');
-    video.addEventListener('error', () => { errorMessage.hidden = false; });
-    video.addEventListener('loadeddata', () => { errorMessage.hidden = true; });
-  });
 
   // Keep the member initial visible when a GitHub avatar cannot be loaded.
   document.querySelectorAll('.team-member-avatar').forEach(avatar => {

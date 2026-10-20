@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 ### D60_monero: Monero Blockchain Service Examples

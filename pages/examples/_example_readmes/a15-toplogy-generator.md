@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: example-readme
 ---
 
 # A15 Autonomous System Topology Generator
