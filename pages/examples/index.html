@@ -1,9 +1,27 @@
 ---
-layout: examples
+layout: default
 title: Examples
-nav_key: internet
 permalink: /examples/
-description: Explore SEED Emulator examples by category, with introductions, instructions, and source code.
+description: Choose a project to browse its examples.
 ---
-{% comment %}Catalog content: each project examples.yml; shared categories: _data/shared/examples.yml.{% endcomment %}
-{% include shared/example-catalog.html %}
+{% comment %}Legacy catalog address: keep existing links useful without mixing project examples.{% endcomment %}
+<div class="container">
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">SEED Emulators</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
+  <section class="emulator-intro" aria-labelledby="examples-projects-title">
+    <h1 id="examples-projects-title">Examples</h1>
+    <p class="emulator-description">Choose a project to browse its examples.</p>
+  </section>
+  <section class="emulator-section" aria-label="Project examples">
+    <ul class="emulator-resource-list">
+      {% assign project_keys = 'internet,satellite,blockchain' | split: ',' %}
+      {% for project_key in project_keys %}
+        {% assign project_info = site.pages | where: 'project', project_key | first %}
+        {% assign catalog_url = project_info.url | append: 'examples/' %}
+        <li class="emulator-resource emulator-project-resource">
+          <h3><a href="{{ catalog_url | relative_url }}">{{ project_info.title }}</a></h3>
+          <a href="{{ catalog_url | relative_url }}" aria-label="Open {{ project_info.title }} examples">Open {% include shared/icon.html name="arrow" %}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>

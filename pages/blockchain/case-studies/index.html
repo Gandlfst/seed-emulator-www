@@ -1,0 +1,17 @@
+---
+permalink: /blockchain/case-studies/
+layout: default
+title: Case Studies
+parent_project: blockchain
+nav_key: blockchain
+description: Applications of the Blockchain Emulator in research and reproducible experiments.
+items:
+- type: ETH
+  title: Building a controlled Ethereum testbed
+  description: The HotNets 2022 paper demonstrates a 100-node Ethereum environment
+    with bootnodes and Proof-of-Authority sealers. This illustrates how the emulator
+    builds blockchain infrastructure on a configurable network.
+  url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf#page=6
+---
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/resource-page.html %}

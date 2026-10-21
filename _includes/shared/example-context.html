@@ -1,0 +1,15 @@
+{% comment %}Resolve the owning project without merging its example catalog with other projects.{% endcomment %}
+{% assign lesson_slug = page.path | split: '/' | last | remove: '.md' %}
+{% assign lesson = nil %}
+{% assign lesson_project = nil %}
+{% assign example_projects = 'internet,satellite,blockchain' | split: ',' %}
+{% for project_key in example_projects %}
+  {% assign project_lesson = site.data[project_key].examples | where: 'slug', lesson_slug | first %}
+  {% if project_lesson %}
+    {% assign lesson = project_lesson %}
+    {% assign lesson_project = project_key %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign project_info = site.pages | where: 'project', lesson_project | first %}
+{% assign example_catalog_url = project_info.url | append: 'examples/' %}

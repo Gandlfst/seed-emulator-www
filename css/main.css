@@ -18,10 +18,10 @@ layout: null
 .portal-header .header-inner { padding-top: 30px; display: flex; flex-wrap: wrap; gap: 24px; }
 .portal-header-note { margin-left: auto; color: var(--muted); font-size: 12px; }
 .portal-brand { display: inline-flex; align-items: center; }
-/* Render the original PNG with its alpha channel and colors intact.
-   Only unused transparent space on the right is clipped by the wrapper. */
-.portal-brand-logo { display: block; width: 300px; aspect-ratio: 600 / 143; overflow: hidden; background: transparent; }
-.portal-brand-logo img { width: 133.333333%; max-width: none; height: 100%; }
+/* Show the selected shadow logo without resampling the asset. Crop only its
+   unused canvas margins; multiply blends the white matte into the header. */
+.portal-brand-logo { position: relative; display: block; width: 300px; aspect-ratio: 1660 / 390; overflow: hidden; background: transparent; mix-blend-mode: multiply; }
+.portal-brand-logo img { position: absolute; width: 130.722892%; max-width: none; height: auto; left: -2.409639%; top: -43.589744%; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
 .portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
@@ -39,7 +39,6 @@ layout: null
 .portal-intro-actions a { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
 .portal-hero-button { padding: 11px 17px; background: var(--portal-highlight); color: var(--portal-deep); border-radius: 7px; }
 .portal-hero-button:hover { background: var(--portal-highlight-hover); }
-.portal-hero-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .portal-intro-actions .icon { width: 15px; height: 15px; }
 .portal-network-art { width: 100%; height: auto; }
 /* 4. Homepage project grid and cards. */
@@ -63,21 +62,23 @@ layout: null
 .portal-project h3 a:hover { color: var(--accent); text-decoration: underline; }
 .portal-project-description { margin-block: 12px 24px; font-size: 13px; line-height: 1.8; color: var(--muted); }
 .portal-project-more { display: inline-flex; align-items: center; align-self: start; gap: 10px; margin-top: auto; color: var(--accent); font-size: 12px; font-weight: 700; padding-block: 4px; }
-/* 5. Homepage sidebar: team and resources. */
+/* 5. Homepage sidebar: team, resources, and news. */
 .portal-sidebar { border-left: 1px solid var(--line); padding-left: 24px; margin-top: 5px; }
 .portal-sidebar .portal-eyebrow { font-size: 10px; line-height: 1.7; margin-bottom: 13px; }
 .is-portal .portal-sidebar h2 { font-size: 16px; line-height: 1.5; }
 .portal-sidebar p { color: var(--muted); font-size: 12px; line-height: 1.85; }
-.portal-sidebar .portal-sidebar-person { margin-bottom: 14px; }
+.portal-sidebar .portal-sidebar-person { margin-bottom: 6px; }
 .portal-sidebar .portal-sidebar-person a { display: inline; font: inherit; color: var(--accent); }
+.portal-sidebar-meta { display: block; margin-top: 3px; font-size: 11px; line-height: 1.65; color: var(--muted); }
 .portal-sidebar .portal-sidebar-email-label { margin: 0 0 2px; color: var(--text); font-weight: 600; }
 .portal-sidebar .portal-sidebar-email { margin: 0; }
 .portal-sidebar a { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 600; color: var(--accent); }
 .portal-sidebar a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .portal-sidebar .icon { width: 14px; height: 14px; }
-.portal-sidebar-resources { margin-top: 25px; padding-top: 22px; border-top: 1px solid var(--line); }
+.portal-sidebar-resources, .portal-sidebar-news { margin-top: 25px; padding-top: 22px; border-top: 1px solid var(--line); }
 .portal-sidebar-resources ul { list-style: none; padding: 0; margin: 13px 0 0; }
 .portal-sidebar-resources a { display: flex; justify-content: space-between; padding-block: 7px; }
+.portal-sidebar-news-content { min-height: 72px; margin-top: 13px; }
 .portal-sidebar .portal-sidebar-note { font-size: 10px; margin-top: 24px; }
 .portal-sidebar-note > span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
 .portal-project-more:hover { text-decoration: underline; }
@@ -133,6 +134,8 @@ layout: null
 .emulator-resource > a { justify-self: end; display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--accent); font-weight: 600; padding: 8px 0; }
 .emulator-resource > a:hover { text-decoration: underline; }
 .emulator-resource .icon { width: 16px; height: 16px; }
+.emulator-project-resource h3 a { display: inline-flex; align-items: center; gap: 12px; }
+.emulator-project-resource h3 .fa { flex-shrink: 0; font-size: 24px; color: var(--portal-green); opacity: 0.75; }
 .emulator-resource-pending { justify-self: end; color: var(--muted); font-size: 13px; }
 .is-portal:not(.is-home) main > .container { background: var(--card); padding: 0 32px 20px; margin-top: 22px; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 14px; }
 /* Team page: three clearly separated sections, with reusable member cards. */
@@ -175,6 +178,7 @@ layout: null
   .portal-home-grid { grid-template-columns: 1fr; gap: 0; }
   .portal-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-left: 0; border-top: 1px solid var(--line); padding: 24px 0; }
   .portal-sidebar-resources { border-top: 0; margin: 0; padding: 0; }
+  .portal-sidebar-news { grid-column: 1 / -1; margin: 0; }
   .portal-sidebar .portal-sidebar-note { grid-column: 1 / -1; margin: 0; }
   .portal-intro { padding: 32px; grid-template-columns: 1.7fr 1fr; }
   .portal-project h3 { font-size: 19px; }

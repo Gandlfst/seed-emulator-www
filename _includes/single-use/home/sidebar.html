@@ -4,15 +4,24 @@
   {% comment %}Project lead contact details come from the shared team data.{% endcomment %}
   <section class="portal-sidebar-team">
     <p class="portal-eyebrow">Project lead</p>
-    <h2 class="portal-sidebar-person">Prof. <a href="https://seedsecuritylabs.org/wenliangdu/">{{ project_lead.name | escape }}</a></h2>
-
+    <h2 class="portal-sidebar-person"><a href="https://seedsecuritylabs.org/wenliangdu/">{{ project_lead.name | escape }}</a></h2>
+    <span class="portal-sidebar-meta">ACM/IEEE Fellow</span>
+    <span class="portal-sidebar-meta">Zhejiang University</span>
   </section>
   {% comment %}Sidebar resource links are maintained separately from footer links.{% endcomment %}
   <section class="portal-sidebar-resources" aria-labelledby="sidebar-resources-title">
     <h2 id="sidebar-resources-title">Useful resources</h2>
     <ul>
       <li><a href="{{ '/papers/' | relative_url }}">Papers {% include shared/icon.html name="external" %}</a></li>
-      <li><a href="{{ '/in-action/' | relative_url }}">SEED Emulator in Action {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/case-studies/' | relative_url }}">Case Studies {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/examples/' | relative_url }}">Examples {% include shared/icon.html name="external" %}</a></li>
     </ul>
+  </section>
+  {% comment %}Add dated release announcements here, replacing the empty-state paragraph.{% endcomment %}
+  <section class="portal-sidebar-news" aria-labelledby="sidebar-news-title">
+    <h2 id="sidebar-news-title">News</h2>
+    <div class="portal-sidebar-news-content">
+      <p>New releases and updates will appear here.</p>
+    </div>
   </section>
 </aside>

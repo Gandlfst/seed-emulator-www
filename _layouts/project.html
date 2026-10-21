@@ -6,7 +6,7 @@
 {% assign active_theme = site.data.shared.themes | where: 'id', site.portal_theme | first | default: site.data.shared.themes.first %}
 <!doctype html>
 <html lang="en" data-portal-theme="{{ active_theme.id }}">
-  <head>{% include shared/head.html %}</head>
+  <head>{% include shared/head.html project=true %}</head>
   <body class="is-portal">
     <a class="skip-link" href="#main">Skip to content</a>
     {% include shared/header.html %}

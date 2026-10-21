@@ -1,28 +1,34 @@
-{% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Screenshots, In Action order.{% endcomment %}
-{% assign resource_groups = 'presentation,how-to-use,example,paper,in-action' | split: ',' %}
+{% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Case Studies order.{% endcomment %}
+{% assign resource_groups = 'presentation,how-to-use,example,paper,case-studies' | split: ',' %}
 <ul class="emulator-resource-list">
   {% for group_key in resource_groups %}
     {% if group_key == 'how-to-use' %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'How to use' %}
+      {% assign group_icon = 'fa-book' %}
     {% elsif group_key == 'example' %}
-      {% assign group_url = '/examples/' %}
+      {% assign group_url = page.url | append: 'examples/' %}
       {% assign group_title = 'Examples' %}
+      {% assign group_icon = 'fa-code' %}
     {% elsif group_key == 'paper' %}
       {% assign group_url = '/papers/' %}
       {% assign group_title = 'Papers' %}
+      {% assign group_icon = 'fa-file-text-o' %}
     {% elsif group_key == 'presentation' %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Presentations' %}
-    {% elsif group_key == 'in-action' %}
-      {% assign group_url = '/in-action/' %}
+      {% assign group_icon = 'fa-desktop' %}
+    {% elsif group_key == 'case-studies' %}
+      {% assign group_url = page.url | append: 'case-studies/' %}
       {% assign group_title = 'Case Studies' %}
+      {% assign group_icon = 'fa-briefcase' %}
     {% else %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Screenshots' %}
+      {% assign group_icon = 'fa-picture-o' %}
     {% endif %}
     <li class="emulator-resource emulator-project-resource">
-      <h3><a href="{{ group_url | relative_url }}">{{ group_title }}</a></h3>
+      <h3><a href="{{ group_url | relative_url }}"><i class="fa {{ group_icon }} fa-fw" aria-hidden="true"></i><span>{{ group_title }}</span></a></h3>
       <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
     </li>
   {% endfor %}

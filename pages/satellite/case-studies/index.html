@@ -1,0 +1,12 @@
+---
+permalink: /satellite/case-studies/
+layout: default
+title: Case Studies
+parent_project: satellite
+nav_key: satellite
+description: Applications of the Satellite Network Emulator in research and education.
+items: []
+empty_message: No case studies have been added for this project yet.
+---
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/resource-page.html %}
