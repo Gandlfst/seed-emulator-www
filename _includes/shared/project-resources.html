@@ -1,5 +1,5 @@
 {% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Screenshots, In Action order.{% endcomment %}
-{% assign resource_groups = 'presentation,how-to-use,example,paper,screenshots,in-action' | split: ',' %}
+{% assign resource_groups = 'presentation,how-to-use,example,paper,in-action' | split: ',' %}
 <ul class="emulator-resource-list">
   {% for group_key in resource_groups %}
     {% if group_key == 'how-to-use' %}
@@ -16,7 +16,7 @@
       {% assign group_title = 'Presentations' %}
     {% elsif group_key == 'in-action' %}
       {% assign group_url = '/in-action/' %}
-      {% assign group_title = 'In Action' %}
+      {% assign group_title = 'Case Studies' %}
     {% else %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Screenshots' %}
