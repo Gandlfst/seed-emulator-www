@@ -1,10 +1,11 @@
 {% comment %}Header: logo, navigation, and themes; short navigation labels and links are edited here.{% endcomment %}
+{% assign active_project = lesson_project | default: page.parent_project | default: page.project | default: page.nav_key %}
 <header class="site-header portal-header">
   <div class="container header-inner">
     {% comment %}Brand link to the homepage.{% endcomment %}
     <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
       <span class="portal-brand-logo">
-        <img src="{{ '/assets/images/shared/seed-emulator-logo.png' | relative_url }}" alt="SEED Emulator" width="800" height="143">
+        <img src="{{ '/assets/images/shared/seed-emulator-logo-shadow.png' | relative_url }}" alt="SEED Emulator" width="2170" height="725">
       </span>
     </a>
     <span class="portal-header-note">A playground for research &amp; discovery</span>
@@ -17,10 +18,10 @@
     <div class="portal-navigation-bar">
       <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
         <a href="{{ '/' | relative_url }}"{% if include.home %} aria-current="page"{% endif %}>Home</a>
-        <a href="{{ '/internet-emulator/' | relative_url }}"{% if page.project == 'internet' or page.nav_key == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
-        <a href="{{ '/satellite/' | relative_url }}"{% if page.project == 'satellite' or page.nav_key == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
-        <a href="{{ '/blockchain/' | relative_url }}"{% if page.project == 'blockchain' or page.nav_key == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
-        <a href="{{ '/about-us/' | relative_url }}"{% if page.project == 'about' or page.nav_key == 'about' %} aria-current="page"{% endif %}>About us</a>
+        <a href="{{ '/internet-emulator/' | relative_url }}"{% if active_project == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
+        <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
+        <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
+        <a href="{{ '/about-us/' | relative_url }}"{% if active_project == 'about' %} aria-current="page"{% endif %}>About us</a>
       </nav>
       {% if site.show_theme_picker %}{% include shared/theme-picker.html %}{% endif %}
     </div>

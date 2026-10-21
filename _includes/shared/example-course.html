@@ -3,7 +3,7 @@
 {% assign readme_document = site.example_readmes | where: 'slug', lesson.slug | first %}
 {% assign readme_source_url = site.data.shared.examples.repository_url | append: '/blob/master/' | append: lesson.source_path | append: '/README.md' %}
 <div class="container examples-page example-course">
-  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><a href="{{ '/examples/' | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ lesson.code }}</span></nav>
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ project_info.url | relative_url }}">{{ project_info.title }}</a><span aria-hidden="true">/</span><a href="{{ example_catalog_url | relative_url }}">Examples</a><span aria-hidden="true">/</span><span aria-current="page">{{ lesson.code }}</span></nav>
   <div class="lesson-workspace">
     <article class="lesson-content">
       <div class="lesson-heading">
@@ -24,7 +24,7 @@
           <p class="lesson-source-version">Source: SEED Emulator · <a href="{{ readme_source_url }}">{{ lesson.code }} README</a></p>
         </section>
       {% endif %}
-      <a class="lesson-return" href="{{ '/examples/' | relative_url }}#{{ lesson.category_id }}">Explore more {{ category.title | downcase }} examples {% include shared/icon.html name="arrow" %}</a>
+      <a class="lesson-return" href="{{ example_catalog_url | relative_url }}#{{ lesson.category_id }}">Explore more {{ category.title | downcase }} examples {% include shared/icon.html name="arrow" %}</a>
     </article>
   </div>
 </div>

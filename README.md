@@ -21,16 +21,16 @@ output; edit the source files instead.
 ```text
 index.html                         Homepage
 pages/
-  internet-emulator/                Project entry, presentation/, screenshots/
-  satellite/                       Project entry, presentation/, screenshots/
-  blockchain/                      Project entry, presentation/, screenshots/
+  internet-emulator/                Project entry, examples/, case-studies/, presentation/, how-to-use/, screenshots/
+  satellite/                       Same project-specific child pages
+  blockchain/                      Same project-specific child pages
   about-us/                        Team page
   examples/
-    index.html                     Example catalog
+    index.html                     Legacy address: choose a project catalog
     _examples/                     URL stubs for individual examples
     _example_readmes/               Imported upstream README pages
   papers/                          Shared publications page
-  in-action/                       Shared applications page
+  case-studies/                    Case Studies overview and legacy redirect
 _data/
   internet/                        Internet project content
   satellite/                       Satellite project content
@@ -58,8 +58,8 @@ Pages declare explicit permalinks, so their public URLs do not include `/pages/`
 remain `/examples/<slug>/` and `/examples/<slug>/readme/`.
 
 Short fixed copy belongs directly in its page or include. Header, footer, hero,
-and sidebar each own their text. Papers and In Action keep their small lists in
-page front matter. Project introductions also live in their project pages.
+and sidebar each own their text. Shared Papers and project-specific Case Studies
+keep their small lists in page front matter. Project introductions also live in their project pages.
 Presentation lists and screenshot galleries live in their own page front matter;
 these child pages look up the project page only for the parent title and link.
 
@@ -86,21 +86,27 @@ render `project-page.html`.
 The homepage uses `_includes/single-use/home/` for its hero, projects, and
 sidebar. The three cards are authored explicitly in projects.html, without iterating over projects.
 Other page-specific includes are grouped under `about-us`.
-The three projects share `shared/example-catalog.html` and `shared/example-row.html` for the example catalog and its entries.
-Papers and In Action share `resource-list-page.html`, passing their own page.items lists from page front matter.
+The three projects reuse `shared/example-catalog.html` and `shared/example-row.html`,
+but each catalog reads only its own project's examples.yml. Empty categories are hidden.
+Papers uses `resource-list-page.html`; project Case Studies use `resource-page.html`
+with independent items in each project's case-studies/index.html.
 Shared readers, resource rows, and icons live under `_includes/shared/`.
 
 Project resources appear in this order: Presentations, How to use, Examples,
-Papers, Screenshots, In Action.
-Presentation and Screenshots have project-specific pages. Paper links to the shared
-`/papers/` page; `/in-action/` is also shared. Empty resource lists can be populated
-later. Screenshots should show the running application, not concept illustrations.
+Papers, Case Studies. The labels use Font Awesome icons, loaded only on project pages.
+Examples link to each project's `/examples/` child page, and Case Studies to its
+`/case-studies/` child page. Only Papers links to the shared `/papers/` page.
+The `/examples/` and `/case-studies/` entry pages are project selectors, not
+combined content lists. The former case-study address redirects to `/case-studies/`;
+no current navigation links use that former address. Existing screenshot pages
+remain accessible by their URLs.
 
 ## Example content
 
-The catalog currently contains 30 examples across four categories. Edit each
-example in its owning project's `examples.yml`. Short `description` text appears
-in the catalog; `overview` appears on the detail page. A matching Markdown stub
+The project catalogs currently contain 21 Internet examples, 9 Blockchain examples,
+and no Satellite examples. Edit each example in its owning project's `examples.yml`.
+Short `description` text appears in that project's catalog; `overview` appears on
+the detail page. A matching Markdown stub
 in `pages/examples/_examples/` supplies layout and routing settings.
 
 To add an example:
@@ -111,7 +117,10 @@ To add an example:
 3. Run the README importer and build the site.
 
 Each detail page keeps its authored Overview at the top and embeds the imported
-README below it, with a View on GitHub link to the upstream source. The existing
+README below it, with a View on GitHub link to the upstream source.
+`shared/example-context.html` resolves the owning project from its examples.yml.
+The header, breadcrumb, and return link point to that project, including on legacy
+README pages. Detail URLs stay `/examples/<slug>/` so existing links do not break. The existing
 `A15_toplogy_generator` spelling
 matches the upstream path and is intentional.
 
@@ -156,13 +165,17 @@ files manually when removing an example; the importer does not delete files.
 | --- | --- |
 | Homepage heading and introduction | `_includes/single-use/home/hero.html` |
 | Homepage sidebar | `_includes/single-use/home/sidebar.html` |
+| Homepage News and release announcements | `_includes/single-use/home/sidebar.html` (`portal-sidebar-news`) |
 | Homepage cards | `_data/<project>/card.yml` |
 | Public images | `assets/images/<project>/` |
 | Project descriptions and overviews | `pages/<project>/index.html` |
 | Presentations | `pages/<project>/presentation/index.html` (`items`) |
 | Screenshot descriptions and images | `pages/<project>/screenshots/index.html` (`description`, `items`) |
 | Example descriptions and overviews | `_data/<project>/examples.yml` |
-| Shared papers and applications | `pages/papers/index.html`, `pages/in-action/index.html` |
+| Shared papers | `pages/papers/index.html` |
+| Case Studies overview | `pages/case-studies/index.html` |
+| Project case studies | `pages/<project>/case-studies/index.html` (`items`) |
+| Project example catalog | `pages/<project>/examples/index.html` and `_data/<project>/examples.yml` |
 | Team member lists and GitHub avatars | `_data/about-us/team.yml` |
 | Footer | `_includes/shared/footer.html` |
 | Navigation | `_includes/shared/header.html` |
@@ -172,6 +185,10 @@ files manually when removing an example; the importer does not delete files.
 Team entries use `name`, optional `github`, and optional `affiliation`. GitHub
 avatars use the username, with initials as a fallback. The footer and homepage
 sidebar maintain separate copy because their available space differs.
+
+The sidebar reserves a News section below Useful resources. When a release is ready,
+replace its empty-state paragraph with the dated announcement and optional link.
+News is authored directly in the sidebar; no separate data file or layout is needed.
 
 `show_theme_picker: false` hides visitor theme controls. Local links use
 `relative_url` to support a base path. Small WebP project illustrations are used

@@ -1,11 +1,12 @@
-{% assign example_records = site.data.internet.examples | concat: site.data.satellite.examples | concat: site.data.blockchain.examples %}
+{% assign example_records = site.data[page.parent_project].examples %}
 {% comment %}Two-level catalog: category headings contain example rows with links to local lessons.{% endcomment %}
 <div class="container examples-page">
-  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
+  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ project_info.url | relative_url }}">{{ project_info.title }}</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
   <section class="examples-intro" aria-labelledby="examples-title">
-    <h1 id="examples-title">Emulator examples</h1>
+    <h1 id="examples-title">{{ page.title }}</h1>
     <p>Browse hands-on examples from the <a href="{{ site.data.shared.examples.readme_url }}">SEED Emulator repository {% include shared/icon.html name="external" %}</a>.</p>
   </section>
+  {% if example_records.size > 0 %}
   <div class="examples-workspace">
     {% comment %}Category navigation remains useful with JavaScript disabled.{% endcomment %}
     <aside class="examples-sidebar" aria-label="Example categories">
@@ -13,7 +14,9 @@
       <nav>
         {% for category in site.data.shared.examples.categories %}
           {% assign lessons = example_records | where: 'category_id', category.id %}
+          {% if lessons.size > 0 %}
           <a href="#{{ category.id }}"><span>{{ category.title }}</span><span class="examples-count">{{ lessons.size }}</span></a>
+          {% endif %}
         {% endfor %}
       </nav>
     </aside>
@@ -27,15 +30,20 @@
       <div id="example-groups">
         {% for category in site.data.shared.examples.categories %}
           {% assign lessons = example_records | where: 'category_id', category.id | sort: 'code' %}
+          {% if lessons.size > 0 %}
           <section class="example-group" id="{{ category.id }}" aria-labelledby="{{ category.id }}-title" data-example-group>
             <div class="example-group-heading"><h2 id="{{ category.id }}-title">{{ category.title }}</h2></div>
             <ul class="example-list">
               {% for lesson in lessons %}{% include shared/example-row.html lesson=lesson category=category %}{% endfor %}
             </ul>
           </section>
+          {% endif %}
         {% endfor %}
       </div>
       <p class="examples-empty" data-example-empty hidden>No examples match your search. Try a different topic or example code.</p>
     </div>
   </div>
+  {% else %}
+  <p class="examples-empty">No examples have been added for this project yet.</p>
+  {% endif %}
 </div>

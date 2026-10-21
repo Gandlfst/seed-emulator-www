@@ -1,0 +1,17 @@
+---
+permalink: /internet-emulator/case-studies/
+layout: default
+title: Case Studies
+parent_project: internet
+nav_key: internet
+description: Applications of the Internet Emulator in research, education, and reproducible experiments.
+items:
+- type: LAB
+  title: Visualizing worm propagation
+  description: The HotNets 2022 paper describes a classroom experiment with 275 containers.
+    Students study how a simplified Morris worm spreads through an emulated Internet,
+    using the Map tool to observe propagation.
+  url: https://seedsecuritylabs.org/emulator/hotnets_2022.pdf#page=6
+---
+{% assign project_info = site.pages | where: 'project', page.parent_project | first %}
+{% include shared/resource-page.html %}

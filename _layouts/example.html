@@ -1,7 +1,5 @@
 {% comment %}Individual example shell: resolve its record and render the merged overview and README.{% endcomment %}
-{% assign example_records = site.data.internet.examples | concat: site.data.satellite.examples | concat: site.data.blockchain.examples %}
-{% assign lesson_slug = page.path | split: '/' | last | remove: '.md' %}
-{% assign lesson = example_records | where: 'slug', lesson_slug | first %}
+{% include shared/example-context.html %}
 {% assign page_title = lesson.title %}
 {% assign page_description = lesson.description %}
 {% assign active_theme = site.data.shared.themes | where: 'id', site.portal_theme | first | default: site.data.shared.themes.first %}
