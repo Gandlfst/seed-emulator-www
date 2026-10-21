@@ -52,5 +52,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - design-diagrams
   - scripts
   - vendor
