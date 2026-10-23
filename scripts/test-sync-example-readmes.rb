@@ -10,6 +10,7 @@ check = lambda do |expected, actual|
   checks += 1
 end
 root, raw = UpstreamDocs::SITE_ROOT, UpstreamDocs::RAW_ROOT
+check.call('/visualization/', root)
 pending = []
 source = 'docs/user-manual/topology/network-map.md'
 check.call(root, UpstreamDocs.manual_url(UpstreamDocs::MANUAL_INDEX))
@@ -31,6 +32,7 @@ Dir.mktmpdir('seed-doc-import-test-') do |directory|
   begin
     check.call(2, UpstreamDocs.sync_visualization(directory, fetch: fetch))
     check.call(fixture.keys.sort, fetched.sort)
+    check.call(false, Dir.exist?(File.join(directory, 'pages/internet-emulator')))
     files = Dir.glob(File.join(directory, '**/*.md'))
     before = files.to_h { |file| [file, File.binread(file)] }
     index = File.read(File.join(directory, 'pages', root.delete_prefix('/'), 'index.md'))

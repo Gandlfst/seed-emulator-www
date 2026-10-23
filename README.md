@@ -31,6 +31,7 @@ pages/
     _example_readmes/               Imported upstream README pages
   papers/                          Shared publications page
   case-studies/                    Case Studies overview and legacy redirect
+  visualization/                   Imported visualization manuals and old-address redirects
 _data/
   internet/                        Internet project content
   satellite/                       Satellite project content
@@ -169,9 +170,9 @@ bundle exec jekyll build
 
 The same importer follows the linked Markdown documents starting at
 `docs/user-manual/user-manual.md` in `seed-labs/seed-visualization` on `main`.
-It generates Markdown pages in `pages/internet-emulator/how-to-use/visualization/`,
-linked from Visualization in the main navigation (before About us), and from
-Internet Emulator → How to use. `--all` imports both repositories;
+It generates Markdown pages in `pages/visualization/`, with public URLs under
+`/visualization/`. Visualization is an independent main-navigation entry before
+About us, not a child of Internet Emulator or How to use. `--all` imports both repositories;
 running without an option keeps the original example-only behavior.
 
 The importer handles the ordinary inline Markdown links and images used by these
@@ -188,6 +189,8 @@ All referenced manual documents must download successfully before pages are writ
 Generated Markdown is committed with the website; regular Jekyll builds do not need
 GitHub access. Re-run the importer for upstream updates; it overwrites generated
 manual pages, not authored pages, and does not delete removed upstream documents.
+The 19 former URLs redirect to their matching new pages using the static stubs in
+`pages/visualization/redirects/` and the `redirect` layout. No plugin is required.
 
 ## Common edits
 

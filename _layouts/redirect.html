@@ -1,0 +1,16 @@
+{% assign target_url = page.redirect_to | relative_url %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url={{ target_url }}">
+    <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
+    <script>window.location.replace({{ target_url | jsonify }} + window.location.search + window.location.hash);</script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="{{ target_url }}">{{ page.title | escape }}</a>.</p>
+  </body>
+</html>

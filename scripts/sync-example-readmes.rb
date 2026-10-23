@@ -13,7 +13,7 @@ end
 module UpstreamDocs
   MANUAL_ROOT = 'docs/user-manual/'
   MANUAL_INDEX = "#{MANUAL_ROOT}user-manual.md"
-  SITE_ROOT = '/internet-emulator/how-to-use/visualization/'
+  SITE_ROOT = '/visualization/'
   REPOSITORY = 'https://github.com/seed-labs/seed-visualization'
   RAW_ROOT = 'https://raw.githubusercontent.com/seed-labs/seed-visualization/main/'
 
