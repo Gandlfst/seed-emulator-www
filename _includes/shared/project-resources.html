@@ -1,5 +1,5 @@
 {% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Case Studies order.{% endcomment %}
-{% assign resource_groups = 'presentation,how-to-use,example,paper,case-studies' | split: ',' %}
+{% assign resource_groups = 'example,paper,case-studies' | split: ',' %}
 <ul class="emulator-resource-list">
   {% for group_key in resource_groups %}
     {% if group_key == 'how-to-use' %}
