@@ -21,6 +21,7 @@
         <a href="{{ '/internet-emulator/' | relative_url }}"{% if active_project == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
         <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
         <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
+        <a href="{{ '/internet-emulator/how-to-use/visualization/' | relative_url }}"{% if active_project == 'visualization' %} aria-current="page"{% endif %}>Visualization</a>
         <a href="{{ '/about-us/' | relative_url }}"{% if active_project == 'about' %} aria-current="page"{% endif %}>About us</a>
       </nav>
       {% if site.show_theme_picker %}{% include shared/theme-picker.html %}{% endif %}
