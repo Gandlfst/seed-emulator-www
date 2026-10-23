@@ -42,6 +42,11 @@ defaults:
       layout: example-readme
       nav_key: internet
       render_with_liquid: false
+  # Imported manuals are content, not executable Liquid templates.
+  - scope:
+      path: "pages/internet-emulator/how-to-use/visualization"
+    values:
+      render_with_liquid: false
 
 # Development files excluded from publishing; Jekyll handles its internal directories.
 exclude:

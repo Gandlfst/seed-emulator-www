@@ -50,7 +50,7 @@ _includes/single-use/              Page-specific includes grouped by page name
 _includes/shared/                  Shared components
 css/                               Styles
 js/                                Navigation and example filtering
-scripts/sync-example-readmes.rb     Minimal README downloader
+scripts/sync-example-readmes.rb     Example and visualization documentation importer
 ```
 
 Pages declare explicit permalinks, so their public URLs do not include `/pages/`.
@@ -159,6 +159,36 @@ do not fetch from GitHub. Re-running the importer overwrites imported text; edit
 authored introductions in project data instead. Remove corresponding generated
 files manually when removing an example; the importer does not delete files.
 
+## Import visualization manuals
+
+```sh
+ruby scripts/sync-example-readmes.rb --visualization
+ruby scripts/test-sync-example-readmes.rb
+bundle exec jekyll build
+```
+
+The same importer follows the linked Markdown documents starting at
+`docs/user-manual/user-manual.md` in `seed-labs/seed-visualization` on `main`.
+It generates Markdown pages in `pages/internet-emulator/how-to-use/visualization/`,
+linked from Visualization in the main navigation (before About us), and from
+Internet Emulator → How to use. `--all` imports both repositories;
+running without an option keeps the original example-only behavior.
+
+The importer handles the ordinary inline Markdown links and images used by these
+manuals. Relative manual links become local page URLs, preserving query strings and anchors.
+Relative images (including `../../../InternetMap-Geographic/docs/assets/...`) use
+`raw.githubusercontent.com` directly; no images are downloaded or copied. Other
+repository files and directories link to GitHub. External URLs, anchor-only links,
+fenced code blocks, and inline code stay unchanged. HTML and reference-style links are not
+rewritten. The `manual` layout applies the site's
+base path to internal links and shares existing README styles, header, and footer.
+
+Imported manuals have Liquid evaluation disabled and retain a View on GitHub link.
+All referenced manual documents must download successfully before pages are written.
+Generated Markdown is committed with the website; regular Jekyll builds do not need
+GitHub access. Re-run the importer for upstream updates; it overwrites generated
+manual pages, not authored pages, and does not delete removed upstream documents.
+
 ## Common edits
 
 | Change | File |
@@ -176,6 +206,7 @@ files manually when removing an example; the importer does not delete files.
 | Case Studies overview | `pages/case-studies/index.html` |
 | Project case studies | `pages/<project>/case-studies/index.html` (`items`) |
 | Project example catalog | `pages/<project>/examples/index.html` and `_data/<project>/examples.yml` |
+| Visualization user manuals | `scripts/sync-example-readmes.rb --visualization` (generated Markdown; do not edit by hand) |
 | Team member lists and GitHub avatars | `_data/about-us/team.yml` |
 | Footer | `_includes/shared/footer.html` |
 | Navigation | `_includes/shared/header.html` |
