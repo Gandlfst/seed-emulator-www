@@ -8,3 +8,7 @@ vendor/bundle/
 .DS_Store
 Thumbs.db
 
+# Local logo studies and previews are kept outside the repository.
+/design-diagrams/logo-options/
+/design-diagrams/logo-redesign-options/
+
