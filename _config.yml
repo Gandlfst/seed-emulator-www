@@ -44,7 +44,7 @@ defaults:
       render_with_liquid: false
   # Imported manuals are content, not executable Liquid templates.
   - scope:
-      path: "pages/internet-emulator/how-to-use/visualization"
+      path: "pages/visualization"
     values:
       render_with_liquid: false
 
