@@ -4,9 +4,15 @@
   <div class="container header-inner">
     {% comment %}Brand link to the homepage.{% endcomment %}
     <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
-      <span class="portal-brand-logo">
-        <img src="{{ '/assets/images/shared/seed-emulator-logo-shadow.png' | relative_url }}" alt="SEED Emulator" width="2170" height="725">
-      </span>
+      {% if page.project == 'satellite' or page.parent_project == 'satellite' %}
+        <span class="portal-brand-logo portal-brand-logo-skyseed">
+          <img src="{{ '/assets/images/satellite/skyseed-logo-transparent.png' | relative_url }}" alt="SkySEED Satellite Network Emulation" width="2103" height="675">
+        </span>
+      {% else %}
+        <span class="portal-brand-logo">
+          <img src="{{ '/assets/images/shared/seed-emulator-logo-shadow.png' | relative_url }}" alt="SEED Emulator" width="2170" height="725">
+        </span>
+      {% endif %}
     </a>
     <span class="portal-header-note">A playground for research &amp; discovery</span>
     {% comment %}Mobile menu: js/site.js controls its expanded state.{% endcomment %}

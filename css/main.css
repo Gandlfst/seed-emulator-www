@@ -22,6 +22,8 @@ layout: null
    unused canvas margins; multiply blends the white matte into the header. */
 .portal-brand-logo { position: relative; display: block; width: 300px; aspect-ratio: 1660 / 390; overflow: hidden; background: transparent; mix-blend-mode: multiply; }
 .portal-brand-logo img { position: absolute; width: 130.722892%; max-width: none; height: auto; left: -2.409639%; top: -43.589744%; }
+.portal-brand-logo-skyseed { overflow: visible; mix-blend-mode: normal; }
+.portal-brand-logo-skyseed img { width: 100%; max-width: none; height: auto; left: 0; top: 50%; transform: translateY(-50%) scaleY(1.22); transform-origin: center; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
 .portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
