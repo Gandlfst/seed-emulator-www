@@ -1,0 +1,8 @@
+{
+  "editor.unicodeHighlight.allowedLocales": {
+    "_os": true,
+    "_vscode": true,
+    "zh-hans": true,
+    "zh-hant": true
+  }
+}
