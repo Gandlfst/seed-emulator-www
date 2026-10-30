@@ -281,3 +281,11 @@ Before merging, a repository administrator must confirm:
 
 After merging, confirm that both build and deploy succeed in Actions, then
 check the production site.
+
+### Personal preview
+
+`Gandlfst/seed-emulator-www` publishes `development` to
+https://gandlfst.github.io/seed-emulator-www/ using `.github/workflows/preview.yml`.
+The preview build adds `_config.preview.yml` and omits `CNAME` from its output.
+This workflow runs only in the personal repository; the production workflow and
+domain configuration remain unchanged. Its Pages source must be **GitHub Actions**.
