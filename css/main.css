@@ -25,11 +25,23 @@ layout: null
 .portal-brand-logo-skyseed { overflow: visible; mix-blend-mode: normal; }
 .portal-brand-logo-skyseed img { width: 100%; max-width: none; height: auto; left: 0; top: 50%; transform: translateY(-50%) scaleY(1.22); transform-origin: center; }
 .portal-header .main-navigation { width: 100%; order: 3; margin: 0; display: flex; gap: 4px; padding: 5px; background: var(--portal-green); border: 0; border-radius: 10px; }
-.portal-header .main-navigation > a { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
+.portal-header .main-navigation > a, .portal-resources > summary { display: inline-flex; justify-content: center; align-items: center; gap: 8px; color: var(--portal-on-dark); font-size: 13px; font-weight: 600; padding: 10px 13px; border-radius: 6px; width: auto; }
 .portal-header .main-navigation > a:hover, .portal-header .main-navigation > a[aria-current] { background: #ffffff1c; color: var(--portal-on-dark); }
+.portal-header .main-navigation > a:focus-visible, .portal-resources > summary:focus-visible { outline-color: var(--portal-highlight); outline-offset: -3px; }
 .portal-header .main-navigation > a:last-child { margin-left: 0; border-right: 0; }
 .portal-header .main-navigation .icon { width: 15px; height: 15px; }
 .portal-header .menu-toggle { margin-left: auto; }
+/* Shared resource links open without adding another destination page. */
+.portal-resources { position: relative; }
+.portal-resources > summary { cursor: pointer; list-style: none; white-space: nowrap; }
+.portal-resources > summary::-webkit-details-marker { display: none; }
+.portal-resources > summary:hover, .portal-resources > summary.is-current, .portal-resources[open] > summary { background: #ffffff1c; }
+.portal-resources-chevron { width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.portal-resources[open] .portal-resources-chevron { transform: translateY(1px) rotate(225deg); }
+.portal-resources-links { position: absolute; z-index: 1; top: calc(100% + 10px); left: 0; width: 196px; max-width: calc(100vw - 48px); padding: 6px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); box-shadow: 0 10px 28px var(--portal-shadow-hover); }
+.portal-resources-links a { display: block; padding: 10px 14px; border-radius: 6px; color: var(--accent); font-size: 13px; font-weight: 600; white-space: nowrap; }
+.portal-resources-links a:hover, .portal-resources-links a[aria-current] { background: var(--accent-soft); }
+.portal-resources-links a:focus-visible { outline-offset: -2px; }
 /* 3. Homepage hero: introduction, actions, and decorative illustration. */
 .portal-intro { position: relative; display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; padding: 42px 46px; margin-block: 22px 32px; border-radius: 18px; overflow: hidden; background: linear-gradient(115deg, var(--portal-deep), var(--portal-green-soft)); color: var(--portal-on-dark); }
 .portal-intro-copy { position: relative; z-index: 1; }
@@ -171,9 +183,12 @@ layout: null
   .portal-header .menu-toggle { display: none; }
   .portal-header-note { display: none; }
   .js-enabled .portal-header .menu-toggle { display: block; }
-  .portal-header .main-navigation { flex-wrap: wrap; }
+  .portal-header .main-navigation { flex-wrap: wrap; align-items: flex-start; }
   .js-enabled .portal-header .main-navigation:not(.is-open) { display: none; }
-  .portal-header .main-navigation > a { flex: 1 0 33%; padding: 12px; }
+  .portal-header .main-navigation > a, .portal-resources { flex: 1 0 33%; }
+  .portal-header .main-navigation > a, .portal-resources > summary { padding: 12px; }
+  .portal-resources > summary { display: flex; }
+  .portal-resources-links { position: static; width: 100%; margin-top: 6px; box-shadow: none; }
   .portal-header .main-navigation > a:last-child { margin: 0; }
   .portal-header:has(.main-navigation:not(.is-open)) { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
   .portal-project-grid { gap: 20px; }
