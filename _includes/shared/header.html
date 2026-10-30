@@ -28,6 +28,15 @@
         <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
         <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
         <a href="{{ '/visualization/' | relative_url }}"{% if active_project == 'visualization' %} aria-current="page"{% endif %}>Visualization</a>
+        {% assign resource_paths = '/papers/,/case-studies/,/examples/' | split: ',' %}
+        <details class="portal-resources">
+          <summary{% if resource_paths contains page.url %} class="is-current"{% endif %}>Resources<span class="portal-resources-chevron" aria-hidden="true"></span></summary>
+          <div class="portal-resources-links">
+            <a href="{{ '/papers/' | relative_url }}"{% if page.url == '/papers/' %} aria-current="page"{% endif %}>Papers</a>
+            <a href="{{ '/case-studies/' | relative_url }}"{% if page.url == '/case-studies/' %} aria-current="page"{% endif %}>Case Studies</a>
+            <a href="{{ '/examples/' | relative_url }}"{% if page.url == '/examples/' %} aria-current="page"{% endif %}>Examples</a>
+          </div>
+        </details>
         <a href="{{ '/about-us/' | relative_url }}"{% if active_project == 'about' %} aria-current="page"{% endif %}>About us</a>
       </nav>
       {% if site.show_theme_picker %}{% include shared/theme-picker.html %}{% endif %}

@@ -73,6 +73,9 @@ Each project data folder contains:
 Public images live under `assets/images/<project>/`; shared branding lives under
 `assets/images/shared/`. Keep `_data` for YAML content only.
 
+Paper PDFs stay in `assets/papers/`. `_plugins/paper-url.rb` also publishes the
+SIGCSE 2027 paper at `/papers/sigcse_2027.pdf` during the Jekyll build.
+
 ## Page composition
 
 Layouts are split by page responsibility and are not nested. `home` renders the
