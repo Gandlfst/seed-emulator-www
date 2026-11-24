@@ -10,7 +10,7 @@
 <meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 <meta property="og:description" content="{{ page_description | default: site.description | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
-<link rel="icon" href="{{ '/assets/images/shared/seed-mark.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/assets/images/shared/seed-favicon.svg' | relative_url }}" type="image/svg+xml" sizes="any">
 
 {% comment %}Load styles by responsibility: base rules, page layout, then theme overrides.{% endcomment %}
 {% if include.project %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">{% endif %}

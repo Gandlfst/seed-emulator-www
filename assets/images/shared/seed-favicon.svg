@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .lower { fill: #202127; }
+    @media (prefers-color-scheme: dark) {
+      .lower { fill: #f2f3f5; }
+    }
+  </style>
+  <g fill="#f9251e">
+    <path d="M15 3H6a4 4 0 0 0-4 4v1a3 3 0 0 0 3 3h6v1H2v3h9a4 4 0 0 0 4-4v-1a3 3 0 0 0-3-3H6V6h9z"/>
+    <path d="M17 3h13v3H17zm0 4.5h13v3H17zm0 4.5h13v3H17z"/>
+  </g>
+  <g class="lower">
+    <path d="M2 17h13v3H2zm0 4.5h13v3H2zm0 4.5h13v3H2z"/>
+    <path fill-rule="evenodd" d="M17 17h8a5 5 0 0 1 5 5v2a5 5 0 0 1-5 5h-8zm4 4v4h4a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+  </g>
+</svg>
