@@ -1,8 +1,12 @@
-{% comment %}Keep the fixed Presentations, How to use, Examples, Papers, Case Studies order.{% endcomment %}
-{% assign resource_groups = 'example,paper,case-studies' | split: ',' %}
+{% comment %}Project pages can select resource groups; default to Examples, Papers, and Case Studies.{% endcomment %}
+{% assign resource_groups = page.resource_groups | default: 'example,paper,case-studies' | split: ',' %}
 <ul class="emulator-resource-list">
   {% for group_key in resource_groups %}
-    {% if group_key == 'how-to-use' %}
+    {% if group_key == 'repository' %}
+      {% assign group_url = page.repository_url %}
+      {% assign group_title = 'Source code on GitHub' %}
+      {% assign group_icon = 'fa-github' %}
+    {% elsif group_key == 'how-to-use' %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'How to use' %}
       {% assign group_icon = 'fa-book' %}

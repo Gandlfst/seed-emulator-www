@@ -1,7 +1,7 @@
 # SEED Emulators website
 
 An English Jekyll website using the Teal palette, with visitor theme controls hidden.
-The homepage explicitly renders three projects: Internet, Satellite, and Blockchain.
+The homepage explicitly renders five projects: Internet, Satellite, Blockchain, EmuVista, and Yesterday Once More.
 
 ## Run locally
 
@@ -24,6 +24,8 @@ pages/
   internet-emulator/                Project entry, examples/, case-studies/, presentation/, how-to-use/, screenshots/
   satellite/                       Same project-specific child pages
   blockchain/                      Same project-specific child pages
+  emuvista/                        AI agent virtual world project introduction
+  yom/                             Historical Internet attack and incident recreations
   about-us/                        Team page
   examples/
     index.html                     Legacy address: choose a project catalog
@@ -76,7 +78,7 @@ Public images live under `assets/images/<project>/`; shared branding lives under
 ## Page composition
 
 Layouts are split by page responsibility and are not nested. `home` renders the
-homepage, `project` serves the three project entries, `examples` serves the catalog,
+homepage, `project` serves the five project entries, `examples` serves the catalog,
 and `example` serves individual examples. Legacy `/readme/` URLs use
 `example-readme`. Simple authored pages—including project presentation and
 screenshot pages—continue to use `default` and select their content directly in

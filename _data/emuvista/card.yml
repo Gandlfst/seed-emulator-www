@@ -1,0 +1,9 @@
+# Homepage card only; independent from the project detail description.
+title: EmuVista
+url: "/emuvista/"
+image: "/assets/images/emuvista/emuvista-world.webp"
+image_alt: Violet-lit virtual city with AI agent nodes connected to banking, email, payment, and communication services
+category: Virtual worlds for AI agents
+description: Build virtual worlds where AI agents use real Internet services.
+  Study agent behavior, social and economic interactions, and security in a
+  controlled environment built on the SEED Internet Emulator.

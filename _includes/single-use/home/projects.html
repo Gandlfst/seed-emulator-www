@@ -1,4 +1,4 @@
-{% comment %}Homepage: explicitly render the three project cards in this order.{% endcomment %}
+{% comment %}Homepage: five projects and an upper-middle promotional tile form a six-cell grid.{% endcomment %}
 <section class="portal-projects" aria-labelledby="projects-title">
   <div class="portal-section-heading"><h2 id="projects-title">Our projects</h2><span>Explore an emulator</span></div>
   <div class="portal-project-grid">
@@ -18,6 +18,13 @@
       <h3><a href="{{ site.data.internet.card.url | relative_url }}">{{ site.data.internet.card.title }}</a></h3>
       <p class="portal-project-description">{{ site.data.internet.card.description }}</p>
       <a class="portal-project-more" href="{{ site.data.internet.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
+    {% comment %}Promotional copy occupies the upper-middle cell on desktop screens.{% endcomment %}
+    <article class="portal-project-promo" aria-labelledby="project-promo-title">
+      <p class="portal-eyebrow">SEED Emulators</p>
+      <h3 id="project-promo-title">From networks<br>to virtual worlds.</h3>
+      <p class="portal-project-promo-description">Build controlled experiments with real networks, services, and AI agents. Reproduce scenarios, observe behavior, and explore new ideas.</p>
+      <span class="portal-project-promo-note">Open source. Open possibilities.</span>
     </article>
     {% comment %}Satellite project card.{% endcomment %}
     <article class="portal-project">
@@ -52,6 +59,26 @@
       <h3><a href="{{ site.data.blockchain.card.url | relative_url }}">{{ site.data.blockchain.card.title }}</a></h3>
       <p class="portal-project-description">{{ site.data.blockchain.card.description }}</p>
       <a class="portal-project-more" href="{{ site.data.blockchain.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
+    {% comment %}EmuVista project card.{% endcomment %}
+    <article class="portal-project">
+      <a class="portal-project-image" href="{{ site.data.emuvista.card.url | relative_url }}" aria-label="Explore {{ site.data.emuvista.card.title | escape }}">
+        <img src="{{ site.data.emuvista.card.image | relative_url }}" alt="{{ site.data.emuvista.card.image_alt | escape }}" width="800" height="500">
+      </a>
+      <p class="portal-project-category">{{ site.data.emuvista.card.category }}</p>
+      <h3><a href="{{ site.data.emuvista.card.url | relative_url }}">{{ site.data.emuvista.card.title }}</a></h3>
+      <p class="portal-project-description">{{ site.data.emuvista.card.description }}</p>
+      <a class="portal-project-more" href="{{ site.data.emuvista.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
+    </article>
+    {% comment %}Yesterday Once More project card.{% endcomment %}
+    <article class="portal-project">
+      <a class="portal-project-image" href="{{ site.data.yom.card.url | relative_url }}" aria-label="Explore {{ site.data.yom.card.title | escape }}">
+        <img src="{{ site.data.yom.card.image | relative_url }}" alt="{{ site.data.yom.card.image_alt | escape }}" width="800" height="450">
+      </a>
+      <p class="portal-project-category">{{ site.data.yom.card.category }}</p>
+      <h3><a href="{{ site.data.yom.card.url | relative_url }}">{{ site.data.yom.card.title }}</a></h3>
+      <p class="portal-project-description">{{ site.data.yom.card.description }}</p>
+      <a class="portal-project-more" href="{{ site.data.yom.card.url | relative_url }}">Explore project {% include shared/icon.html name="arrow" %}</a>
     </article>
   </div>
 </section>

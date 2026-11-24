@@ -27,6 +27,8 @@
         <a href="{{ '/internet-emulator/' | relative_url }}"{% if active_project == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
         <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
         <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
+        <a href="{{ '/emuvista/' | relative_url }}"{% if active_project == 'emuvista' %} aria-current="page"{% endif %}>EmuVista</a>
+        <a href="{{ '/yom/' | relative_url }}"{% if active_project == 'yom' %} aria-current="page"{% endif %}>Yesterday Once More</a>
         <a href="{{ '/visualization/' | relative_url }}"{% if active_project == 'visualization' %} aria-current="page"{% endif %}>Visualization</a>
         {% assign resource_paths = '/papers/,/case-studies/,/examples/' | split: ',' %}
         <details class="portal-resources">

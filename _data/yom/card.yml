@@ -1,0 +1,9 @@
+# Homepage card only; independent from the project detail description.
+title: Yesterday Once More
+url: "/yom/"
+image: "/assets/images/yom/yesterday-once-more.webp"
+image_alt: A network experiment platform with attack paths, monitoring panels, and a replay timeline
+category: Historical Internet incidents
+description: Recreate and study historical Internet attacks and incidents in
+  controlled lab environments. Turn past events into reproducible experiments
+  for networking and security research.
