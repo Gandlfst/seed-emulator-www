@@ -1,7 +1,7 @@
 /* Base styles: reset, shared typography, and accessibility. Layouts live in main.css. */
 :root { --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, "Segoe UI", Arial, sans-serif; font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p, figure { margin: 0; }
 h1, h2, h3 { line-height: 1.2; }

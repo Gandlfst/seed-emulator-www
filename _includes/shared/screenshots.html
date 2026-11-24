@@ -1,14 +1,15 @@
 {% comment %}Shared gallery; description, images, and captions live in the calling page's front matter.{% endcomment %}
 {% assign parent_project = project_info %}
+{% assign project_card = site.data[page.parent_project].card %}
 <div class="container">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
-    <a href="{{ parent_project.url | relative_url }}#resources">{{ parent_project.title }}</a>
-    <span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span>
+    <a href="{{ parent_project.url | relative_url }}#resources">{% include shared/localized.html zh=project_card.title_zh en=parent_project.title %}</a>
+    <span aria-hidden="true">/</span><span aria-current="page">{% include shared/localized.html zh=page.title_zh en=page.title %}</span>
   </nav>
   <section class="emulator-intro" aria-labelledby="screenshots-title">
-    <p class="portal-eyebrow">{{ parent_project.title }}</p>
-    <h1 id="screenshots-title">{{ page.title }}</h1>
-    <p class="emulator-description">{{ page.description }}</p>
+    <p class="portal-eyebrow">{% include shared/localized.html zh=project_card.title_zh en=parent_project.title %}</p>
+    <h1 id="screenshots-title">{% include shared/localized.html zh=page.title_zh en=page.title %}</h1>
+    <p class="emulator-description">{% include shared/localized.html zh=page.description_zh en=page.description %}</p>
   </section>
   {% comment %}Each image opens at its original size. Preserve its aspect ratio.{% endcomment %}
   <section class="emulator-section screenshot-gallery" aria-label="{{ page.title | escape }}">

@@ -2,16 +2,40 @@
 {% assign project_data = site.data[page.project] %}
 {% assign project_info = page %}
 {% assign page_title = page.title %}
-{% assign page_description = page.description %}
+{% assign page_title_zh = page.title_zh %}
+{% assign page_description = page.description_zh | default: page.description %}
+{% assign deck_zh = project_data.deck_zh %}
+{% if deck_zh %}
+  {% assign page_title_zh = project_data.card.title_zh | default: page.title %}
+  {% assign page_description = deck_zh.description %}
+{% endif %}
 {% assign active_theme = site.data.shared.themes | where: 'id', site.portal_theme | first | default: site.data.shared.themes.first %}
 <!doctype html>
-<html lang="en" data-portal-theme="{{ active_theme.id }}">
-  <head>{% include shared/head.html project=true %}</head>
+<html{% if page_title_zh %} lang="zh-CN" data-localized-page{% else %} lang="en"{% endif %} data-portal-theme="{{ active_theme.id }}">
+  <head>
+    {% include shared/head.html project=true %}
+    {% if page.deck_sections %}
+    <link rel="stylesheet" href="{{ '/css/project-deck.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+    {% endif %}
+  </head>
   <body class="is-portal">
-    <a class="skip-link" href="#main">Skip to content</a>
-    {% include shared/header.html %}
-    <main id="main">{% include shared/project-page.html %}</main>
-    {% include shared/footer.html %}
+    <a class="skip-link" href="#main">{% include shared/localized.html zh="跳到正文" en="Skip to content" %}</a>
+    {% unless page.deck_sections %}
+      {% include shared/header.html %}
+    {% endunless %}
+    <main id="main">
+      {% if page.deck_sections %}
+        {% include shared/project-deck.html %}
+      {% else %}
+        {% include shared/project-page.html %}
+      {% endif %}
+    </main>
+    {% unless page.deck_sections %}
+      {% include shared/footer.html %}
+    {% endunless %}
     {% include shared/scripts.html %}
+    {% if page.deck_sections %}
+    <script src="{{ '/js/project-deck.js' | relative_url }}" defer></script>
+    {% endif %}
   </body>
 </html>

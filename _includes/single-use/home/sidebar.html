@@ -1,27 +1,27 @@
 {% comment %}Homepage sidebar: short content is edited here, independently of footer.html.{% endcomment %}
 {% assign project_lead = site.data['about-us'].team.project_lead %}
-<aside class="portal-sidebar" aria-label="Project information">
+<aside class="portal-sidebar" aria-label="项目信息" data-zh-label="项目信息" data-en-label="Project information">
   {% comment %}Project lead contact details come from the shared team data.{% endcomment %}
   <section class="portal-sidebar-team">
-    <p class="portal-eyebrow">Project lead</p>
-    <h2 class="portal-sidebar-person"><a href="https://seedsecuritylabs.org/wenliangdu/">{{ project_lead.name | escape }}</a></h2>
-    <span class="portal-sidebar-meta">ACM/IEEE Fellow</span>
-    <span class="portal-sidebar-meta">Zhejiang University</span>
+    <p class="portal-eyebrow">{% include shared/localized.html zh="项目负责人" en="Project lead" %}</p>
+    <h2 class="portal-sidebar-person"><a href="https://seedsecuritylabs.org/wenliangdu/">{% include shared/localized.html zh="杜文亮" en=project_lead.name %}</a></h2>
+    <span class="portal-sidebar-meta" lang="en">{{ project_lead.honor | escape }}</span>
+    <span class="portal-sidebar-meta">{% include shared/localized.html zh="浙江大学" en="Zhejiang University" %}</span>
   </section>
   {% comment %}Sidebar resource links are maintained separately from footer links.{% endcomment %}
   <section class="portal-sidebar-resources" aria-labelledby="sidebar-resources-title">
-    <h2 id="sidebar-resources-title">Useful resources</h2>
+    <h2 id="sidebar-resources-title">{% include shared/localized.html zh="常用资源" en="Useful resources" %}</h2>
     <ul>
-      <li><a href="{{ '/papers/' | relative_url }}">Papers {% include shared/icon.html name="external" %}</a></li>
-      <li><a href="{{ '/case-studies/' | relative_url }}">Case Studies {% include shared/icon.html name="external" %}</a></li>
-      <li><a href="{{ '/examples/' | relative_url }}">Examples {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/papers/' | relative_url }}">{% include shared/localized.html zh="论文" en="Papers" %} {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/case-studies/' | relative_url }}">{% include shared/localized.html zh="研究案例" en="Case Studies" %} {% include shared/icon.html name="external" %}</a></li>
+      <li><a href="{{ '/examples/' | relative_url }}">{% include shared/localized.html zh="项目示例" en="Examples" %} {% include shared/icon.html name="external" %}</a></li>
     </ul>
   </section>
   {% comment %}Add dated release announcements here, replacing the empty-state paragraph.{% endcomment %}
   <section class="portal-sidebar-news" aria-labelledby="sidebar-news-title">
-    <h2 id="sidebar-news-title">News</h2>
+    <h2 id="sidebar-news-title">{% include shared/localized.html zh="项目动态" en="News" %}</h2>
     <div class="portal-sidebar-news-content">
-      <p>New releases and updates will appear here.</p>
+      <p>{% include shared/localized.html zh="暂无发布动态。" en="New releases and updates will appear here." %}</p>
     </div>
   </section>
 </aside>

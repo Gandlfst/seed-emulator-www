@@ -3,47 +3,58 @@
   <div class="container portal-footer-main">
     {% comment %}Site description and homepage link.{% endcomment %}
     <div class="portal-footer-about">
-      <a class="portal-footer-brand" href="{{ '/' | relative_url }}">SEED Emulators</a>
-      <p>Built for research and education.</p>
-      <span class="portal-footer-motto">Open source. Open possibilities.</span>
+      <a class="portal-footer-brand" href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a>
+      <p>{% include shared/localized.html zh="面向科研与教学。" en="Built for research and education." %}</p>
+      <span class="portal-footer-motto">{% include shared/localized.html zh="开放源码，支持探索。" en="Open source. Open possibilities." %}</span>
     </div>
     {% comment %}Render link groups directly without additional nested components.{% endcomment %}
-    <nav class="portal-footer-links" aria-label="Projects">
+    <nav class="portal-footer-links" lang="en" aria-label="Projects">
       <h2>Projects</h2>
       <ul>
-          <li><a href="{{ '/internet-emulator/' | relative_url }}">Internet Emulator</a></li>
-          <li><a href="{{ '/satellite/' | relative_url }}">Satellite Network Emulator</a></li>
-          <li><a href="{{ '/blockchain/' | relative_url }}">Blockchain Emulator</a></li>
+          <li><a href="{{ '/internet-emulator/' | relative_url }}">{{ site.data.internet.card.title | escape }}</a></li>
+          <li><a href="{{ '/satellite/' | relative_url }}">{{ site.data.satellite.card.title | escape }}</a></li>
+          <li><a href="{{ '/blockchain/' | relative_url }}">{{ site.data.blockchain.card.title | escape }}</a></li>
           <li><a href="{{ '/emuvista/' | relative_url }}">EmuVista</a></li>
-          <li><a href="{{ '/yom/' | relative_url }}">Yesterday Once More</a></li>
+          <li><a href="{{ '/yom/' | relative_url }}">{{ site.data.yom.card.title | escape }}</a></li>
       </ul>
     </nav>
-    <nav class="portal-footer-links" aria-label="Resources">
-      <h2>Resources</h2>
+    <nav class="portal-footer-links" aria-label="资源" data-zh-label="资源" data-en-label="Resources">
+      <h2>{% include shared/localized.html zh="资源" en="Resources" %}</h2>
       <ul>
-          <li><a href="{{ '/papers/' | relative_url }}">Papers</a></li>
-          <li><a href="{{ '/case-studies/' | relative_url }}">Case Studies</a></li>
-          <li><a href="{{ '/examples/' | relative_url }}">Examples</a></li>
+          <li><a href="{{ '/papers/' | relative_url }}">{% include shared/localized.html zh="论文" en="Papers" %}</a></li>
+          <li><a href="{{ '/case-studies/' | relative_url }}">{% include shared/localized.html zh="研究案例" en="Case Studies" %}</a></li>
+          <li><a href="{{ '/examples/' | relative_url }}">{% include shared/localized.html zh="项目示例" en="Examples" %}</a></li>
       </ul>
     </nav>
 
     {% comment %}Team details: contact links scroll to this section.{% endcomment %}
     <section class="portal-footer-team" id="team-contact" tabindex="-1" aria-labelledby="footer-team-title">
-      <h2 id="footer-team-title">People behind SEED</h2>
-      <span class="portal-footer-author">Wenliang Du, Professor</span>
-      <span class="portal-footer-role">ACM/IEEE Fellow</span>
-      <span class="portal-footer-role">Zhejiang University</span>
-      <p></p>
+      <h2 id="footer-team-title">{% include shared/localized.html zh="SEED 团队" en="People behind SEED" %}</h2>
+      <span class="portal-footer-author">{% include shared/localized.html zh="杜文亮 教授" en="Wenliang Du, Professor" %}</span>
+      <span class="portal-footer-role" lang="en">{{ site.data['about-us'].team.project_lead.honor | escape }}</span>
+      <span class="portal-footer-role">{% include shared/localized.html zh="浙江大学" en="Zhejiang University" %}</span>
       <a href="mailto:wedu@acm.org">wedu@acm.org</a>
-      <a class="portal-footer-team-link" href="{{ '/about-us/' | relative_url }}">Meet the team {% include shared/icon.html name="arrow" %}</a>
+      <a class="portal-footer-team-link" href="{{ '/about-us/' | relative_url }}">{% include shared/localized.html zh="认识团队" en="Meet the team" %} {% include shared/icon.html name="arrow" %}</a>
     </section>
   </div>
   {% comment %}Bottom bar: attribution and back-to-top link.{% endcomment %}
   <div class="container portal-footer-bottom">
-    <span>SEED Emulators &middot; Research &amp; Education</span>
-    <span>Wenliang Du &amp; contributors</span>
+    <span><span lang="en">{{ site.title | escape }}</span> · {% include shared/localized.html zh="科研与教学" en="Research & Education" %}</span>
+    <span>{% include shared/localized.html zh="杜文亮及贡献者" en="Wenliang Du & contributors" %}</span>
     <div class="portal-footer-actions">
-      <a class="portal-footer-back" href="#main">Back to top {% include shared/icon.html name="arrow" %}</a>
+      <a class="portal-footer-back" href="#main">{% include shared/localized.html zh="回到顶部" en="Back to top" %} {% include shared/icon.html name="arrow" %}</a>
     </div>
+  </div>
+  <div class="container portal-footer-display" data-display-controls hidden>
+    <button type="button" data-fullscreen-toggle>
+      <span data-fullscreen-enter>{% include shared/icon.html name="maximize" %}{% include shared/localized.html zh="全屏" en="Full screen" %}</span>
+      <span data-fullscreen-exit hidden>{% include shared/icon.html name="minimize" %}{% include shared/localized.html zh="退出全屏" en="Exit full screen" %}</span>
+    </button>
+    <button type="button" data-language-toggle>
+      {% include shared/icon.html name="globe" %}
+      <span lang="en" data-language-text="zh">English</span>
+      <span lang="zh-CN" data-language-text="en">中文</span>
+    </button>
+    <p role="status" data-fullscreen-status hidden>{% include shared/localized.html zh="当前浏览器无法进入全屏。" en="Full screen is unavailable in this browser." %}</p>
   </div>
 </footer>

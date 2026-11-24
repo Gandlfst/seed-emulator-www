@@ -1,25 +1,28 @@
 ---
 layout: default
 title: Examples
+title_zh: 项目示例
+description_zh: 选择项目，浏览对应的仿真示例。
 permalink: /examples/
 description: Choose a project to browse its examples.
 ---
 {% comment %}Legacy catalog address: keep existing links useful without mixing project examples.{% endcomment %}
 <div class="container">
-  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">SEED Emulators</a><span aria-hidden="true">/</span><span aria-current="page">Examples</span></nav>
+  <nav class="portal-breadcrumb" aria-label="页面路径" data-zh-label="页面路径" data-en-label="Breadcrumb"><a href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a><span aria-hidden="true">/</span><span aria-current="page">{% include shared/localized.html zh=page.title_zh en=page.title %}</span></nav>
   <section class="emulator-intro" aria-labelledby="examples-projects-title">
-    <h1 id="examples-projects-title">Examples</h1>
-    <p class="emulator-description">Choose a project to browse its examples.</p>
+    <h1 id="examples-projects-title">{% include shared/localized.html zh=page.title_zh en=page.title %}</h1>
+    <p class="emulator-description">{% include shared/localized.html zh=page.description_zh en=page.description %}</p>
   </section>
   <section class="emulator-section" aria-label="Project examples">
     <ul class="emulator-resource-list">
       {% assign project_keys = 'internet,satellite,blockchain' | split: ',' %}
       {% for project_key in project_keys %}
         {% assign project_info = site.pages | where: 'project', project_key | first %}
+        {% assign project_card = site.data[project_key].card %}
         {% assign catalog_url = project_info.url | append: 'examples/' %}
         <li class="emulator-resource emulator-project-resource">
-          <h3><a href="{{ catalog_url | relative_url }}">{{ project_info.title }}</a></h3>
-          <a href="{{ catalog_url | relative_url }}" aria-label="Open {{ project_info.title }} examples">Open {% include shared/icon.html name="arrow" %}</a>
+          <h3><a href="{{ catalog_url | relative_url }}">{% include shared/localized.html zh=project_card.title_zh en=project_info.title %}</a></h3>
+          <a href="{{ catalog_url | relative_url }}">{% include shared/localized.html zh="打开" en="Open" %} {% include shared/icon.html name="arrow" %}</a>
         </li>
       {% endfor %}
     </ul>

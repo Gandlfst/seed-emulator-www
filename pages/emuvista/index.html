@@ -4,11 +4,61 @@ layout: project
 project: emuvista
 title: EmuVista
 category: Virtual worlds for AI agents
-description: An open-source virtual world platform for AI agents, combining real Internet services, configurable networks, and observable agent behavior.
+description: An open-source virtual world for AI agents built on SEED. Agents use
+  real Internet services in a configurable environment where researchers can observe
+  and repeat social, economic, and security experiments.
 resource_groups: repository
 repository_url: https://github.com/seed-labs/emuvista
-overview: |-
-  <p>EmuVista is an open-source virtual world platform for AI agents built on the SEED Internet Emulator. It combines real Internet services, agents powered by large language models, and configurable network environments. Agents can communicate, gather information, use digital services, and participate in social and economic activities within a controlled, observable, and reproducible experimental world.</p>
-  <p>The digital world runs containerized services such as DNS, email, instant messaging, file sharing, banking, payments, and online marketplaces. Agent Service manages agents with their own identities, goals, memories, and behavior. Through browsers, APIs, commands, and environment interfaces, these agents interact with running services while monitoring tools record their intentions, tool calls, results, and system states. Digital emulation can also be connected to physical simulation through shared states and events representing space, location, and movement.</p>
-  <p>Researchers can use EmuVista to study information propagation, cooperation, trust, market behavior, and risk transmission, or evaluate agent capabilities, reliability, and long-term collaboration. Its configurable environments also support research on prompt injection, permission boundaries, and attack and defense mechanisms. Virtual company scenarios can reproduce organizational structures and business workflows, providing interactive honeypot environments for observing autonomous attack agents and evaluating defensive strategies.</p>
+deck_sections:
+  - id: world
+    nav: Digital World
+    title: A virtual society with real digital services
+    lead: Containerized DNS, email, chat, file sharing, banking, payments, and
+      marketplaces run as real software on the SEED network. Services have
+      distinct accounts, data, and rules.
+    points:
+      - title: Observable interactions
+        text: Agents can communicate, shop, or transfer funds. Researchers can analyze the resulting messages, transactions, and state changes.
+      - title: A connected physical world
+        text: A simulation represents space, location, and movement, and exchanges states and events with the digital network.
+    figure:
+      src: /assets/images/emuvista/digital-world.jpg
+      width: 1268
+      height: 714
+      alt: Illustration of agents using banking, payments, messaging, and social services in a SEED network
+      caption: Agents use networked services with their own account and transaction state.
+  - id: agents
+    nav: Agents
+    title: Independent agents in a shared environment
+    lead: Agent Service deploys and manages agents in separate containers. Each
+      agent can have its own identity, background, goals, memory, and behavior.
+    points:
+      - title: Reason and act
+        text: Language models make decisions. Browsers, APIs, commands, and environment interfaces let agents act in the virtual world.
+      - title: Observe the process
+        text: Monitoring tools record intentions, tool calls, outcomes, and runtime state for analysis.
+    figure:
+      src: /assets/images/emuvista/agent-architecture.jpg
+      width: 1268
+      height: 714
+      alt: Agent Service and language models connected to independently configured agents, tools, and digital and physical worlds
+      caption: Agent Service keeps agent configuration separate from the shared environment.
+  - id: research
+    nav: Research
+    title: Research across a virtual society
+    lead: Researchers can vary agent roles and world conditions independently to
+      compare outcomes across social, economic, and organizational scenarios.
+    points:
+      - title: Social and economic behavior
+        text: Examine information spread, cooperation, trust, transaction decisions, market behavior, and risk transmission.
+      - title: Agent evaluation
+        text: Measure reliability, long-term collaboration, and consistency across tasks that span multiple services.
+      - title: Enterprise simulation and defense
+        text: Model an organization and its workflows in an isolated environment to study permission boundaries and evaluate defensive honeypot strategies.
+    figure:
+      src: /assets/images/emuvista/research-scenarios.jpg
+      width: 1268
+      height: 714
+      alt: Four research areas covering social behavior, economics, agent evaluation, and security
+      caption: Examples of the research questions EmuVista supports.
 ---

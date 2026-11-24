@@ -1,13 +1,13 @@
 {% comment %}Shared list page for publications and applications; each page supplies its own data and accessible labels.{% endcomment %}
 <div class="container">
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
-    <a href="{{ '/' | relative_url }}">SEED Emulators</a>
+    <a href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a>
     <span aria-hidden="true">/</span>
-    <span aria-current="page">{{ page.title }}</span>
+    <span aria-current="page">{% include shared/localized.html zh=page.title_zh en=page.title %}</span>
   </nav>
   <section class="emulator-intro" aria-labelledby="{{ include.heading_id }}">
-    <h1 id="{{ include.heading_id }}">{{ page.title }}</h1>
-    <p class="emulator-description">{{ page.description }}</p>
+    <h1 id="{{ include.heading_id }}">{% include shared/localized.html zh=page.title_zh en=page.title %}</h1>
+    <p class="emulator-description">{% include shared/localized.html zh=page.description_zh en=page.description %}</p>
   </section>
   <section class="emulator-section" aria-label="{{ include.label }}">
     <ul class="emulator-resource-list">

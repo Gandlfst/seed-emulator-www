@@ -1,5 +1,6 @@
 # Homepage card only; independent from the project detail description.
-title: Satellite Network Emulator
+title: SkySEED
+title_zh: SkySEED卫星互联网仿真
 url: "/satellite/"
 image: "/assets/images/satellite/satellite-network-blue-small.webp"
 image_alt: Illustration of three prominent satellites linked to one another and to
@@ -7,3 +8,6 @@ image_alt: Illustration of three prominent satellites linked to one another and 
 category: Satellite networks
 description: Emulate satellite networks, such as Starlink. Based on the SEED emulator.
   Project materials and technical details are being prepared.
+category_zh: 卫星网络
+description_zh: 在动态星地网络上运行真实协议和应用，验证组网方案、路由策略与业务连续性。
+image_alt_zh: 三颗卫星相互连接，并与地面站通信

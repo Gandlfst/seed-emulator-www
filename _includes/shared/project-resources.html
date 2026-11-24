@@ -1,39 +1,58 @@
 {% comment %}Project pages can select resource groups; default to Examples, Papers, and Case Studies.{% endcomment %}
 {% assign resource_groups = page.resource_groups | default: 'example,paper,case-studies' | split: ',' %}
-<ul class="emulator-resource-list">
+<ul class="{% if include.compact %}deck-resource-list{% else %}emulator-resource-list{% endif %}">
   {% for group_key in resource_groups %}
     {% if group_key == 'repository' %}
       {% assign group_url = page.repository_url %}
       {% assign group_title = 'Source code on GitHub' %}
+      {% assign group_title_zh = 'GitHub 源代码' %}
       {% assign group_icon = 'fa-github' %}
     {% elsif group_key == 'how-to-use' %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'How to use' %}
+      {% assign group_title_zh = '使用指南' %}
       {% assign group_icon = 'fa-book' %}
     {% elsif group_key == 'example' %}
       {% assign group_url = page.url | append: 'examples/' %}
       {% assign group_title = 'Examples' %}
+      {% assign group_title_zh = '项目示例' %}
       {% assign group_icon = 'fa-code' %}
     {% elsif group_key == 'paper' %}
       {% assign group_url = '/papers/' %}
       {% assign group_title = 'Papers' %}
+      {% assign group_title_zh = '论文' %}
       {% assign group_icon = 'fa-file-text-o' %}
     {% elsif group_key == 'presentation' %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Presentations' %}
+      {% assign group_title_zh = '演示材料' %}
       {% assign group_icon = 'fa-desktop' %}
     {% elsif group_key == 'case-studies' %}
       {% assign group_url = page.url | append: 'case-studies/' %}
       {% assign group_title = 'Case Studies' %}
+      {% assign group_title_zh = '研究案例' %}
       {% assign group_icon = 'fa-briefcase' %}
     {% else %}
       {% assign group_url = page.url | append: group_key | append: '/' %}
       {% assign group_title = 'Screenshots' %}
+      {% assign group_title_zh = '项目截图' %}
       {% assign group_icon = 'fa-picture-o' %}
     {% endif %}
-    <li class="emulator-resource emulator-project-resource">
-      <h3><a href="{{ group_url | relative_url }}"><i class="fa {{ group_icon }} fa-fw" aria-hidden="true"></i><span>{{ group_title }}</span></a></h3>
-      <a href="{{ group_url | relative_url }}" aria-label="Open {{ group_title }}">Open {% include shared/icon.html name="external" %}</a>
+    {% if include.compact %}
+    <li>
+      <a class="deck-resource-link" href="{{ group_url | relative_url }}">
+        <i class="fa {{ group_icon }} fa-fw" aria-hidden="true"></i>
+        <span>{% include shared/localized.html zh=group_title_zh en=group_title %}</span>
+        {% include shared/icon.html name="external" %}
+      </a>
     </li>
+    {% else %}
+    <li class="emulator-resource emulator-project-resource">
+      {% assign open_zh = group_title_zh | prepend: '打开' %}
+      {% assign open_en = group_title | prepend: 'Open ' %}
+      <h3><a href="{{ group_url | relative_url }}"><i class="fa {{ group_icon }} fa-fw" aria-hidden="true"></i><span>{% include shared/localized.html zh=group_title_zh en=group_title %}</span></a></h3>
+      <a href="{{ group_url | relative_url }}" aria-label="{{ open_zh | escape }}" data-zh-label="{{ open_zh | escape }}" data-en-label="{{ open_en | escape }}">{% include shared/localized.html zh="打开" en="Open" %} {% include shared/icon.html name="external" %}</a>
+    </li>
+    {% endif %}
   {% endfor %}
 </ul>

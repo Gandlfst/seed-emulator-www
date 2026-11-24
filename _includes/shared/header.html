@@ -3,7 +3,7 @@
 <header class="site-header portal-header">
   <div class="container header-inner">
     {% comment %}Brand link to the homepage.{% endcomment %}
-    <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="SEED Emulators home">
+    <a class="portal-brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }} 首页" data-zh-label="{{ site.title | escape }} 首页" data-en-label="{{ site.title | escape }} home">
       {% if page.project == 'satellite' or page.parent_project == 'satellite' %}
         <span class="portal-brand-logo portal-brand-logo-skyseed">
           <img src="{{ '/assets/images/satellite/skyseed-logo-transparent.png' | relative_url }}" alt="SkySEED Satellite Network Emulation" width="2103" height="675">
@@ -14,21 +14,21 @@
         </span>
       {% endif %}
     </a>
-    <span class="portal-header-note">A playground for research &amp; discovery</span>
+    <span class="portal-header-note">{% include shared/localized.html zh="面向科研与探索的实验平台" en="A playground for research & discovery" %}</span>
     {% comment %}Mobile menu: js/site.js controls its expanded state.{% endcomment %}
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+    <button class="menu-toggle" lang="en" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
       {% include shared/icon.html name="menu" %}
     </button>
 
     {% comment %}Navigation is authored here; optional themes use theme data.{% endcomment %}
     <div class="portal-navigation-bar">
-      <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+      <nav class="main-navigation" id="main-navigation" lang="en" aria-label="Main navigation">
         <a href="{{ '/' | relative_url }}"{% if include.home %} aria-current="page"{% endif %}>Home</a>
-        <a href="{{ '/internet-emulator/' | relative_url }}"{% if active_project == 'internet' %} aria-current="page"{% endif %}>Internet Emulator</a>
-        <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>Satellite</a>
-        <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>Blockchain</a>
+        <a href="{{ '/internet-emulator/' | relative_url }}"{% if active_project == 'internet' %} aria-current="page"{% endif %}>{{ site.data.internet.card.title | escape }}</a>
+        <a href="{{ '/satellite/' | relative_url }}"{% if active_project == 'satellite' %} aria-current="page"{% endif %}>{{ site.data.satellite.card.title | escape }}</a>
+        <a href="{{ '/blockchain/' | relative_url }}"{% if active_project == 'blockchain' %} aria-current="page"{% endif %}>{{ site.data.blockchain.card.title | escape }}</a>
         <a href="{{ '/emuvista/' | relative_url }}"{% if active_project == 'emuvista' %} aria-current="page"{% endif %}>EmuVista</a>
-        <a href="{{ '/yom/' | relative_url }}"{% if active_project == 'yom' %} aria-current="page"{% endif %}>Yesterday Once More</a>
+        <a href="{{ '/yom/' | relative_url }}"{% if active_project == 'yom' %} aria-current="page"{% endif %}>{{ site.data.yom.card.title | escape }}</a>
         <a href="{{ '/visualization/' | relative_url }}"{% if active_project == 'visualization' %} aria-current="page"{% endif %}>Visualization</a>
         {% assign resource_paths = '/papers/,/case-studies/,/examples/' | split: ',' %}
         <details class="portal-resources">

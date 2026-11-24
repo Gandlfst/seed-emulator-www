@@ -10,18 +10,18 @@
 <html lang="en" data-portal-theme="{{ active_theme.id }}">
   <head>{% include shared/head.html examples=true %}</head>
   <body class="is-portal">
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{% include shared/localized.html zh="跳到正文" en="Skip to content" %}</a>
     {% include shared/header.html %}
     <main id="main">
       <div class="container examples-page manual-page">
         <nav class="portal-breadcrumb" aria-label="Breadcrumb">
-          <a href="{{ '/' | relative_url }}">SEED Emulators</a><span aria-hidden="true">/</span>
-          {% if page.url == manual_root %}<span aria-current="page">Visualization</span>{% else %}<a href="{{ manual_root_url }}">Visualization</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.title | escape }}</span>{% endif %}
+          <a href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a><span aria-hidden="true">/</span>
+          {% if page.url == manual_root %}<span aria-current="page">{% include shared/localized.html zh="可视化" en="Visualization" %}</span>{% else %}<a href="{{ manual_root_url }}">{% include shared/localized.html zh="可视化" en="Visualization" %}</a><span aria-hidden="true">/</span><span aria-current="page">{{ page.title | escape }}</span>{% endif %}
         </nav>
         <article class="lesson-content readme-content">
           <div class="readme-toolbar">
-            {% if page.url == manual_root %}<a href="{{ '/' | relative_url }}">← Back to home</a>{% else %}<a href="{{ manual_root_url }}">← All visualization guides</a>{% endif %}
-            <a href="{{ page.source_url | escape }}">View on GitHub {% include shared/icon.html name="external" %}</a>
+            {% if page.url == manual_root %}<a href="{{ '/' | relative_url }}">{% include shared/localized.html zh="← 返回首页" en="← Back to home" %}</a>{% else %}<a href="{{ manual_root_url }}">{% include shared/localized.html zh="← 可视化指南" en="← All visualization guides" %}</a>{% endif %}
+            <a href="{{ page.source_url | escape }}">{% include shared/localized.html zh="在 GitHub 查看" en="View on GitHub" %} {% include shared/icon.html name="external" %}</a>
           </div>
           <div class="lesson-prose readme-prose">{{ content | replace: original_href, resolved_href }}</div>
         </article>

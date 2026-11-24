@@ -7,3 +7,6 @@ category: Historical Internet incidents
 description: Recreate and study historical Internet attacks and incidents in
   controlled lab environments. Turn past events into reproducible experiments
   for networking and security research.
+category_zh: 历史互联网事件
+description_zh: 把互联网历史事件整理为可重复的实验，帮助学习者分析现象、机制和经验。
+image_alt_zh: 连接互联网历史事件的网络示意图

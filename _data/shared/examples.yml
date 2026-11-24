@@ -4,21 +4,25 @@ readme_url: https://github.com/seed-labs/seed-emulator/blob/61acdf4c9699b25b0684
 categories:
 - id: foundations
   title: Network foundations
+  title_zh: 网络基础
   label: 01 / Start here
   description: Build, visualize, and reuse the building blocks of an emulation.
   icon: network
 - id: internet-services
   title: Internet services
+  title_zh: 互联网服务
   label: 02 / Connect services
   description: Explore routing, naming, addressing, and distributed services.
   icon: globe
 - id: blockchain
   title: Blockchain applications
+  title_zh: 区块链应用
   label: 03 / Build on a chain
   description: Create private Ethereum networks and add application services.
   icon: network
 - id: scion
   title: SCION networking
+  title_zh: SCION 网络
   label: 04 / Explore new architectures
   description: Work with isolation domains, explicit paths, and bandwidth tests.
   icon: globe

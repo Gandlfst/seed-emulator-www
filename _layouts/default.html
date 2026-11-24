@@ -1,12 +1,13 @@
 {% comment %}Generic pages render their authored content directly.{% endcomment %}
 {% assign page_title = page.title %}
-{% assign page_description = page.description %}
+{% assign page_title_zh = page.title_zh %}
+{% assign page_description = page.description_zh | default: page.description %}
 {% assign active_theme = site.data.shared.themes | where: 'id', site.portal_theme | first | default: site.data.shared.themes.first %}
 <!doctype html>
-<html lang="en" data-portal-theme="{{ active_theme.id }}">
+<html{% if page_title_zh %} lang="zh-CN" data-localized-page{% else %} lang="en"{% endif %} data-portal-theme="{{ active_theme.id }}">
   <head>{% include shared/head.html %}</head>
   <body class="is-portal">
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{% include shared/localized.html zh="跳到正文" en="Skip to content" %}</a>
     {% include shared/header.html %}
     <main id="main">{{ content }}</main>
     {% include shared/footer.html %}

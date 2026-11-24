@@ -2,11 +2,46 @@
 permalink: "/satellite/"
 layout: project
 project: satellite
-title: Satellite Network Emulator
+title: SkySEED
 category: Satellite networks
-description: A project for exploring satellite networking in research and education.
-overview: "<p>The Satellite Network Emulator project focuses on satellite networking.
-  Presentations, documentation, and demonstrations will be collected here as project
-  materials become available.</p>"
+description: An open-source satellite Internet emulator for testing network designs,
+  protocols, and applications across dynamic satellite and ground networks.
+resource_groups: presentation,how-to-use,example,paper,case-studies,screenshots
+deck_sections:
+  - id: architecture
+    nav: Architecture
+    title: Separate the plan from the running network
+    lead: SkySEED uses SEED to build a network of satellites, ground stations, and
+      terrestrial hosts. Python scenarios combine replaceable models for satellite
+      positions, link conditions, and routing decisions.
+    points:
+      - title: Plan
+        text: Calculate network changes ahead of time. Save and reuse plans to compare scenarios under consistent conditions.
+      - title: Execute
+        text: Apply the plan to the container network by updating connectivity, link properties, and forwarding rules as protocols and applications exchange real packets.
+    figure:
+      src: /assets/images/satellite/planning-architecture.png
+      width: 1845
+      height: 2048
+      portrait: true
+      alt: SkySEED architecture for environment construction, layered planning, and execution
+      caption: The planner and runner coordinate changes with the container network.
+  - id: experiments
+    nav: Experiments
+    title: Observe a network in motion
+    lead: Track constellation geometry, connectivity, routes, and runtime records
+      together to see how changes in the network affect running applications.
+    points:
+      - title: Protocol and application tests
+        text: Compare link and routing strategies, and measure how satellite handovers affect service continuity.
+      - title: Fault and recovery studies
+        text: Introduce controlled interference or link outages and observe how the network and services recover.
+      - title: Constellation-scale deployments
+        text: The team has run experiments with thousands of satellites. Scenarios can be adapted to different constellations and networking strategies.
+    figure:
+      src: /assets/images/satellite/constellation-visualization.png
+      width: 913
+      height: 521
+      alt: Two views of a satellite constellation and its network links around Earth
+      caption: SkySEED visualization of an orbital constellation and its connections.
 ---
-{% comment %}Project copy lives above; media and examples live in _data/satellite/.{% endcomment %}

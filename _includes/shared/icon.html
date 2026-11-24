@@ -5,6 +5,8 @@
 {% when 'external' %}<path d="M7 17 17 7M7 7h10v10"/>
 {% when 'menu' %}<path d="M4 6h16M4 12h16M4 18h16"/>
 {% when 'globe' %}<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>
+{% when 'maximize' %}<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>
+{% when 'minimize' %}<path d="M3 8h5V3m13 5h-5V3M8 21v-5H3m13 5v-5h5"/>
 {% else %}<rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/>
 {% endcase %}
 </svg>

@@ -1,0 +1,103 @@
+{% assign deck_image = page.deck_image | default: project_data.card.image %}
+<article class="project-deck" aria-labelledby="project-title">
+  <nav class="deck-navigation" lang="en" aria-label="Project navigation" data-deck-nav>
+    <div class="container deck-navigation-inner">
+      <span class="deck-navigation-title">{{ page.title | escape }}</span>
+      <div class="deck-navigation-links">
+        <a href="#overview" aria-current="location">Overview</a>
+        {% for slide in page.deck_sections %}
+          <a href="#{{ slide.id }}">{{ slide.nav | escape }}</a>
+        {% endfor %}
+        <a class="deck-mobile-resources" href="#resources">Resources</a>
+      </div>
+      <a class="deck-navigation-home" href="{{ '/' | relative_url }}">{% include shared/icon.html name="arrow" %} Back to Home</a>
+    </div>
+  </nav>
+
+  <section id="overview" class="deck-cover" aria-labelledby="project-title">
+    <img class="deck-cover-image" src="{{ deck_image | relative_url }}" alt="" fetchpriority="high">
+    <div class="container deck-cover-content">
+      <p class="deck-cover-category">{% include shared/localized.html zh=deck_zh.category en=page.category %}</p>
+      <h1 id="project-title">{% include shared/localized.html zh=page_title_zh en=page.title %}</h1>
+      <p class="deck-cover-description">{% include shared/localized.html zh=deck_zh.description en=page.description %}</p>
+    </div>
+  </section>
+
+  <div class="container deck-grid deck-body">
+    <div class="deck-chapters">
+      {% for slide in page.deck_sections %}
+        {% assign slide_zh = deck_zh.sections[slide.id] %}
+        <section id="{{ slide.id }}" class="deck-section" aria-labelledby="{{ slide.id }}-title">
+          <div class="deck-slide{% if slide.figure and slide.points and slide.figure.wide != true %} deck-slide-with-figure{% endif %}">
+            <div class="deck-slide-copy">
+              <h2 id="{{ slide.id }}-title">{% include shared/localized.html zh=slide_zh.title en=slide.title %}</h2>
+              <p class="deck-lead">{% include shared/localized.html zh=slide_zh.lead en=slide.lead %}</p>
+              {% if slide.points %}
+                <dl class="deck-points">
+                  {% for point in slide.points %}
+                    {% assign point_zh = slide_zh.points[forloop.index0] %}
+                    <div>
+                      <dt>{% include shared/localized.html zh=point_zh.title en=point.title %}</dt>
+                      <dd>{% include shared/localized.html zh=point_zh.text en=point.text %}</dd>
+                    </div>
+                  {% endfor %}
+                </dl>
+              {% endif %}
+            </div>
+            {% if slide.figure %}
+              <figure class="deck-figure{% if slide.figure.portrait %} deck-figure-portrait{% endif %}">
+                <a href="{{ slide.figure.src | relative_url }}">
+                  <img src="{{ slide.figure.src | relative_url }}" alt="{{ slide_zh.figure.alt | default: slide.figure.alt | escape }}"
+                    data-zh-alt="{{ slide_zh.figure.alt | default: slide.figure.alt | escape }}" data-en-alt="{{ slide.figure.alt | escape }}"
+                    width="{{ slide.figure.width }}" height="{{ slide.figure.height }}" loading="lazy" decoding="async">
+                </a>
+                <figcaption>{% include shared/localized.html zh=slide_zh.figure.caption en=slide.figure.caption %}</figcaption>
+              </figure>
+            {% endif %}
+          </div>
+          {% if slide.metrics %}
+            <dl class="deck-metrics">
+              {% for metric in slide.metrics %}
+                {% assign label_zh = slide_zh.metric_labels[forloop.index0] %}
+                <div>
+                  <dt>{% include shared/localized.html zh=label_zh en=metric.label %}</dt>
+                  <dd>{{ metric.value | escape }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+          {% endif %}
+          {% if slide.table %}
+            <table class="deck-table">
+              <caption>{% include shared/localized.html zh=slide_zh.table.caption en=slide.table.caption %}</caption>
+              <thead>
+                <tr>
+                  {% for column in slide.table.columns %}
+                    {% assign column_zh = slide_zh.table.columns[forloop.index0] %}
+                    <th scope="col">{% include shared/localized.html zh=column_zh en=column %}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in slide.table.rows %}
+                  {% assign row_zh = slide_zh.table.rows[forloop.index0] %}
+                  <tr>
+                    <th scope="row">{% include shared/localized.html zh=row_zh.first en=row.first %}</th>
+                    {% for cell in row offset: 1 %}
+                      {% assign cell_zh = row_zh[forloop.index] %}
+                      <td>{% include shared/localized.html zh=cell_zh en=cell %}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <p class="deck-table-note">{% include shared/localized.html zh=slide_zh.table.note en=slide.table.note %}</p>
+          {% endif %}
+        </section>
+      {% endfor %}
+    </div>
+    <aside id="resources" class="deck-resources" aria-labelledby="deck-resources-title">
+      <h2 id="deck-resources-title">{% include shared/localized.html zh="文档与资源" en="Documentation & Resources" %}</h2>
+      {% include shared/project-resources.html compact=true %}
+    </aside>
+  </div>
+</article>

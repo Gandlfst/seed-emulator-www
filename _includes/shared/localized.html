@@ -1,0 +1,6 @@
+{%- if include.zh and include.zh != include.en -%}
+  <span lang="zh-CN" data-language-text="zh">{{ include.zh | escape }}</span>
+  <span lang="en" data-language-text="en">{{ include.en | escape }}</span>
+{%- else -%}
+  {{ include.en | default: include.zh | escape }}
+{%- endif -%}

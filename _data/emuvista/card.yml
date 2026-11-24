@@ -7,3 +7,6 @@ category: Virtual worlds for AI agents
 description: Build virtual worlds where AI agents use real Internet services.
   Study agent behavior, social and economic interactions, and security in a
   controlled environment built on the SEED Internet Emulator.
+category_zh: AI 智能体虚拟世界
+description_zh: 构建智能体可以操作真实互联网服务的虚拟世界，研究行为、社会经济交互和安全。
+image_alt_zh: 多个 AI 智能体与银行、邮件、支付和通信服务相连

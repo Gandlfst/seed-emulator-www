@@ -1,0 +1,38 @@
+category: 互联网基础设施
+description: 用真实路由软件和应用搭建一个可运行的互联网。SEED 是开源仿真平台，可在通用计算设备上开展可控、可重复的网络与安全实验。
+sections:
+  architecture:
+    title: 从 Python 配置到真实网络报文
+    lead: 使用 SEED SDK 描述网络，渲染各层配置，再编译生成 Docker 或 Kubernetes 部署文件。容器运行真实的 Linux 协议栈以及 BIRD、FRRouting 等路由软件。
+    points:
+      - { title: 基础设施, text: 定义自治系统（AS）、互联网交换点（IXP）、路由器、主机和链路。 }
+      - { title: 路由, text: 配置 BGP、OSPF 等协议，以及路由过滤、MPLS、Anycast 等策略。 }
+      - { title: 应用服务, text: 复用已有拓扑和路由，部署 DNS、PKI、CDN 或自己的应用。 }
+    figure:
+      alt: SEED 的分层组合、渲染、编译、运行及交互流程
+      caption: 从可复用的 Python 组件构建可运行、可观察的网络。
+  research:
+    title: 在可控环境中重复网络实验
+    lead: 对比网络在正常和异常条件下的行为，利用终端、抓包、日志和 InternetMap，分析网络状态变化如何影响应用。
+    points:
+      - { title: 安全教学, text: 在隔离环境中学习历史上的路由和恶意软件事件，评估防护措施与业务恢复效果。 }
+      - { title: 协议与服务研究, text: 在相同拓扑上对比路由策略、名称解析与数字信任服务，或研究 SCION、Tor、IPFS 等系统。 }
+  scale:
+    title: 万级路由节点的拓扑实验
+    lead: SEED 可将 CAIDA 的公开观测数据转换为可运行的拓扑。团队曾在一台服务器上通过多虚拟机和 Kubernetes 运行 10,000 个路由节点。
+    figure:
+      alt: 大规模互联网拓扑的三维地球视图与二维视图
+      caption: InternetMap 用地理视图展示仿真网络的节点分布、报文路径和实验事件。
+    metric_labels: [路由节点, 自治系统, 互联网交换点, 网络, 对等关系]
+    table:
+      caption: 单机多虚拟机与 Kubernetes 部署实验
+      columns: [指标, 数值]
+      rows:
+        - [镜像传输及容器与虚拟网络启动, "3,508 秒"]
+        - [控制面收敛, 154 秒]
+        - [数据面收敛, 183 秒]
+        - [三台 Tier-1 路由器故障后恢复稳态, 59 秒]
+        - [平均数据面时延, 382 毫秒]
+        - [平均数据面带宽, "8,648 Mbps"]
+        - [总内存占用, 425 GB]
+      note: 总内存占用为 425 GB，其中 24 台虚拟机的集群开销为 144 GB，仿真网络自身约占 281 GB。

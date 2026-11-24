@@ -2,28 +2,33 @@
 <div class="container">
   {% comment %}Section 1: breadcrumb with a homepage link and current project title.{% endcomment %}
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
-    <a href="{{ '/' | relative_url }}">SEED Emulators</a>
+    <a href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a>
     <span aria-hidden="true">/</span>
-    <span aria-current="page">{{ project_info.title }}</span>
+    <span aria-current="page">{% include shared/localized.html zh=project_info.title_zh en=project_info.title %}</span>
   </nav>
 
   {% comment %}Section 2: project category and title.{% endcomment %}
   <section class="emulator-intro" aria-labelledby="emulator-title">
-    <p class="portal-eyebrow">{{ project_info.category }}</p>
-    <h1 id="emulator-title">{{ project_info.title }}</h1>
+    <p class="portal-eyebrow">{% include shared/localized.html zh=project_info.category_zh en=project_info.category %}</p>
+    <h1 id="emulator-title">{% include shared/localized.html zh=project_info.title_zh en=project_info.title %}</h1>
   </section>
   {% comment %}Section 3: project image floats beside the long introduction.{% endcomment %}
   <section class="emulator-section emulator-overview-section" id="overview" aria-label="{{ project_info.title | escape }} introduction">
     <div class="emulator-overview">
       {% if project_data.card.image %}
-        <img class="emulator-overview-image" src="{{ project_data.card.image | relative_url }}" alt="{{ project_data.card.image_alt | escape }}" width="800" height="500">
+        <img class="emulator-overview-image" src="{{ project_data.card.image | relative_url }}" alt="{{ project_data.card.image_alt_zh | default: project_data.card.image_alt | escape }}" data-zh-alt="{{ project_data.card.image_alt_zh | default: project_data.card.image_alt | escape }}" data-en-alt="{{ project_data.card.image_alt | escape }}" width="800" height="500">
       {% endif %}
-      {{ project_info.overview }}
+      {% if project_info.overview_zh %}
+        <div lang="zh-CN" data-language-block="zh">{{ project_info.overview_zh }}</div>
+        <div lang="en" data-language-block="en">{{ project_info.overview }}</div>
+      {% else %}
+        {{ project_info.overview }}
+      {% endif %}
     </div>
   </section>
   {% comment %}Section 4: project resources and shared catalog links.{% endcomment %}
   <section class="emulator-section" id="resources" aria-labelledby="resources-title">
-    <h2 id="resources-title">Documentation &amp; Resources</h2>
+    <h2 id="resources-title">{% include shared/localized.html zh="文档与资源" en="Documentation & Resources" %}</h2>
     {% include shared/project-resources.html %}
   </section>
 </div>

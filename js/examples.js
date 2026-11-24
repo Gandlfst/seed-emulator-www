@@ -16,13 +16,21 @@
       if (!row.hidden) visible++;
     });
     groups.forEach(group => { group.hidden = ![...group.querySelectorAll('[data-example-row]')].some(row => !row.hidden); });
-    count.textContent = `${visible} ${visible === 1 ? 'example' : 'examples'}`;
+    const english = document.documentElement.dataset.siteLanguage === 'en';
+    count.textContent = english ? `${visible} ${visible === 1 ? 'example' : 'examples'}` : `${visible} 个示例`;
     empty.hidden = visible !== 0;
   };
   input.addEventListener('input', filter);
   input.addEventListener('search', filter);
+  function syncLanguage() {
+    input.placeholder = document.documentElement.dataset.siteLanguage === 'en'
+      ? 'Search by topic, name, or code…'
+      : '按主题、名称或编号搜索';
+    filter();
+  }
+  document.addEventListener('site-language-change', syncLanguage);
   // Category links reset a search so their destination cannot remain hidden.
   document.querySelectorAll('.examples-sidebar nav a').forEach(link => link.addEventListener('click', () => { input.value = ''; filter(); }));
-  filter();
+  syncLanguage();
   control.hidden = false;
 })();

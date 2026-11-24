@@ -1,10 +1,11 @@
 {% comment %}Shared reader: lesson metadata comes from the layout; README text stays unchanged.{% endcomment %}
 {% assign source_url = site.data.shared.examples.repository_url | append: '/blob/master/' | append: lesson.source_path | append: '/README.md' %}
+{% assign project_card = site.data[lesson_project].card %}
 <div class="container examples-page example-readme-page">
-  <nav class="portal-breadcrumb" aria-label="Breadcrumb"><a href="{{ project_info.url | relative_url }}">{{ project_info.title }}</a><span aria-hidden="true">/</span><a href="{{ example_catalog_url | relative_url }}">Examples</a><span aria-hidden="true">/</span><a href="{{ lesson_url | relative_url }}">{{ lesson.code }}</a><span aria-hidden="true">/</span><span aria-current="page">README</span></nav>
+  <nav class="portal-breadcrumb" aria-label="页面路径" data-zh-label="页面路径" data-en-label="Breadcrumb"><a href="{{ project_info.url | relative_url }}">{% include shared/localized.html zh=project_card.title_zh en=project_info.title %}</a><span aria-hidden="true">/</span><a href="{{ example_catalog_url | relative_url }}">{% include shared/localized.html zh="项目示例" en="Examples" %}</a><span aria-hidden="true">/</span><a href="{{ lesson_url | relative_url }}">{{ lesson.code }}</a><span aria-hidden="true">/</span><span aria-current="page">README</span></nav>
   <article class="lesson-content readme-content">
-    <div class="readme-toolbar"><a href="{{ lesson_url | relative_url }}">← Back to example</a><a href="{{ source_url }}">View on GitHub {% include shared/icon.html name="external" %}</a></div>
+    <div class="readme-toolbar"><a href="{{ lesson_url | relative_url }}">{% include shared/localized.html zh="← 返回示例" en="← Back to example" %}</a><a href="{{ source_url }}">{% include shared/localized.html zh="在 GitHub 查看" en="View on GitHub" %} {% include shared/icon.html name="external" %}</a></div>
     {% include shared/example-readme-body.html content=content lesson=lesson %}
-    <p class="lesson-source-version">Source: SEED Emulator · <a href="{{ source_url }}">{{ lesson.code }} README</a></p>
+    <p class="lesson-source-version">{% include shared/localized.html zh="来源：SEED Emulator" en="Source: SEED Emulator" %} · <a href="{{ source_url }}">{{ lesson.code }} README</a></p>
   </article>
 </div>

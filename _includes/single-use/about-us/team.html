@@ -3,22 +3,22 @@
 <div class="container team-page">
   {% comment %}Introduction and in-page navigation.{% endcomment %}
   <nav class="portal-breadcrumb" aria-label="Breadcrumb">
-    <a href="{{ '/' | relative_url }}">SEED Emulators</a><span aria-hidden="true">/</span><span aria-current="page">About us</span>
+    <a href="{{ '/' | relative_url }}"><span lang="en">{{ site.title | escape }}</span></a><span aria-hidden="true">/</span><span aria-current="page">{% include shared/localized.html zh="关于我们" en="About us" %}</span>
   </nav>
   <section class="team-intro" aria-labelledby="team-title">
-    <p class="portal-eyebrow">The people behind SEED</p>
-    <h1 id="team-title">About us</h1>
-    <p>We build tools for hands-on research and education, with help from a community of developers and contributors.</p>
+    <p class="portal-eyebrow">{% include shared/localized.html zh="SEED 团队" en="The people behind SEED" %}</p>
+    <h1 id="team-title">{% include shared/localized.html zh="关于我们" en="About us" %}</h1>
+    <p>{% include shared/localized.html zh="SEED 团队与社区开发者和贡献者一起，为科研与实践教学开发工具。" en="We build tools for hands-on research and education, with help from a community of developers and contributors." %}</p>
     <nav class="emulator-section-nav" aria-label="On this page">
-      <a href="#project-lead">Project Lead</a>
-      <a href="#core-developers">Core Developers</a>
-      <a href="#contributors">Contributors</a>
+      <a href="#project-lead">{% include shared/localized.html zh="项目负责人" en="Project Lead" %}</a>
+      <a href="#core-developers">{% include shared/localized.html zh="核心开发者" en="Core Developers" %}</a>
+      <a href="#contributors">{% include shared/localized.html zh="贡献者" en="Contributors" %}</a>
     </nav>
   </section>
 
   {% comment %}Project lead: one person, using the same member component as the lists below.{% endcomment %}
   <section class="team-section" id="project-lead" aria-labelledby="project-lead-title">
-    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">01</span><h2 id="project-lead-title">Project Lead</h2></div>
+    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">01</span><h2 id="project-lead-title">{% include shared/localized.html zh="项目负责人" en="Project Lead" %}</h2></div>
     <ul class="team-members team-lead">
       {% include single-use/about-us/team-member.html member=team_data.project_lead %}
     </ul>
@@ -26,20 +26,20 @@
 
   {% comment %}Core developers: fill core_developers in team.yml; no placeholder people are listed.{% endcomment %}
   <section class="team-section" id="core-developers" aria-labelledby="core-developers-title">
-    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">02</span><h2 id="core-developers-title">Core Developers</h2></div>
+    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">02</span><h2 id="core-developers-title">{% include shared/localized.html zh="核心开发者" en="Core Developers" %}</h2></div>
     {% if team_data.core_developers.size > 0 %}
       <ul class="team-members">
         {% for member in team_data.core_developers %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
       </ul>
     {% else %}
-      <p class="team-pending">The core developer list will be added soon.</p>
+      <p class="team-pending">{% include shared/localized.html zh="核心开发者名单待补充。" en="The core developer list will be added soon." %}</p>
     {% endif %}
   </section>
 
   {% comment %}Contributors: preserve the alphabetical order maintained in team.yml.{% endcomment %}
   <section class="team-section" id="contributors" aria-labelledby="contributors-title">
-    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">03</span><h2 id="contributors-title">Contributors</h2></div>
-    <p class="team-section-note">In alphabetical order. GitHub usernames are shown in parentheses.</p>
+    <div class="team-section-heading"><span class="team-section-number" aria-hidden="true">03</span><h2 id="contributors-title">{% include shared/localized.html zh="贡献者" en="Contributors" %}</h2></div>
+    <p class="team-section-note">{% include shared/localized.html zh="按姓名字母顺序排列，括号内为 GitHub 用户名。" en="In alphabetical order. GitHub usernames are shown in parentheses." %}</p>
     <ul class="team-members">
       {% for member in team_data.contributors %}{% include single-use/about-us/team-member.html member=member %}{% endfor %}
     </ul>

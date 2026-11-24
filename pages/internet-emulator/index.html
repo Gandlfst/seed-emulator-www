@@ -2,14 +2,71 @@
 permalink: "/internet-emulator/"
 layout: project
 project: internet
-title: Internet Emulator
+title: SEED Internet Emulator
 category: Internet infrastructure
-description: Build an internet running real protocols and applications with simple
-  and easy-to-understand code and container technologies, providing a controllable
-  and repeatable experimental environment for network teaching, classic attack reproduction
-  and defense verification.
-overview: |-
-  <p>The SEED Internet Emulator encapsulates Autonomous Systems (AS), Internet Exchange Points (IXP), routers, hosts, DNS and application services as composable Python components. You can start from ready-made examples, define network topologies, interconnection relationships and service deployments with code, generate container configurations and launch operations. Nodes in the network run real protocol stacks, routing software and applications to exchange actual data packets.</p>
-  <p>It helps students understand how a single web access goes through routing and domain name resolution. It also enables teachers and researchers to reproduce classic attacks in Internet history, compare network behaviors before and after anomalies occur, and verify protection and recovery solutions. Developers can reuse existing networks, modify node configurations or connect their own services. With InternetMap, node terminals and logs, you can correlate network structures, protocol states and application outcomes to gradually answer "what happened, why it happened, and how to verify it".</p>
+description: Build and run an Internet with real routing software and applications.
+  SEED is an open-source platform for controlled, repeatable networking and security
+  experiments on general-purpose hardware.
+resource_groups: presentation,how-to-use,example,paper,case-studies,screenshots
+deck_sections:
+  - id: architecture
+    nav: Architecture
+    title: From Python to real packets
+    lead: Describe a network with the SEED SDK, render its layers into a configuration,
+      and compile it for Docker or Kubernetes. Containers run real Linux protocol
+      stacks and routing software such as BIRD and FRRouting.
+    points:
+      - title: Infrastructure
+        text: Define autonomous systems, Internet exchange points, routers, hosts, and links.
+      - title: Routing
+        text: Configure BGP and OSPF alongside policies such as route filtering, MPLS, and Anycast.
+      - title: Services
+        text: Reuse existing topologies and routing to deploy DNS, PKI, CDNs, and your own software.
+    figure:
+      src: /assets/images/internet/layered-architecture.png
+      width: 890
+      height: 493
+      alt: Diagram showing SEED layers, rendering, compilation, execution, and interaction
+      caption: From reusable Python components to a running and observable network.
+  - id: research
+    nav: Research
+    title: Repeatable network experiments
+    lead: Use controlled networks to compare behavior under normal and abnormal conditions.
+      Terminals, packet captures, logs, and InternetMap connect what the application
+      experiences to what the network is doing.
+    points:
+      - title: Security education
+        text: Study historical routing and malware incidents in isolated experiments and evaluate defenses and recovery.
+      - title: Protocol and service research
+        text: Reuse the same topology to compare routing policies, DNS and digital trust services, or systems such as SCION, Tor, and IPFS.
+  - id: scale
+    nav: Scale
+    title: Internet-scale topologies
+    lead: SEED can turn public CAIDA observations into runnable topologies. A reported
+      single-server experiment used multiple virtual machines and Kubernetes to
+      run 10,000 router nodes.
+    figure:
+      src: /assets/images/internet/internetmap-topology.png
+      width: 1870
+      height: 720
+      alt: Three-dimensional globe and two-dimensional view of a large Internet topology
+      caption: InternetMap shows geographic node distribution, paths, and events across the emulated network.
+    metrics:
+      - { value: "10,000", label: Router nodes }
+      - { value: "1,651", label: Autonomous systems }
+      - { value: "772", label: Internet exchange points }
+      - { value: "9,343", label: Networks }
+      - { value: "161,201", label: Peering relationships }
+    table:
+      caption: Single-server multi-VM and Kubernetes benchmark
+      columns: [Measurement, Result]
+      rows:
+        - [Image transfer and container and network startup, "3,508 s"]
+        - [Control-plane convergence, 154 s]
+        - [Data-plane convergence, 183 s]
+        - [Recovery after three Tier-1 router failures, 59 s]
+        - [Mean data-plane latency, 382 ms]
+        - [Mean data-plane bandwidth, "8,648 Mbps"]
+        - [Memory usage including VMs, 425 GB]
+      note: Of the 425 GB total, 144 GB was overhead for the 24-VM cluster and about 281 GB was used by the emulated network.
 ---
-{% comment %}Project copy lives above; media and examples live in _data/internet/.{% endcomment %}

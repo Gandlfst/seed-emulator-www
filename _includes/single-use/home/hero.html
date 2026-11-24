@@ -2,13 +2,13 @@
 <section class="portal-intro container" aria-labelledby="portal-title">
   <div class="portal-intro-copy">
   {% comment %}Edit the hero copy directly below.{% endcomment %}
-    <p class="portal-eyebrow">Research &amp; Education</p>
-    <h1 id="portal-title">SEED Emulators</h1>
-    <p class="portal-intro-tagline">Small worlds. Real possibilities.</p>
-    <p class="portal-intro-description">The project develops emulators for research and education. Create controlled experimental environments to explore Internet infrastructure, satellite networks, blockchain systems, AI agent virtual worlds, and historical Internet incidents.</p>
+    <p class="portal-eyebrow">{% include shared/localized.html zh="科研与教学" en="Research & Education" %}</p>
+    <h1 id="portal-title"><span lang="en">{{ site.title | escape }}</span></h1>
+    <p class="portal-intro-tagline">{% include shared/localized.html zh="在可控环境中开展真实实验" en="Small worlds. Real possibilities." %}</p>
+    <p class="portal-intro-description">{% include shared/localized.html zh="SEED 面向科研和教学开发仿真平台。你可以构建可控的实验环境，探索互联网基础设施、卫星网络、区块链系统、AI 智能体虚拟世界和互联网历史事件。" en="The project develops emulators for research and education. Create controlled experimental environments to explore Internet infrastructure, satellite networks, blockchain systems, AI agent virtual worlds, and historical Internet incidents." %}</p>
   {% comment %}The action opens the project list.{% endcomment %}
     <div class="portal-intro-actions">
-      <a class="portal-hero-button" href="#projects-title">Explore our projects {% include shared/icon.html name="arrow" %}</a>
+      <a class="portal-hero-button" href="#projects-title">{% include shared/localized.html zh="查看仿真项目" en="Explore our projects" %} {% include shared/icon.html name="arrow" %}</a>
     </div>
   </div>
   {% comment %}Decorative network illustration follows the active theme.{% endcomment %}

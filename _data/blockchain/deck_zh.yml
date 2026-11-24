@@ -1,0 +1,35 @@
+category: 区块链系统
+description: 在可编程的互联网环境里运行真实的 Ethereum、Monero 和 Solana 客户端，开展可重复的区块链性能与安全研究。
+sections:
+  architecture:
+    title: 在 SEED 网络中部署真实客户端
+    lead: 区块链服务与底层网络拓扑分开定义。虚拟节点绑定机制将客户端部署到指定网络位置，同一套区块链配置可以复用于不同的拓扑。
+    points:
+      - { title: 网络基础设施, text: SEED 提供自治系统、主机、路由器与真实网络协议。 }
+      - { title: 区块链服务, text: 配置 Ethereum、Monero、Solana 等客户端，研究权益证明（PoS）和工作量证明（PoW）等共识机制。 }
+    figure:
+      alt: 区块链服务通过虚拟节点绑定接入 SEED 网络并与应用和监控系统交互
+      caption: 虚拟节点绑定将区块链服务连接到共享的 SEED 网络。
+  tooling:
+    title: 配置、运行与观测区块链
+    lead: Python 接口支持配置创世状态、账户余额、验证者、对等连接和客户端软件，并可分别管理 Ethereum 的执行、共识和验证者客户端。
+    points:
+      - { title: 交易与智能合约, text: 按 Ethereum 主网交易构成生成负载，并使用 MetaMask、Remix、Hardhat 等工具。 }
+      - { title: 链级与节点级监测, text: 用 EthExplorer 查看区块、交易和验证者状态，用 Ethereum Lookingglass 观察对等连接、资源占用与节点运行状态。 }
+  scale:
+    title: 大规模客户端部署
+    lead: 在约 1 TiB 内存、384 个逻辑 CPU 核心的单台服务器上，Ethereum 实验在每秒约 20 笔交易的负载下持续推进共识。
+    figure:
+      alt: 运行 100 到 400 对 Ethereum 客户端时的内存和逻辑 CPU 使用曲线
+      caption: 不同数量的 Ethereum 客户端对所使用的容器内存与 CPU。
+    metric_labels:
+      - Ethereum 共识节点和执行节点各 400 个
+      - Ethereum 验证者身份
+      - Monero 节点，最多 200 个活跃挖矿节点
+      - 持续完成区块最终确认的 Solana 节点
+  research:
+    title: 研究区块链背后的网络
+    lead: 在受控网络里比较拓扑、路由、客户端配置和交易负载，研究它们对共识行为和区块传播的影响。
+    points:
+      - { title: 网络与安全, text: 已有实验研究路由异常、交易放大和对等连接隔离对区块链系统的影响。 }
+      - { title: 拓扑与传播, text: 在已知连接关系的实验网络中评估 TopoShot，并对比不同对等连接配置下的流量和区块传播。 }

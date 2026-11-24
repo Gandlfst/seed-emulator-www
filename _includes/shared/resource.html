@@ -8,9 +8,9 @@
   </div>
   {% if resource_url %}
     <a href="{{ resource_url | relative_url }}" aria-label="Open {{ include.resource.title | escape }} ({{ include.resource.type }})">
-      Open {% include shared/icon.html name="external" %}
+      {% include shared/localized.html zh="打开" en="Open" %} {% include shared/icon.html name="external" %}
     </a>
   {% else %}
-    <span class="emulator-resource-pending">Coming soon</span>
+    <span class="emulator-resource-pending">{% include shared/localized.html zh="即将发布" en="Coming soon" %}</span>
   {% endif %}
 </li>
